@@ -63,7 +63,6 @@
                 padding: 0;
                 overflow: hidden;
                 background-color: #333;
-                float:left;
             }
 
             li {
