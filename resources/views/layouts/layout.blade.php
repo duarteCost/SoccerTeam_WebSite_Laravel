@@ -5,11 +5,10 @@
 
 	        <style>
             html, body {
-                background-color: #1f648b;
+                background-color: #afd9ee;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
-                height: 100vh;
                 margin: 0;
             }
 
@@ -77,6 +76,13 @@
                 text-decoration: none;
             }
 
+			.produt{
+				width: 42%;
+				float: left;
+				margin-top:5%;
+				margin-left:8%;
+			}
+
             /* Change the link color to #111 (black) on hover */
             li a:hover {
                 background-color: #111;
@@ -89,6 +95,59 @@
     @yield('header')
 </head>
 <body>
+	@yield('navbar')
+		@if (Route::has('login'))
+			<div class="top-right links">
+				@if (Auth::check())
+					<ul>
+						<li>
+							<a href="{{ url('/') }}">HOME</a>
+						</li>
+						<li>
+							<a href="{{ url('/about') }}">QUEM SOMOS</a>
+						</li>
+						<li>
+							<a href="{{ url('/news') }}">Notícias</a>
+						</li>
+						<li>
+							<a href="{{ url('/produts') }}">Produtos</a>
+						</li>
+						<li>
+							<a href="{{ url('/help') }}">Ajuda</a>
+						</li>
+						<li id = "exp">
+							<a href="{{ url('/user') }}">Sua Página</a>
+						</li>
+					</ul>
+				@else
+					<ul>
+						<li>
+							<a href="{{ url('/') }}">HOME</a>
+						</li>
+						<li>
+							<a href="{{ url('/about') }}">QUEM SOMOS</a>
+						</li>
+						<li>
+							<a href="{{ url('/news') }}">Notícias</a>
+						</li>
+						<li>
+							<a href="{{ url('/produts') }}">Produtos</a>
+						</li>
+						<li>
+							<a href="{{ url('/help') }}">Ajuda</a>
+						</li>
+						<li id = "exp">
+							<a href="{{ url('/login') }}">Login</a>
+						</li>
+						<li id = "exp">
+							<a href="{{ url('/register') }}">Register</a>
+						</li>
+					</ul>
+					<br>
+					<br>
+				@endif
+			</div>
+		@endif
 	@yield('content')
 	@yield('footer')
 </body>

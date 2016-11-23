@@ -1,4 +1,4 @@
-@extends('layouts.produts')
+@extends('layouts.layout')
 @section('header')
     <title>Produts FC</title>
 @stop

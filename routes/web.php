@@ -22,7 +22,8 @@ Route::get('/about', 'HomeController@about');
 Route::get('/news', 'HomeController@news');
 Route::get('/produts', 'ProdutsController@produts');
 Route::get('/help', 'HomeController@help');
-Route::get('/user', 'UserController@index');
+Route::get('/user', 'UserController@checkUser');
+Route::post('/user/addProduct', 'UserController@checkUser2' );
 /*Route::get('/user', function(){
 
       $id = Auth::id();
