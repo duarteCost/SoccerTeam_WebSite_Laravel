@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Produt;
 use Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -28,7 +30,8 @@ class UserController extends Controller
     {
 
         $user = Auth::user();
-        return view('user', compact('user'));
+        $users = User::get();
+        return view('user', compact('user','users'));
 
         //$use = User::find($user);
       //return $user;
@@ -40,5 +43,28 @@ class UserController extends Controller
         $user = Auth::user();
         return view('addProduts', compact('user'));
 
+    }
+
+    public function deleteSocio(Request $request)
+    {
+        $currentUser = Auth::user();
+        $users = User::all();
+        $o=0;
+        foreach ($users as $user1) {
+            $o++;
+            $id = $user1->id;
+
+            if ($currentUser->type) {
+                if($request->$id){
+                    $i=User::findOrFail($id)->delete();
+                }else{
+                    continue;
+                }
+            } else {
+                return redirect("/user");
+            }
+        }
+        return redirect("/user");
+        return redirect("/user");
     }
 }

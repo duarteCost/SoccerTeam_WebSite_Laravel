@@ -27,7 +27,7 @@ class NotesController extends Controller
     	$user = Auth::user();
     	if($user){
     		$note = new Note;
-    		$note->note_content = $request->content;
+    		//$note->note_content = $request->content;
     		$user->notes()->save($note);
     		return redirect("/notes");
     	}else{
