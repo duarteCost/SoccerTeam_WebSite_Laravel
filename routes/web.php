@@ -23,7 +23,8 @@ Route::get('/news', 'HomeController@news');
 Route::get('/produts', 'ProdutsController@produts');
 Route::get('/help', 'HomeController@help');
 Route::get('/user', 'UserController@checkUser');
-Route::post('/user/addProduct', 'UserController@checkUser2' );
+Route::post('/user/addProduct/{user}', 'ProdutsController@addProduct' );
+Route::post('/user/deleteProduct', 'ProdutsController@deleteProducts' );
 Route::post('/user/deleteSocio','UserController@deleteSocio');
 /*Route::get('/user', function(){
 

@@ -15,6 +15,8 @@ class CreateProdutsTable extends Migration
     {
         Schema::create('produts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('no action')->onUpdate('no action');
             $table->string('name');
             $table->double('price');
             $table->timestamps();

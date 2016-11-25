@@ -31,18 +31,12 @@ class UserController extends Controller
 
         $user = Auth::user();
         $users = User::get();
-        return view('user', compact('user','users'));
+        $products = Produt::get();
+        return view('user', compact('user','users','products'));
 
         //$use = User::find($user);
       //return $user;
        // return view('user');
-    }
-
-    public function checkUser2()
-    {
-        $user = Auth::user();
-        return view('addProduts', compact('user'));
-
     }
 
     public function deleteSocio(Request $request)
@@ -64,7 +58,6 @@ class UserController extends Controller
                 return redirect("/user");
             }
         }
-        return redirect("/user");
         return redirect("/user");
     }
 }
