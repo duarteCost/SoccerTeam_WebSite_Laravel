@@ -27,12 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function notes()
-    {
-        return $this->hasMany('App\Note');
-    }
+
     public function produts()
     {
-        return $this->hasMany('App\Produt');
+        return $this->belongsToMany('App\Produt', 'user_has_product' ,'user_id', 'product_id' );
     }
+
 }

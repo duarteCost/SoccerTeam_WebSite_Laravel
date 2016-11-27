@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Produt;
 use Auth;
+use DB;
+use App\Basket_Temp;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -31,8 +33,9 @@ class UserController extends Controller
 
         $user = Auth::user();
         $users = User::get();
+        $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
         $products = Produt::get();
-        return view('user', compact('user','users','products'));
+        return view('user', compact('user','users','products','basket_temp'));
 
         //$use = User::find($user);
       //return $user;
