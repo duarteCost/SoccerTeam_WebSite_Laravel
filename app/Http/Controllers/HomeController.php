@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Produt;
+use DB;
 use App\Http\Requests;
 
 class HomeController extends Controller
@@ -20,9 +21,10 @@ class HomeController extends Controller
     {
         return view('news');
     }
-    public function produts()
+    public function products()
     {
-        return view('produts');
+        $produts = DB::table('produts')->get();
+        return view('produts', compact('produts'));
     }
     public function help()
     {

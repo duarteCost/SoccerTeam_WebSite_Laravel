@@ -12,19 +12,19 @@ use App\User;
 
 class ProdutsController extends Controller
 {
-    public function products()
+    /*public function products()
     {
     	$produts = DB::table('produts')->get();
         return view('produts', compact('produts'));
-    }
+    }*/
 
     public function addBasketTemp(Request $request, Produt $produt){
         $currentUser = Auth::user();
         //$bakets_temp = Basket_Temp::all();
         $basket_temp = new Basket_Temp();
-        $basket_temp->user_id = $currentUser->id;
+       // $basket_temp->user_id = $currentUser->id;
         $basket_temp->product_id = $produt->id;
-        $basket_temp->save();
+        $currentUser->basket_temp()->save($basket_temp);
         return redirect("/products");
     }
 

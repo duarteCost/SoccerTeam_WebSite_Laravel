@@ -10,4 +10,8 @@ class Produt extends Model
     {
         return $this->belongsToMany('App\User', 'user_has_product', 'user_id', 'product_id');
     }
+    public function basket_temp()
+    {
+        return $this->hasMany('App\Basket_Temp', 'product_id');
+    }
 }
