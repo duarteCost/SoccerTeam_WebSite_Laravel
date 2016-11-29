@@ -50,7 +50,6 @@ class ProdutsController extends Controller
                 if($request->$id){
                     DB::table('produts')->where('id','=', $id)->delete();
                     DB::table('Basket_Temp')->where('product_id','=', $id)->delete();
-                    return redirect("/user");
                 }else{
                     continue;
                 }

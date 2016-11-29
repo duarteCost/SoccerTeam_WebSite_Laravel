@@ -24,17 +24,51 @@
             <div class="form-group">
                 <fieldset class="field">
                     <legend class="nv-legend">Adicionar News</legend>
-                    <label class="text">Título:</label><br><input type="text", name="newTitle", class="input" required>
-                    <br>
-                    <label class="text">Conteúdo:</label>
-                    <br>
-                    <textarea rows="20" cols="70" name = "newContent"></textarea>
-                    <br>
+                    @if(!isset($new))
+                        <label class="text">Título:</label><br><input type="text", name="newTitle", class="input" required>
+                        <br>
+                        <label class="text">Conteúdo:</label>
+                        <br>
+                        <textarea rows="20" cols="70" name = "newContent"></textarea>
+                        <br>
+                    @else
+                        <label class="text">Título:</label><br><input type="text", name="newTitle", class="input" value="{{$new->title}}" required>
+                        <br>
+                        <label class="text">Conteúdo:</label>
+                        <br>
+                        <textarea rows="20" cols="70" name = "newContent" required>{{$new->content}}</textarea>
+                        <br>
+                    @endif
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <input type="submit", name="addNew", class="input" value="Adicionar Notícias">
+                    <input type="submit", name="addNew", class="input" value="Submeter Notícias">
                 </fieldset>
             </div>
 
+        </form>
+        <br>
+
+        </form>
+        <br>
+        <form method="post" action="/user/newState">
+            <div class="form-group">
+                <fieldset class="field">
+                    <legend class="nv-legend">Eliminar/Editar Notícias</legend>
+
+                    @foreach($news as $new)
+                        <input type = "radio" id = class="input" name = "newId" value="{{$new->id}}">
+                        {{$new->id}}
+                        {{$new->title}}
+                        <br>
+                    @endforeach
+
+                    @if(1==1)
+                        <input type = "submit" name = "newState" value="Eliminar New">
+                        <input type = "submit" name = "newState" value="Editar  New">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    @endif
+
+                </fieldset>
+            </div>
         </form>
         <br>
 
@@ -79,30 +113,6 @@
             </div>
         </form>
         <br>
-        <form method="post" action="\user\newState">
-            <div class="form-group">
-                <fieldset class="field">
-                    <legend class="nv-legend">Eliminar/Editar Notícias</legend>
-
-                    @foreach($news as $new)
-                        <input type = "radio" id = class="input" name = "newState">
-                        {{$new->id}}
-                        {{$new->title}}
-                        <br>
-                    @endforeach
-
-                    @if(1==1)
-                        <input type = "submit" name = "deleteNew" value="Eliminar New">
-                        <input type = "submit" name = "editarNew" value="Editar  New">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    @endif
-
-                </fieldset>
-            </div>
-        </form>
-        <br>
-
-
 
     @else
          <h1>Página de Socio</h1>
