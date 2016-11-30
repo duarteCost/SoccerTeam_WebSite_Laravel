@@ -14,4 +14,8 @@ class Produt extends Model
     {
         return $this->hasMany('App\Basket_Temp', 'product_id');
     }
+    public function product_img()
+    {
+        return $this->hasMany('App\product_img', 'product_id');
+    }
 }
