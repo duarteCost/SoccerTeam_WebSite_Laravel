@@ -48,9 +48,7 @@ class UserController extends Controller
     {
         $currentUser = Auth::user();
         $users = User::all();
-        $o=0;
         foreach ($users as $user1) {
-            $o++;
             $id = $user1->id;
 
             if ($currentUser->type) {

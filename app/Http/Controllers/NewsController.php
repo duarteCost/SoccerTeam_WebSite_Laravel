@@ -12,18 +12,31 @@ use App\User;
 
 class NewsController extends Controller
 {
-    public function addNew(Request $request, User $user)
-    {
+    public function addNew(Request $request)
+    {$user = Auth::user();
         if($user->type) {
-            $new = new News();
-            $new->title = $request->newTitle;
-            $new->content = $request->newContent;
-            $user->news() -> save($new);
-            return redirect("/user");
+            $news = News::get();
+            foreach ($news as $new) {
+                $Nnew = new News();
+                $Nnew->title = $request->newTitle;
+                $Nnew->content = $request->newContent;
+                $user->news()->save($Nnew);
+                return redirect("/user");
+            }
         }
         else
-        {return $request;}
+        {
+            return redirect("/user");
+        }
     }
+
+    public function editeNew(Request $request, News $new){
+        $title = $request->newTitle;
+        $content = $request->newContent;
+        DB::table('news')->where('id','=', $new->id)->update(array('title'=> $title, 'content' => $content));
+        return redirect("/user");
+    }
+
     public function checkNewState(Request $request){
         if($request->newState == "Eliminar New")
         {

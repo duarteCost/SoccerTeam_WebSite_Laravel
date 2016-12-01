@@ -25,9 +25,10 @@ Route::post('/products/{produt}', 'ProdutsController@addBasketTemp');
 Route::get('/help', 'HomeController@help');
 Route::get('/user', 'UserController@checkUser');
 Route::post('/user/addProduct/{user}', 'ProdutsController@addProduct' );
-Route::post('/user/addNew/{user}', 'NewsController@addNew' );
+Route::post('/user/addNew/{new}', 'NewsController@editeNew' );
+Route::post('/user/addNew', 'NewsController@addNew' );
 Route::post('/user/newState/', 'NewsController@checkNewState' );
-Route::post('/user/deleteProduct', 'ProdutsController@deleteProducts' );
+Route::post('/user/delete_editProduct', 'ProdutsController@delete_editProducts' );
 Route::post('/user/emptyBasket', 'ProdutsController@emptyBasket' );
 Route::post('/user/deleteSocio','UserController@deleteSocio');
 /*Route::get('/user', function(){
