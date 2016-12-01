@@ -56,6 +56,15 @@ class ProdutsController extends Controller
         }
     }
     //verifica o estado e dependente elimina ou acrescenta imagem
+    function eliminaFotos(Array $arry, $id)
+    {
+        foreach ($arry as $member)
+        {
+
+            //$s3 = \Storage::disk('s3');
+            \Storage::disk('s3')->delete("/products/1480606504.png");
+        }
+    }
     public function delete_editProducts(Request $request)
     {
         $currentUser = Auth::user();
