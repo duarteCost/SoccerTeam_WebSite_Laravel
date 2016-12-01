@@ -111,4 +111,22 @@ class NewsController extends Controller
             return redirect("/user");
         }
     }
+
+
+    public function getNews($new_id){
+
+             $news = DB::table('news')
+
+                 ->leftJoin('users','users.id','=','news.user_id')
+                 ->select('name', 'news.id','news.created_at', 'news.updated_at','title', 'content')
+                 ->where('news.id','=', $new_id)
+                 ->orderBy('news.updated_at', 'desc')
+                 ->get();
+
+        return view('detailsNews', compact('news'));
+
+    }
+
+
+
 }

@@ -66,7 +66,7 @@
                         <label for="imagem">Imagem:</label>
                         <br>
                         <br>
-                        <input type="file" name="image"/>
+                        <input type="file" name="image" required/>
                         <br>
 
                         <input type="hidden" name="_token" value="{{csrf_token()}}">

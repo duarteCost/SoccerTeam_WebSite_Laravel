@@ -70,6 +70,9 @@ li a {
     text-decoration: none;
 }
 
+
+
+
 .produt{
     width: 42%;
     float: left;
@@ -83,4 +86,97 @@ li a:hover {
 }
 #exp{
     float:right;
+}
+
+
+
+
+/*/--------JORGE ---------------*/
+
+div.img {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+div.news {
+    display: flex;
+    align-items: left;
+    text-align: justify;
+    margin-left: 5%;
+    margin-right: 30%;
+    margin-bottom: 5%;
+
+}
+
+div.NewsDetails {
+
+    align-items: center;
+    text-align: justify;
+
+
+}
+
+
+p2.NewsDetails , h2.NewsDetails {
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+
+}
+
+a.NewsDetails {
+
+    align-items: center;
+    text-align: justify;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+
+}
+
+div.lastedNews {
+    display: flex;
+    align-items: left;
+    margin-left: 5%;
+    margin-right: 30%;
+    margin-bottom: 5%;
+    padding: 5%;
+    border: solid;
+    border-color: #5bc0de;
+
+}
+
+h2 {
+    border-top-style: solid;
+    border-left-style: solid;
+    border-color: #5bc0de;
+    margin-left: 5%;
+    margin-right: 30%;
+
+
+}
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+img.lastedNews {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 30%;
+    max-height:30%;
+    width:auto;
+}
+
+a.news{  display: block;
+    color: black;
+
+
 }
