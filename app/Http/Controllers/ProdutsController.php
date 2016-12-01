@@ -46,7 +46,7 @@ class ProdutsController extends Controller
                 if($s3->put($filePath, file_get_contents($image), 'public')){
                     $product_img = new product_img();
                     $product_img->title = $imageFileName;
-                    $product_img->path="/acr20162017/products";
+                    $product_img->path="/products/";
                     $produt->product_img()->save($product_img);
                     return redirect("/user");
                 }
@@ -56,15 +56,7 @@ class ProdutsController extends Controller
         }
     }
     //verifica o estado e dependente elimina ou acrescenta imagem
-    function eliminaFotos(Array $arry, $id)
-    {
-        foreach ($arry as $member)
-        {
 
-            //$s3 = \Storage::disk('s3');
-            \Storage::disk('s3')->delete("/products/1480606504.png");
-        }
-    }
     public function delete_editProducts(Request $request)
     {
         $currentUser = Auth::user();
@@ -74,8 +66,17 @@ class ProdutsController extends Controller
                 $id = $produt->id;
                 if ($currentUser->type) {
                     if ($request->product_Id == $id) {
-                        DB::table('produts')->where('id', '=', $id)->delete();
                         DB::table('Basket_Temp')->where('product_id', '=', $id)->delete();
+                        if(DB::table('produts')->where('id', '=', $id)->delete()) {
+
+                            $product_imgs = DB::table('product_imgs')->where('product_id', '=', $id)->get();
+                            foreach ($product_imgs as $product_img) {
+                                $path = $product_img->path;
+                                $title = $product_img->title;
+                                \Storage::disk('s3')->delete($path . '' . $title);
+                            }
+                            DB::table('product_imgs')->where('product_id', '=', $id)->delete();
+                        }
                     } else {
                         continue;
                     }
@@ -98,7 +99,7 @@ class ProdutsController extends Controller
                         if($s3->put($filePath, file_get_contents($image), 'public')){
                             $product_img = new product_img();
                             $product_img->title = $imageFileName;
-                            $product_img->path="/acr20162017/products";
+                            $product_img->path="/products/";
                             $produt->product_img()->save($product_img);
                             return redirect("/user");
                         }
