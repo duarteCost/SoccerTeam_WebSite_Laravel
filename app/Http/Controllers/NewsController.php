@@ -22,7 +22,7 @@ class NewsController extends Controller
             if($user->news()->save($new)){
                 $image = $request->file('image');
                 $imageFileName = time() . '.' . $image->getClientOriginalExtension();
-                $filePath = '/news/' . $imageFileName;
+                $filePath = 'news/' . $imageFileName;
                 $s3 = \Storage::disk('s3');
                 if($s3->put($filePath, file_get_contents($image), 'public')){
                     $new_img = new new_img();
