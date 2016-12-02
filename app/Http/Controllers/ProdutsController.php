@@ -46,7 +46,7 @@ class ProdutsController extends Controller
                 if($s3->put($filePath, file_get_contents($image), 'public')){
                     $product_img = new product_img();
                     $product_img->title = $imageFileName;
-                    $product_img->path="/products/";
+                    $product_img->path="products/";
                     $produt->product_img()->save($product_img);
                     return redirect("/user");
                 }
@@ -99,7 +99,7 @@ class ProdutsController extends Controller
                         if($s3->put($filePath, file_get_contents($image), 'public')){
                             $product_img = new product_img();
                             $product_img->title = $imageFileName;
-                            $product_img->path="/products/";
+                            $product_img->path="products/";
                             $produt->product_img()->save($product_img);
                             return redirect("/user");
                         }

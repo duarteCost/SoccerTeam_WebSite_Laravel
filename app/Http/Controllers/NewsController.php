@@ -27,7 +27,7 @@ class NewsController extends Controller
                 if($s3->put($filePath, file_get_contents($image), 'public')){
                     $new_img = new new_img();
                     $new_img->title = $imageFileName;
-                    $new_img->path="/news/";
+                    $new_img->path="news/";
                     $new->new_img()->save($new_img);
                     return redirect("/user");
                 }
@@ -59,7 +59,7 @@ class NewsController extends Controller
                     if($s3->put($filePath, file_get_contents($image), 'public')){
                         $new_img = new new_img();
                         $new_img->title = $imageFileName;
-                        $new_img->path="/news/";
+                        $new_img->path="news/";
                         $new->new_img()->save($new_img);
                         return redirect("/user");
                     }
