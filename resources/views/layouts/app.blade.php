@@ -21,7 +21,10 @@
     @if (Route::has('login'))
             @if (Auth::check())
                 <ul>
+
                     <li>
+
+
                         <a href="{{ url('/') }}">HOME</a>
                     </li>
                     <li>
@@ -54,6 +57,7 @@
                 </ul>
             @else
                 <ul>
+
                     <li>
                         <a href="{{ url('/') }}">HOME</a>
                     </li>
