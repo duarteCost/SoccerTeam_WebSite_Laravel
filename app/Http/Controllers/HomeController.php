@@ -25,6 +25,8 @@ class HomeController extends Controller
         $produts = DB::table('produts')->get();
         return view('produts', compact('produts'));
     }
+
+
     public function help()
     {
         return view('help');
@@ -46,7 +48,6 @@ class HomeController extends Controller
         $latest_news = DB::table('news')
 
             ->leftJoin('users','users.id','=','news.user_id')
-            ->leftJoin('new_img','new_id','=','news.id')
             ->select('name', 'news.id','news.created_at', 'news.updated_at','news.title', 'news.content')
             ->orderBy('news.updated_at', 'desc')
             ->get();
@@ -64,17 +65,18 @@ class HomeController extends Controller
 
         foreach($latest as $imageName) {
 
-        $s3 = Storage::disk('s3');
-        $path = $imageName->path.$imageName->title;
-            $exists = $s3->exists($path);
-            if($exists) {
-                $urlFile = $s3->url($path);
-                if(empty($array_urls [$imageName->id][0])) {
+            $s3 = Storage::disk('s3');
+            if (!empty($imageName->title) && !empty($imageName->path)) {
+                $path = $imageName->path . $imageName->title;
+                $exists = $s3->exists($path);
+                if ($exists) {
+                    $urlFile = $s3->url($path);
+
                     $array_urls [$imageName->id][] = $urlFile;
+
                 }
 
             }
-
         }
 
         return view('welcome', compact('latest_news', 'array_urls')) ;

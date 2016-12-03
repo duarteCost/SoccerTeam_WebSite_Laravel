@@ -31,7 +31,7 @@
 				<a href="{{ url('/news') }}">Notícias</a>
 			</li>
 			<li>
-				<a href="{{ url('/products') }}">Produtos</a>
+				<a href="{{ url('/products/all') }}">Produtos</a>
 			</li>
 			<li>
 				<a href="{{ url('/help') }}">Ajuda</a>
@@ -64,7 +64,7 @@
 				<a href="{{ url('/news') }}">Notícias</a>
 			</li>
 			<li>
-				<a href="{{ url('/products') }}">Produtos</a>
+				<a href="{{ url('/products/all') }}">Produtos</a>
 			</li>
 			<li>
 				<a href="{{ url('/help') }}">Ajuda</a>

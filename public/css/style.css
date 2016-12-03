@@ -111,6 +111,16 @@ div.news {
 
 }
 
+div.newsView {
+
+    align-items: left;
+    text-align: justify;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+
+}
+
 div.NewsDetails {
 
     align-items: center;
@@ -172,7 +182,32 @@ img.lastedNews {
     margin-left: 5%;
     margin-right: 30%;
     max-height:30%;
+    width:50%;
+}
+
+img.produt {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    width:90%;
+}
+
+img.detailsNew {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 30%;
+    max-height:30%;
     width:auto;
+
+}
+
+img.galeryImages {
+    float: left;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-height:20%;
+    width:40%;
 }
 
 a.news{  display: block;

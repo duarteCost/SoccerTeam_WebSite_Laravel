@@ -15,9 +15,9 @@
             @if(!empty($array_urls[$new->id][0]))
 
 
-                        <img class="lastedNews" src="{{$array_urls[$new->id][0]}}"/>
-
-
+                <a class="news" href="/detailsNews/{{$new->id}}">
+                    <img class="lastedNews" src="{{$array_urls[$new->id][0]}}"/>
+                </a>
             @endif
 
             <h2> <a class="news" href="/detailsNews/{{$new->id}}">{{$new->title}} {{$new->id}}</a></h2>

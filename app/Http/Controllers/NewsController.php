@@ -10,7 +10,7 @@ use App\new_img;
 use App\Produt;
 use DB;
 use App\User;
-
+use Illuminate\Support\Facades\Storage;
 class NewsController extends Controller
 {
     public function addNew(Request $request)
@@ -112,18 +112,87 @@ class NewsController extends Controller
         }
     }
 
+/*----------------------- JORGE ------------------------------*/
+    public function getNews()
+    {
+        $latest_news = DB::table('news')
 
-    public function getNews($new_id){
+            ->leftJoin('users','users.id','=','news.user_id')
+            ->select('name', 'news.id','news.created_at', 'news.updated_at','news.title', 'news.content')
+            ->orderBy('news.updated_at', 'desc')
+            ->get();
+
+        $latest = DB::table('news')
+
+            ->leftJoin('users','users.id','=','news.user_id')
+            ->leftJoin('new_img','new_id','=','news.id')
+            ->select('name', 'news.id','news.created_at', 'news.updated_at', 'news.content' ,'new_img.title','new_img.path' )
+            ->orderBy('news.updated_at', 'desc')
+            ->get();
+
+
+        $array_urls = array();
+
+        foreach($latest as $imageName) {
+
+            $s3 = Storage::disk('s3');
+            if(!empty($imageName->title) && !empty($imageName->path)) {
+                $path = $imageName->path . $imageName->title;
+                $exists = $s3->exists($path);
+                if ($exists) {
+                    $urlFile = $s3->url($path);
+
+                    $array_urls [$imageName->id][] = $urlFile;
+
+                }
+            }
+
+        }
+
+        return view('news', compact('latest_news', 'array_urls')) ;
+
+
+
+
+    }
+
+
+    public function getNew($new_id){
 
              $news = DB::table('news')
-
                  ->leftJoin('users','users.id','=','news.user_id')
-                 ->select('name', 'news.id','news.created_at', 'news.updated_at','title', 'content')
+                 ->select('name', 'news.id','news.created_at', 'news.updated_at', 'news.content' ,'news.title' )
                  ->where('news.id','=', $new_id)
                  ->orderBy('news.updated_at', 'desc')
                  ->get();
 
-        return view('detailsNews', compact('news'));
+              $images = DB::table('news')
+                  ->leftJoin('users','users.id','=','news.user_id')
+                  ->leftJoin('new_img','new_id','=','news.id')
+                  ->select('name', 'news.id','news.created_at', 'news.updated_at', 'news.content' ,'new_img.title','new_img.path' )
+                  ->where('news.id','=', $new_id)
+                  ->orderBy('news.updated_at', 'desc')
+                  ->get();
+
+        $array_urls = array();
+
+        foreach($images as $imageName) {
+
+            $s3 = Storage::disk('s3');
+            $path = $imageName->path.$imageName->title;
+            $exists = $s3->exists($path);
+            if($exists) {
+                $urlFile = $s3->url($path);
+
+                    $array_urls [$imageName->id][] = $urlFile;
+
+
+
+            }
+
+        }
+
+        return view('detailsNews', compact('news', 'array_urls'));
 
     }
 

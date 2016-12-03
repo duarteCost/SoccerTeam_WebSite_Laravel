@@ -21,9 +21,8 @@ Route::post('/notes/','NotesController@add');
 Auth::routes();
 Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
-Route::get('/news', 'HomeController@news');
-Route::get('/products', 'HomeController@products');
-Route::post('/products/{produt}', 'ProdutsController@addBasketTemp');
+
+Route::post('/products/add/{produt}', 'ProdutsController@addBasketTemp'); // tive de alterar esta rota duarte
 Route::get('/help', 'HomeController@help');
 Route::get('/user', 'UserController@checkUser');
 Route::post('/user/addProduct/{user}', 'ProdutsController@addProduct' );
@@ -47,11 +46,13 @@ Route::get('/news/{user}', 'NewsController@news');
 
 ////// JORGE //////////////
 
-Route::get('/detailsNews/{new_id}', 'NewsController@getNews');
+Route::get('/detailsNews/{new_id}', 'NewsController@getNew');
 
 Route::get('App/Services/MetricsService', 'NewsController@action');
 Route::get('foo', ['as'=>'name', 'uses'=>'MyController@action']);
-
+Route::get('/products/{product_id}', 'ProdutsController@getProducts');
+Route::get('/news', 'NewsController@getNews');
+Route::get('/detailsProduct/{product_id}', 'ProdutsController@getProducts');
 
 
 

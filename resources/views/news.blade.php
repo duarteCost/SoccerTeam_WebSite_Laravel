@@ -4,23 +4,32 @@
 @stop
 @section('content')
     <h1>News</h1>
-    @foreach($news as $new)
+    @foreach($latest_news as $new)
+        <div class="newsView">
+        @if(!empty($array_urls[$new->id][0]))
 
-        <h2>{{$new->title}}</h2>
-        <div>
-        {{$new->content}}
-        <br>
 
-        {{$new->updated_at}}
+            <img class="lastedNews" src="{{$array_urls[$new->id][0]}}"/>
 
-        {{$new->user_id}}
+
+        @endif
+
+        <h2> <a class="news" href="/detailsNews/{{$new->id}}">{{$new->title}} {{$new->id}}</a></h2>
+
+            <br>
+            <p2>
+                {{$new->content}}
+                <br><br>
+
+                {{$new->updated_at}}
+
+                {{$new->name}}
+            </p2>
+
+
+
         </div>
-
     @endforeach
-    <?php $image="10000.png"; ?>
-    <img src="/images/$image">
-    <a href="#">{{ HTML::image("/images/<?php echo $image;?>", "Logo") }}</a>
-    <img src="{{ asset('/images/10000.png') }}" />
 
 
 
