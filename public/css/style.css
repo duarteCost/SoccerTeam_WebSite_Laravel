@@ -154,12 +154,12 @@ div.lastedNews {
     display: flex;
     align-items: left;
     margin-left: 5%;
-    margin-right: 30%;
+    margin-right: 40%;
     margin-bottom: 5%;
     padding: 5%;
     border: solid;
     border-color: #5bc0de;
-
+    background-color: #269abc;
 }
 
 h2 {
@@ -214,4 +214,47 @@ a.news{  display: block;
     color: black;
 
 
+}
+
+table.table_ligue, table.results_table{
+    table-layout: fixed;
+
+}
+
+
+
+th, td {
+    width: 10%;
+    height: 10%;
+    text-align: left;
+    background-color: whitesmoke;
+    font-size: small;
+}
+
+th{background-color: #269abc;
+    color: white;}
+
+div.table_ligue {
+    float: right;
+    width: 5% ;
+
+}
+
+div.results_table {
+    float: right;
+    width: 5% ;
+
+}
+
+thead, tbody { display: block; }
+
+tbody {
+    height: 30%;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+
+span.mySpan {
+
+    display:block;
 }
