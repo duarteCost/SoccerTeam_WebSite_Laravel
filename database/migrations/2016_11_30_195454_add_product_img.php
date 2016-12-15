@@ -13,7 +13,7 @@ class AddProductImg extends Migration
      */
     public function up()
     {
-        Schema::create('product_imgs', function (Blueprint $table) {
+        Schema::create('product_img', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('path');

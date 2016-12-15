@@ -15,6 +15,7 @@ class AddNewImg extends Migration
     {
         Schema::create('new_img', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('type');
             $table->string('title');
             $table->string('path');
             $table->integer('new_id')->unsigned();

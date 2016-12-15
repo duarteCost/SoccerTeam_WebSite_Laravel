@@ -39,9 +39,13 @@
                         <textarea rows="20" cols="70" name = "newContent"></textarea>
                         <br>
                         <br>
-                        <label for="imagem">Imagem:</label>
+                        <label for="imagem">Imagem da Notícia:</label>
                         <br>
-                        <input type="file" name="image" required/>
+                        <input type="file" name="imageNew" required/>
+                        <br>
+                        <label for="imagem">Banner da Notícia:</label>
+                        <br>
+                        <input type="file" name="imageBanner" required/>
                         <br>
 
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -63,14 +67,18 @@
                         <br>
                         <textarea rows="20" cols="70" name = "newContent" required>{{$new->content}}</textarea>
                         <br>
-                        <label for="imagem">Imagem:</label>
                         <br>
+                        <label for="imagem">Imagem da Notícia:</label>
                         <br>
-                        <input type="file" name="image" required/>
+                        <input type="file" name="imageNew" />
+                        <br>
+                        <label for="imagem">Banner da Notícia:</label>
+                        <br>
+                        <input type="file" name="imageBanner" />
                         <br>
 
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="submit", name="addNew", class="input" value="Submeter Notícias">
+                        <input type="submit", name="addNew", class="input" value="Editar Notícias">
                     </fieldset>
                 </div>
 

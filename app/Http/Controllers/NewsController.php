@@ -20,17 +20,28 @@ class NewsController extends Controller
             $new->title = $request->newTitle;
             $new->content = $request->newContent;
             if($user->news()->save($new)){
-                $image = $request->file('image');
-                $imageFileName = time() . '.' . $image->getClientOriginalExtension();
-                $filePath = 'news/' . $imageFileName;
+                $imageNew = $request->file('imageNew');
+                $imageBanner = $request->file('imageBanner');
+                $imageNewFileName = time() . '.' . $imageNew->getClientOriginalExtension();
+                sleep(1);
+                $imageBannerFileName = time() . '.' . $imageBanner->getClientOriginalExtension();
+                $imageNewPath = 'news/' . $imageNewFileName;
+                $imageBannerPath = 'news/' . $imageBannerFileName;
                 $s3 = \Storage::disk('s3');
-                if($s3->put($filePath, file_get_contents($image), 'public')){
+                if($s3->put($imageNewPath, file_get_contents($imageNew), 'public') && $s3->put($imageBannerPath, file_get_contents($imageBanner), 'public')){
                     $new_img = new new_img();
-                    $new_img->title = $imageFileName;
+                    $new_img->title = $imageNewFileName;
+                    $new_img->type = 0;
                     $new_img->path="news/";
                     $new->new_img()->save($new_img);
+                    $new_img_b = new new_img();
+                    $new_img_b->title = $imageBannerFileName;
+                    $new_img_b->type = 1;
+                    $new_img_b->path="news/";
+                    $new->new_img()->save($new_img_b);
                     return redirect("/user");
                 }
+
             }
         }
         else
@@ -43,7 +54,7 @@ class NewsController extends Controller
         $title = $request->newTitle;
         $content = $request->newContent;
         DB::table('news')->where('id','=', $new->id)->update(array('title'=> $title, 'content' => $content));
-        if($request->file('image')){
+        if($request->file('imageNew') || $request->file('imageBanner')){
             $new_imgs = new_img::get();
             foreach ($new_imgs as $new_img) {
                 if ($new_img->new_id == $new->id) {
@@ -52,15 +63,25 @@ class NewsController extends Controller
                     \Storage::disk('s3')->delete($path . '' . $title);
                     DB::table('new_img')->where('new_id', '=', $new->id)->delete();
 
-                    $image = $request->file('image');
-                    $imageFileName = time() . '.' . $image->getClientOriginalExtension();
-                    $filePath = '/news/' . $imageFileName;
+                    $imageNew = $request->file('imageNew');
+                    $imageBanner = $request->file('imageBanner');
+                    $imageNewFileName = time() . '.' . $imageNew->getClientOriginalExtension();
+                    sleep(1);
+                    $imageBannerFileName = time() . '.' . $imageBanner->getClientOriginalExtension();
+                    $imageNewPath = 'news/' . $imageNewFileName;
+                    $imageBannerPath = 'news/' . $imageBannerFileName;
                     $s3 = \Storage::disk('s3');
-                    if($s3->put($filePath, file_get_contents($image), 'public')){
+                    if($s3->put($imageNewPath, file_get_contents($imageNew), 'public') && $s3->put($imageBannerPath, file_get_contents($imageBanner), 'public')){
                         $new_img = new new_img();
-                        $new_img->title = $imageFileName;
+                        $new_img->title = $imageNewFileName;
+                        $new_img->type = 0;
                         $new_img->path="news/";
                         $new->new_img()->save($new_img);
+                        $new_img_b = new new_img();
+                        $new_img_b->title = $imageBannerFileName;
+                        $new_img_b->type = 1;
+                        $new_img_b->path="news/";
+                        $new->new_img()->save($new_img_b);
                         return redirect("/user");
                     }
                 }
