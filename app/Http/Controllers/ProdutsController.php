@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Produt;
 use App\product_img;
 use App\Basket_Temp;
-//use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 //use Illuminate\Http\File;
 //use Illuminate\Contracts\Filesystem\Filesystem;
 use Auth;
@@ -29,7 +29,7 @@ class ProdutsController extends Controller
        // $basket_temp->user_id = $currentUser->id;
         $basket_temp->product_id = $produt->id;
         $currentUser->basket_temp()->save($basket_temp);
-        return redirect("/products");
+        return redirect("/products/all");
     }
 
     public function addProduct(Request $request, User $user)
@@ -130,4 +130,51 @@ class ProdutsController extends Controller
         }
         return redirect("/user");
     }
+
+
+    /*----------------------- JORGE ------------------------------*/
+    public function getProducts($product_id){
+        if($product_id == "all") {
+            $products = DB::table('produts')
+                ->leftJoin('product_imgs', 'produts.id', '=', 'product_id')
+                ->select('produts.name','produts.price','produts.id','produts.created_at', 'produts.updated_at' ,'product_imgs.title','product_imgs.path' )
+                ->get();
+        }
+        else
+        {
+            $products = DB::table('produts')
+                ->leftJoin('product_imgs', 'produts.id', '=', 'product_id')
+                ->select('produts.name','produts.price','produts.id','produts.created_at', 'produts.updated_at' ,'product_imgs.title','product_imgs.path' )
+                ->where('produts.id','=', $product_id)
+                ->get();
+        }
+
+        $array_urls = array();
+
+        foreach($products as $imageName) {
+
+            $s3 = Storage::disk('s3');
+            if(!empty($imageName->title) && !empty($imageName->path)) {
+                $path = $imageName->path.$imageName->title;
+                $exists = $s3->exists($path);
+                if ($exists) {
+                    $urlFile = $s3->url($path);
+
+                    $array_urls [$imageName->id][] = $urlFile;
+
+
+                }
+            }
+        }
+        if($product_id == "all") {
+        return view('produts', compact('products', 'array_urls'));
+        }
+        else
+        {
+            return view('detailsProduct', compact('products', 'array_urls'));
+        }
+    }
+
+
+
 }

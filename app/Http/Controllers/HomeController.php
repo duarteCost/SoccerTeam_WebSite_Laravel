@@ -8,6 +8,7 @@ use DB;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 
+
 class HomeController extends Controller
 {
     public function index()
@@ -25,6 +26,8 @@ class HomeController extends Controller
         $produts = DB::table('produts')->get();
         return view('produts', compact('produts'));
     }
+
+
     public function help()
     {
         return view('help');
@@ -46,7 +49,6 @@ class HomeController extends Controller
         $latest_news = DB::table('news')
 
             ->leftJoin('users','users.id','=','news.user_id')
-            ->leftJoin('new_img','new_id','=','news.id')
             ->select('name', 'news.id','news.created_at', 'news.updated_at','news.title', 'news.content')
             ->orderBy('news.updated_at', 'desc')
             ->get();
@@ -60,25 +62,86 @@ class HomeController extends Controller
             ->get();
 
 
-        $array_urls = array();
 
+        $array_urls = array();
         foreach($latest as $imageName) {
 
-        $s3 = Storage::disk('s3');
-        $path = $imageName->path.$imageName->title;
-            $exists = $s3->exists($path);
-            if($exists) {
-                $urlFile = $s3->url($path);
-                if(empty($array_urls [$imageName->id][0])) {
+            $s3 = Storage::disk('s3');
+            if (!empty($imageName->title) && !empty($imageName->path)) {
+                $path = $imageName->path . $imageName->title;
+                $exists = $s3->exists($path);
+                if ($exists) {
+                    $urlFile = $s3->url($path);
+
                     $array_urls [$imageName->id][] = $urlFile;
+
                 }
 
             }
-
         }
 
-        return view('welcome', compact('latest_news', 'array_urls')) ;
 
+
+
+        /*------------- API Tabela --------------*/
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "http://api.football-data.org/v1/competitions/436/leagueTable",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+        "cache-control: no-cache",
+        "x-auth-token: 6afff763f3334c7f8b128322605fbe28"
+    ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+    echo "cURL Error #:" . $err;
+}
+
+/*----------------- Tabla de jogos  ---------------*/
+
+
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "http://api.football-data.org/v1/teams/86/fixtures",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+        "cache-control: no-cache",
+        "postman-token: e6aeba2a-422e-4e70-04a0-60f9c0049b66",
+        "x-auth-token: 6afff763f3334c7f8b128322605fbe28"
+    ),
+));
+
+$response_games = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+    echo "cURL Error #:" . $err;
+}
+
+
+        return view('welcome', compact('latest_news', 'array_urls' , 'response' , 'response_games')) ;
 
 
 
