@@ -1,0 +1,100 @@
+.container {
+    margin: 50px auto;
+    width: 640px;
+    border-radius: 10px;
+}
+
+.login {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 20px 20px;
+    width: 310px;
+    background-color: #0D6600;
+    border-radius: 5px;
+}
+
+.login p.submit {
+    margin-left: 73.8%;
+}
+
+.login-help {
+    margin: 20px 0;
+    font-size: 11px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px #2a85a1;
+}
+
+.login-help a {
+    color: #cce7fa;
+    text-decoration: none;
+}
+
+.login-help a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+.login h1 {
+    margin: -20px -20px 21px;
+    line-height: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    color:#FFFFFF;
+    text-align: center;
+    background-color: #080808;
+    border-radius: 5px 5px 0 0;
+}
+
+input[type=submit] {
+    padding: 0 18px;
+    height: 29px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background: #080808;
+    border-radius: 5px;
+}
+
+.login p {
+    margin: 20px 0 0;
+}
+
+.login p:first-child {
+    margin-top: 0;
+}
+
+.login input[type=email], .login input[type=password] {
+    width: 278px;
+    margin-left: 5%;
+}
+
+.login p.remember {
+    float: left;
+    line-height: 31px;
+}
+
+.login p.remember label {
+    font-size: 12px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.login p.remember input {
+    position: relative;
+    bottom: 1px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 13px;
+}
+
+:-moz-placeholder {
+    color: #c9c9c9 !important;
+    font-size: 13px;
+}

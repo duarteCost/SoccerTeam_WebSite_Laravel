@@ -24,7 +24,7 @@ Route::get('/about', 'HomeController@about');
 
 Route::post('/products/add/{produt}', 'ProdutsController@addBasketTemp'); // tive de alterar esta rota duarte
 Route::get('/help', 'HomeController@help');
-Route::get('/user', 'UserController@checkUser');
+Route::get('/user', 'UserController@processState');
 Route::post('/user/addProduct/{user}', 'ProdutsController@addProduct' );
 Route::post('/user/addNew/{new}', 'NewsController@editeNew' );
 Route::post('/user/addNew', 'NewsController@addNew' );
@@ -32,6 +32,7 @@ Route::post('/user/newState/', 'NewsController@checkNewState' );
 Route::post('/user/delete_editProduct', 'ProdutsController@delete_editProducts' );
 Route::post('/user/emptyBasket', 'ProdutsController@emptyBasket' );
 Route::post('/user/deleteSocio','UserController@deleteSocio');
+//Route::post('/user','UserController@processState');
 
 
 

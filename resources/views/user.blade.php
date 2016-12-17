@@ -1,196 +1,231 @@
 @extends('layouts.layout')
+@section('header')
+    <link rel = "stylesheet" href = "/css/userStyle.css" >
+    <title>{{$user->name}}</title>
+@stop
 @section('content')
+    <script type="text/javascript">
+
+        // document.getElementById("add_Product").style.display = 'none';
+        //document.getElementById("add_New").style.display = 'none';
+        //document.getElementById("delete_socio").style.display = 'none';
+        //document.getElementById("delete_products").style.display = 'none';
+        //document.getElementById("new_state").style.display = 'none';
+       function exibe(el) {
+
+           var display = document.getElementById(el).style.display;
+           if (display == "none")
+               document.getElementById(el).style.display = 'block';
+           else
+               document.getElementById(el).style.display = 'none';
+       }
+
+    </script>
+
+
 
     @if($user->type)
+
         <h1>Página de Administrador</h1>
         <br>
+        <h3>Escolha a tarefa que deseja realizar</h3>
+        <br>
+
         <!--adiconar produtos-->
-        <form method="post" action="/user/addProduct/{{$user->id}}" enctype="multipart/form-data">
-            <div class="form-group">
-                <fieldset class="field">
-                    <legend class="nv-legend">Adicionar Produto</legend>
-                    <label class="text">Nome:</label><br><input type="text", name="productName", class="input" required>
-                    <br>
-                    <label class="text">Preço:</label><br><input type="text", name="productPrice", class="input" required>
-                    <br>
-                    <br>
-                    <label for="imagem">Imagem:</label>
-                    <br>
-                    <input type="file" name="image" required/>
-                    <br>
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <input type="submit", name="submitProduct", class="input" value="Adicionar Produto">
-                </fieldset>
-            </div>
-
-        </form>
-        <br>
-        <!-- interface criar ou editar notícia-->
-        @if(!isset($new))
-            <form method="post" action="/user/addNew" enctype="multipart/form-data">
-                <div class="form-group">
-                    <fieldset class="field">
-                        <legend class="nv-legend">Adicionar News</legend>
-
-                        <label class="text">Título:</label><br><input type="text", name="newTitle", class="input" required>
-                        <br>
-                        <label class="text">Conteúdo:</label>
-                        <br>
-                        <textarea rows="20" cols="70" name = "newContent"></textarea>
-                        <br>
-                        <br>
-                        <label for="imagem">Imagem da Notícia:</label>
-                        <br>
-                        <input type="file" name="imageNew" required/>
-                        <br>
-                        <label for="imagem">Banner da Notícia:</label>
-                        <br>
-                        <input type="file" name="imageBanner" required/>
-                        <br>
-
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="submit", name="addNew", class="input" value="Submeter Notícias">
-                    </fieldset>
-                </div>
-            </form>
-            <br>
-
-        @else
-            <form method="post" action="/user/addNew/{{$new->id}}" enctype="multipart/form-data">
-                <div class="form-group">
-                    <fieldset class="field">
-                        <legend class="nv-legend">Editar News</legend>
-
-                        <label class="text">Título:</label><br><input type="text", name="newTitle", class="input" value="{{$new->title}}" required>
-                        <br>
-                        <label class="text">Conteúdo:</label>
-                        <br>
-                        <textarea rows="20" cols="70" name = "newContent" required>{{$new->content}}</textarea>
-                        <br>
-                        <br>
-                        <label for="imagem">Imagem da Notícia:</label>
-                        <br>
-                        <input type="file" name="imageNew" />
-                        <br>
-                        <label for="imagem">Banner da Notícia:</label>
-                        <br>
-                        <input type="file" name="imageBanner" />
-                        <br>
-
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="submit", name="addNew", class="input" value="Editar Notícias">
-                    </fieldset>
-                </div>
-
-            </form>
-            <br>
-
-            @endif
-        </form>
-        <br>
-            <!--escolhe a notícia e verifica se o estado é editar ou eliminar-->
-        <form method="post" action="/user/newState">
-            <div class="form-group">
-                <fieldset class="field">
-                    <legend class="nv-legend">Eliminar/Editar Notícias</legend>
-
-                    @foreach($news as $new)
-                        <input type = "radio"  class="input" name = "newId" value="{{$new->id}}">
-                        {{$new->id}}
-                        {{$new->title}}
-                        <br>
-                    @endforeach
-
-                    @if(1==1)
-                        <input type = "submit" name = "newState" value="Eliminar New">
-                        <input type = "submit" name = "newState" value="Editar  New">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    @endif
-
-                </fieldset>
-            </div>
-        </form>
-        <br>
-        <!--delete socio-->
-        <form method="post" action="/user/deleteSocio">
-            <div class="form-group">
-                <fieldset class="field">
-                    <legend class="nv-legend">Eliminar Socio</legend>
-                    @foreach($users as $user)
-                        @if(!$user->type)
-                           <input type = "checkbox" id = "che" name = "{{$user->id}}" value = "{{$user->name}}">
-                            {{$user->id}}
-                            {{$user->name}}
+        <ul class = "userState">
+            <li class = "userState"><a class = "userState" onclick="exibe('add_Product');" href="#">Adicionar produto</a>
+                <form method="post"  action="/user/addProduct/{{$user->id}}" enctype="multipart/form-data">
+                    <div style="display: none"  id="add_Product" class="form-group" >
+                        <fieldset class = "userState">
+                            <legend class = "userState">Adicionar Produto</legend>
+                            <label class = "userState">Nome:</label><input type="text", name="productName", class="input" required>
                             <br>
-                        @endif
-                    @endforeach
-                    @if(1==1)
-                        <input type = "submit" name = "deleteSocio" value="Eliminar">
-                        <input type="hidden" class="input" name="_token" value="{{csrf_token()}}">
+                            <br>
+                            <label class = "userState">Preço:</label><input type="text", name="productPrice", class="input" required>
+                            <br>
+                            <br>
+                            <label class = "userState" for="imagem">Imagem:</label>
+                            <input class = "userState" type="file" name="image" required/>
+                            <br>
+                            <br>
+                            <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                            <br>
+                            <input class = "userState" type="submit" name="submitProduct" value="Adicionar Produto">
+                        </fieldset>
+                        <br>
+                    </div>
+                </form>
+            </li>
+
+            <li class = "userState"><a class = "userState" onclick="exibe('new_state');" href="#">Criar/Eliminar/Editar Notícia</a>
+                <div  id="new_state" class="form-group">
+
+
+                    <!-- interface criar ou editar notícia-->
+                    @if(!isset($new))
+                        <form  method="post" action="/user/addNew" enctype="multipart/form-data">
+                            <fieldset class = "userState">
+                                <legend class = "userState">Adicionar News</legend>
+
+                                <label class = "userState">Título:</label><br><input type="text", size="68" name="newTitle", class="input" required>
+                                <br>
+                                <br>
+                                <label class = "userState">Conteúdo:</label>
+                                <textarea class = "userState" rows="20" cols="70" name = "newContent"></textarea>
+                                <br>
+                                <br>
+                                <label class = "userState" >Imagem da Notícia:</label>
+                                <input class = "userState" type="file" name="imageNew" required/>
+                                <br>
+                                <br>
+                                <br>
+                                <label class = "userState">Banner da Notícia  :</label><br>
+                                <input class = "userState" type="file" name="imageBanner" required/>
+                                <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                <input class = "userState" type="submit", name="addNew" value="Submeter Notícias">
+                            </fieldset>
+                        </form>
+                        <br>
+
+                    @else
+                        <form method="post" action="/user/addNew/{{$new->id}}" enctype="multipart/form-data">
+                            <fieldset class = "userState">
+                                <legend class = "userState" class="nv-legend">Editar News</legend>
+
+                                <label class = "userState">Título:</label><input type="text", size="68" name="newTitle", class="input" value="{{$new->title}}" required>
+                                <br>
+                                <br>
+                                <label class = "userState">Conteúdo:</label>
+                                <textarea class = "userState" rows="20" cols="70" name = "newContent" required>{{$new->content}}</textarea>
+                                <br>
+                                <br>
+                                <label class = "userState" for="imagem">Imagem da Notícia:</label>
+                                <input class = "userState" type="file" name="imageNew" />
+                                <br>
+                                <br>
+                                <label class = "userState" for="imagem">Banner da Notícia  :</label>
+                                <input class = "userState" type="file" name="imageBanner" />
+                                <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                <input class = "userState" type="submit", name="addNew" value="Editar Notícias">
+                            </fieldset>
+
+                        </form>
+                        <br>
+                        <br>
                     @endif
-                </fieldset>
-            </div>
-        </form>
-        <br>
-            <!--delete product-->
-        <form method="post" action="/user/delete_editProduct" enctype="multipart/form-data">
-            <div class="form-group">
-                <fieldset class="field">
-                    <legend class="nv-legend">Adicionar Imagem/Eliminar Produto</legend>
 
-                    @foreach($products as $product)
-                        <!--<input type = "checkbox" class="input" name = "{{$product->id}}" value = "{{$product->name}}">-->
-                        <input type = "radio" class="input" name = "product_Id" value="{{$product->id}}">
-                        {{$product->id}}
-                        {{$product->name}}
-                        <br>
-                    @endforeach
+                <!--escolhe a notícia e verifica se o estado é editar ou eliminar-->
+                    @if(count($news))
+                        <form method="post" action="/user/newState">
+                            <fieldset class = "userState">
+                                <legend class = "userState">Eliminar/Editar Notícias</legend>
 
-                    @if(1==1)
-                        <br>
-                        <label for="imagem">Adicionar Imagem:</label>
-                        <br>
-                        <input type="file" name="image"/>
-                        <br>
-                        <input type = "submit" name = "productState" value="Eliminar">
-                        <input type = "submit" name = "productState" value="Adicionar Imagem">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                @foreach($news as $new)
+                                    <input class = "userState" type = "radio"  name = "newId" value="{{$new->id}}">
+                                    <label class="userStateRadio">{{$new->id}} {{$new->title}}</label>
+
+                                    <br>
+                                @endforeach
+
+                                <input class = "userState" type = "submit" name = "newState" value="Eliminar New">
+                                <input id = "butonExp" class = "userState" type = "submit" name = "newState" value="Editar  New">
+                                <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+
+                            </fieldset>
+                            <br>
+                        </form>
                     @endif
 
-                </fieldset>
-            </div>
-        </form>
-        <br>
+                </div>
+            </li>
+
+            <li class = "userState"><a class = "userState" onclick="exibe('delete_socio');" href="#">Eliminar Socio</a>
+                <!--delete socio-->
+                @if(count($users))
+                    <form  method="post" action="/user/deleteSocio">
+                        <div style="display: none" id="delete_socio"  class="form-group">
+                            <fieldset class = "userState">
+                                <legend class = "userState">Eliminar Socio</legend>
+                                @foreach($users as $user)
+                                    @if(!$user->type)
+                                       <input class = "userState" type = "checkbox" id = "che" name = "{{$user->id}}" value = "{{$user->name}}">
+                                        <label class="userStateRadio">{{$user->id}} {{$user->name}}</label>
+                                        <br>
+                                    @endif
+                                @endforeach
+                                <br>
+                                <br>
+                                <input class = "userState" type = "submit" name = "deleteSocio" value="Eliminar">
+                                <input class = "userState" type="hidden" class="input" name="_token" value="{{csrf_token()}}">
+                                <br>
+                            </fieldset>
+                            <br>
+                        </div>
+                    </form>
+                @endif
+            </li>
+            <li class = "userState"><a class = "userState" onclick="exibe('delete_products');" href="#">Adicionar Imagem/Eliminar Produto</a>
+                @if(count($products))
+                    <!--delete product-->
+                    <form method="post" action="/user/delete_editProduct" enctype="multipart/form-data">
+                        <div style="display: none" id="delete_products" class="form-group">
+                            <fieldset class = "userState">
+                                <legend class = "userState">Adicionar Imagem/Eliminar Produto</legend>
+
+                                @foreach($products as $product)
+                                    <!--<input type = "checkbox" class="input" name = "{{$product->id}}" value = "{{$product->name}}">-->
+                                    <input class = "userState" type = "radio" class="input" name = "product_Id" value="{{$product->id}}">
+                                    <label class="userStateRadio">{{$product->id}} {{$product->name}}</label>
+                                    <br>
+                                @endforeach
+                                    <br>
+                                    <label class = "userState" for="imagem">Adicionar Imagem:</label>
+                                    <input class = "userState" type="file" name="image"/>
+                                    <br>
+                                    <br>
+                                    <input class = "userState" type = "submit" name = "productState" value="Eliminar">
+                                    <input id = "butonExp" class = "userState" type = "submit" name = "productState" value="Adicionar Imagem">
+                                    <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <br>
+
+                            </fieldset>
+                        </div>
+                    </form>
+                @endif
+            </li>
+        </ul>
 
     @else
+
          <h1>Página de Socio</h1>
          <br>
          <!--ver produtos do sócio-->
-         <form method="post" action="/user/emptyBasket">
-             <div class="form-group">
-                 <fieldset class="field">
-                     <legend class="nv-legend">Eliminar Produto</legend>
+         @if(count($products))
+             <form method="post" action="/user/emptyBasket">
+                 <div class="form-group">
+                     <fieldset class = "userState">
+                         <legend class = "userState">Eliminar Produto</legend>
 
-                     @foreach($basket_temp as $basket_product)
-                         @foreach($products as $product)
-                             @if($basket_product->product_id ==$product->id)
-                                 <input type = "checkbox" id = "che" name = "{{$product->id}}" value = "{{$product->name}}">
-                                 {{$product->id}}
-                                 {{$product->name}}
-                                 <br>
-                             @endif
+                         @foreach($basket_temp as $basket_product)
+                             @foreach($products as $product)
+                                 @if($basket_product->product_id ==$product->id)
+                                     <input class = "userState" type = "checkbox" id = "che" name = "{{$product->id}}" value = "{{$product->name}}">
+                                     {{$product->id}}
+                                     {{$product->name}}
+                                     <br>
+                                 @endif
+                             @endforeach
                          @endforeach
-                     @endforeach
 
-                     @if(1==1)
-                         <input type = "submit" name = "deleteProduto" value="Eliminar">
-                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                     @endif
+                         <input class = "userState" type = "submit" name = "deleteProduto" value="Eliminar">
+                         <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
 
-                 </fieldset>
-             </div>
-         </form>
-         <br>
+                     </fieldset>
+                     <br>
+                 </div>
+             </form>
+
+         @endif
 
 
     @endif

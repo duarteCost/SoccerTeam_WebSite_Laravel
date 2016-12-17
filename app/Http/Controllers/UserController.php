@@ -33,11 +33,12 @@ class UserController extends Controller
     {
 
         $user = Auth::user();
-        $users = User::get();
+        $users = DB::table('users')->where('type', '=', 0)->get();
         $news = News::get();
         $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
         $products = Produt::get();
-        return view('user', compact('user','users','products','basket_temp','news'));
+        $uState = NULL;
+        return view('user', compact('user','users','products','basket_temp','news','uState'));
 
         //$use = User::find($user);
       //return $user;
@@ -62,5 +63,26 @@ class UserController extends Controller
             }
         }
         return redirect("/user");
+    }
+
+    public function processState(Request $request){
+        $user = Auth::user();
+        $users = DB::table('users')->where('type', '=', 0)->get();
+        $news = News::get();
+        $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
+        $products = Produt::get();
+        $add_Product = NULL;
+
+
+        if($request->aState== "AProduct"){
+            $uState = 1;
+            return view('user', compact('user','users','products','basket_temp','news','uState'));
+        }elseif($request->aState== "AEnew"){
+            $uState = 2;
+            return view('user', compact('user','users','products','basket_temp','news','uState'));
+        }
+        $uState = NULL;
+        return view('user', compact('user','users','products','basket_temp','news','uState'));
+
     }
 }

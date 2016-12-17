@@ -1,0 +1,66 @@
+.container {
+    margin: 50px auto;
+    width: 640px;
+    border-radius: 10px;
+}
+
+.register {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 20px 20px;
+    width: 510px;
+    background-color: #0D6600;
+    border-radius: 5px;
+}
+
+.register label{
+    float:left;
+    margin-left: 13%;
+    margin-top:4%;
+    color:white;
+    text-align:left;
+    font-weight:bold;
+}
+.register p.submit {
+    margin:6%;
+    margin-left: 70.5%;
+
+}
+.register h1 {
+    margin: -20px -20px 21px;
+    line-height: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    color:#FFFFFF;
+    text-align: center;
+    background-color: #080808;
+    border-radius: 5px 5px 0 0;
+}
+input[type=submit] {
+    padding: 0 18px;
+    height: 29px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background-color: #080808;
+    border-radius: 5px;
+}
+
+.register p {
+    margin: 0 0 0;
+}
+
+.register input[type=email], .register input[type=password], .register input[type=text] {
+    width: 375px;
+    margin-left: 13%;
+}
+
+::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 13px;
+}
+
+:-moz-placeholder {
+    color: #c9c9c9 !important;
+    font-size: 13px;
+}

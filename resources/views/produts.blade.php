@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 @section('header')
+	<link rel = "stylesheet" href = "/css/procuctStyle.css" >
     <title>Produts FC</title>
 @stop
 @section('content')
