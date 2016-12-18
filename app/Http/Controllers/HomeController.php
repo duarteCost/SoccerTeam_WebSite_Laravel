@@ -97,7 +97,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
         "cache-control: no-cache",
-        "x-auth-token: 6afff763f3334c7f8b128322605fbe28"
+        "x-auth-token: 295b6782fb0f44e69af288a16dc5c347"
     ),
 ));
 
@@ -126,8 +126,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
         "cache-control: no-cache",
-        "postman-token: e6aeba2a-422e-4e70-04a0-60f9c0049b66",
-        "x-auth-token: 6afff763f3334c7f8b128322605fbe28"
+        "x-auth-token: 295b6782fb0f44e69af288a16dc5c347"
     ),
 ));
 
