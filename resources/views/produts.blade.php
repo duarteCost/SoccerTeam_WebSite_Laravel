@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('header')
-	<link rel = "stylesheet" href = "/css/procuctStyle.css" >
+	<link rel = "stylesheet" href = "/css/productsStyle.css" >
     <title>Produts FC</title>
 @stop
 @section('content')
@@ -11,13 +11,13 @@
 		<div class = "produt">
 		@if(!empty($array_urls[$produt->id][0]))
 
-				<a class="news" href="/detailsProduct/{{$produt->id}}">
-			<img class="lastedNews" src="{{$array_urls[$produt->id][0]}}"/>
+				<a class="produts" href="/detailsProduct/{{$produt->id}}">
+			<img class="produts" src="{{$array_urls[$produt->id][0]}}"/>
 					</a>
 
 
 		@endif
-			<h3> <a class="news" href="/detailsProduct/{{$produt->id}}">{{$produt->name}}</a></h3>
+			<h3> <a class="produts" href="/detailsProduct/{{$produt->id}}">{{$produt->name}}</a></h3>
 
 	<br>
 	Preço:{{$produt->price}}€

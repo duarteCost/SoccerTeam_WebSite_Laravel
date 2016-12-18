@@ -3,4 +3,32 @@
     float: left;
     margin-top:5%;
     margin-left:8%;
+
+}
+
+
+
+img.galeryImages {
+    float: left;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-height:20%;
+    width:40%;
+}
+
+
+a.produts{  display: block;
+    color: black;
+
+
+}
+
+
+img.produts {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 30%;
+    max-height:30%;
+    width:50%;
 }

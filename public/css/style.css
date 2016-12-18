@@ -96,7 +96,7 @@ img.produt {
     display: flex;
     margin-left: 5%;
     margin-right: 5%;
-    width:90%;
+    width:50%;
 }
 
 img.detailsNew {
@@ -105,7 +105,6 @@ img.detailsNew {
     margin-right: 30%;
     max-height:30%;
     width:auto;
-
 }
 
 img.galeryImages {
