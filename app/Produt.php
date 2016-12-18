@@ -18,4 +18,9 @@ class Produt extends Model
     {
         return $this->hasMany('App\product_img', 'product_id');
     }
+    public function basket()
+    {
+        return $this->hasMany('App\Basket', 'product_id');
+    }
+
 }

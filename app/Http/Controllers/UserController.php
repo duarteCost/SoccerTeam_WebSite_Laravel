@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Produt;
 use App\News;
+use App\Basket;
 use Auth;
 use DB;
 use App\Basket_Temp;
@@ -29,21 +30,6 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkUser()
-    {
-
-        $user = Auth::user();
-        $users = DB::table('users')->where('type', '=', 0)->get();
-        $news = News::get();
-        $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
-        $products = Produt::get();
-        $uState = NULL;
-        return view('user', compact('user','users','products','basket_temp','news','uState'));
-
-        //$use = User::find($user);
-      //return $user;
-       // return view('user');
-    }
 
     public function deleteSocio(Request $request)
     {
@@ -71,18 +57,8 @@ class UserController extends Controller
         $news = News::get();
         $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
         $products = Produt::get();
-        $add_Product = NULL;
-
-
-        if($request->aState== "AProduct"){
-            $uState = 1;
-            return view('user', compact('user','users','products','basket_temp','news','uState'));
-        }elseif($request->aState== "AEnew"){
-            $uState = 2;
-            return view('user', compact('user','users','products','basket_temp','news','uState'));
-        }
-        $uState = NULL;
-        return view('user', compact('user','users','products','basket_temp','news','uState'));
+        $products_Purchased =Basket::get();
+        return view('user', compact('user','users','products','basket_temp','news','products_Purchased'));
 
     }
 }

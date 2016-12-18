@@ -11,6 +11,17 @@ h1, h3{
 
 li.userState {
     text-align : center;
+    color: #444444;
+}
+p {
+    color:white;
+    float:left;
+    margin:1% 0 1% 0;
+    width: 100%;
+    text-align : left;
+}
+hr {
+    margin: 2% 0 1% 0;
 }
 
 li a.userState {
