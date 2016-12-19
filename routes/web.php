@@ -30,7 +30,7 @@ Route::post('/user/addNew/{new}', 'NewsController@editeNew' );
 Route::post('/user/addNew', 'NewsController@addNew' );
 Route::post('/user/newState/', 'NewsController@checkNewState' );
 Route::post('/user/delete_editProduct', 'ProdutsController@delete_editProducts' );
-Route::post('/user/emptyBasket', 'ProdutsController@emptyBasket' );
+Route::post('/user/basketOperation', 'ProdutsController@basketOperation' );
 Route::post('/user/deleteSocio','UserController@deleteSocio');
 //Route::post('/user','UserController@processState');
 

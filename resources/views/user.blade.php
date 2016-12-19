@@ -200,32 +200,53 @@
          <h1>Página de Socio</h1>
          <br>
          <!--ver produtos do sócio-->
-         @if(count($products))
-             <form method="post" action="/user/emptyBasket">
+         @if(count($basket_temp))
+             <form method="post" action="/user/basketOperation">
                  <div class="form-group">
                      <fieldset class = "userState">
-                         <legend class = "userState">Eliminar Produto</legend>
+                         <legend class = "userState">Produtos no carrinho</legend>
 
                          @foreach($basket_temp as $basket_product)
                              @foreach($products as $product)
                                  @if($basket_product->product_id ==$product->id)
-                                     <input class = "userState" type = "checkbox" id = "che" name = "{{$product->id}}" value = "{{$product->name}}">
-                                     {{$product->id}}
-                                     {{$product->name}}
-                                     <br>
+                                     <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
+                                     <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p>
+                                     <p class = "userState">Preço: {{$product->price}}</p>
+                                 <br>
+                                    <!--imagem-->
+                                     <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
+                                     <input class = "userState" type = "submit" name = "basketOperation" value="Comprar">
+                                     <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
                                  @endif
                              @endforeach
                          @endforeach
-
-                         <input class = "userState" type = "submit" name = "deleteProduto" value="Eliminar">
-                         <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
-
                      </fieldset>
                      <br>
                  </div>
              </form>
-
          @endif
+
+             <!--ver produtos comprados-->
+         <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Adicionar Imagem/Eliminar Produto</a>
+             <div id="product_purchased" style="display: none">
+                 <fieldset class = "userState">
+                     <legend class = "userState">Produtos Comprados</legend>
+
+                     @foreach($products_Purchased as $product_purchased)
+                         @foreach($products as $product)
+                             @if($product_purchased->product_id ==$product->id)
+                                 <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
+                                 <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
+                                 <hr>
+                             @endif
+                         @endforeach
+                     @endforeach
+                 </fieldset>
+                 <br>
+             </div>
+        </li>
+
+
 
 
     @endif

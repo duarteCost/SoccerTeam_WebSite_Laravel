@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Produt;
 use App\product_img;
 use App\Basket_Temp;
+use App\Basket;
 use Illuminate\Support\Facades\Storage;
 //use Illuminate\Http\File;
 //use Illuminate\Contracts\Filesystem\Filesystem;
@@ -114,21 +115,41 @@ class ProdutsController extends Controller
         }
     }
     //seliminar os produtos do carrinho do sócio
-    public function emptyBasket(Request $request)
+    public function basketOperation(Request $request)
     {
-        $currentUser = Auth::user();
-        $basket_temp = Basket_Temp::get();
-        foreach ($basket_temp as $basket_produt) {
-            $product_id = $basket_produt->product_id;
-            $id = $basket_produt->id;
-            if($request->$product_id){
-                DB::table('Basket_Temp')->where('id','=', $id)->delete();
-                return redirect("/user");
-            }else{
-                continue;
+        if($request->basketOperation == "Eliminar") {
+            $basket_temp = Basket_Temp::get();
+            foreach ($basket_temp as $basket_produt) {
+                $product_id = $basket_produt->product_id;
+                $id = $basket_produt->id;
+                if ($request->$product_id) {
+                    DB::table('Basket_Temp')->where('id', '=', $id)->delete();
+                    return redirect("/user");
+                } else {
+                    continue;
+                }
             }
+            return redirect("/user");
+        } elseif($request->basketOperation == "Comprar"){
+            $basket_temp = Basket_Temp::get();
+            foreach ($basket_temp as $basket_product) {
+                $product_id = $basket_product->product_id;
+                $id = $basket_product->id;
+                if ($request->$product_id) {
+                    DB::table('Basket_Temp')->where('id', '=', $id)->delete();
+                    $currentUser = Auth::user();
+                    $basket = new Basket();
+                    $basket->product_id = $basket_product->product_id;
+                    $currentUser->basket()->save($basket);
+                    return redirect("/user");
+                } else {
+                    continue;
+                }
+
+            }
+            return redirect("/user");
+
         }
-        return redirect("/user");
     }
 
 
