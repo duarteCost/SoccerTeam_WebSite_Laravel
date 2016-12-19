@@ -31,6 +31,9 @@
 				<a class = "navbar" href="{{ url('/products/all') }}">Produtos</a>
 			</li>
 			<li class = "navbar">
+				<a class = "navbar" href="{{ url('/tickets/all') }}">Tickets</a>
+			</li>
+			<li class = "navbar">
 				<a class = "navbar" href="{{ url('/help') }}">Ajuda</a>
 			</li>
 			<li id = "exp">
@@ -62,6 +65,9 @@
 			</li>
 			<li class = "navbar">
 				<a class = "navbar" href="{{ url('/products/all') }}">Produtos</a>
+			</li>
+			<li class = "navbar">
+				<a class = "navbar" href="{{ url('/tickets/all') }}">Tickets</a>
 			</li>
 			<li class = "navbar">
 				<a class = "navbar" href="{{ url('/help') }}">Ajuda</a>

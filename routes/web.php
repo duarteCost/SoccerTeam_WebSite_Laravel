@@ -55,6 +55,7 @@ Route::get('/products/{product_id}', 'ProdutsController@getProducts');
 Route::get('/news', 'NewsController@getNews');
 Route::get('/detailsProduct/{product_id}', 'ProdutsController@getProducts');
 
+Route::get('/tickets/all', 'TicketsController@getGames');
 
 
 Route::get('testa', function() {
