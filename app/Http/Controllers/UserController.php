@@ -13,6 +13,8 @@ use App\Basket_Temp;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\Storage;
+
 class UserController extends Controller
 {
     /**
@@ -55,10 +57,41 @@ class UserController extends Controller
         $user = Auth::user();
         $users = DB::table('users')->where('type', '=', 0)->get();
         $news = News::get();
-        $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
+        $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)
+            /*  JORGE  */
+            ->leftJoin('product_imgs', 'product_imgs.product_id', '=', 'Basket_Temp.product_id')
+            /* FIM JORGE  */
+            ->get();
         $products = Produt::get();
         $products_Purchased =Basket::get();
-        return view('user', compact('user','users','products','basket_temp','news','products_Purchased'));
+
+        /*  JORGE  */
+
+
+        $array_urls = array();
+
+        foreach($basket_temp as $imageName) {
+
+            $s3 = Storage::disk('s3');
+            if(!empty($imageName->title) && !empty($imageName->path)) {
+                $path = $imageName->path.$imageName->title;
+                $exists = $s3->exists($path);
+                if ($exists) {
+                    $urlFile = $s3->url($path);
+
+                    $array_urls [$imageName->product_id][] = $urlFile;
+
+
+                }
+            }
+        }
+
+
+        /*  FIM JORGE  */
+
+
+
+        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls'));
 
     }
 }
