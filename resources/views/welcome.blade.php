@@ -181,5 +181,6 @@
  </ul>
 
  @stop
- @section('footer')
+
+             @section('footer')
  @stop

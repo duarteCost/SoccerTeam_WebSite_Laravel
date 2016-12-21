@@ -7,6 +7,7 @@ use App\Produt;
 use DB;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
+use GuzzleHttp\Client;
 
 
 class HomeController extends Controller
@@ -73,7 +74,7 @@ class HomeController extends Controller
                 if ($exists) {
                     $urlFile = $s3->url($path);
 
-                    $array_urls [$imageName->id][] = $urlFile;
+                    //$array_urls [$imageName->id][] = $urlFile;
 
                 }
 
@@ -84,6 +85,8 @@ class HomeController extends Controller
 
 
         /*------------- API Tabela --------------*/
+
+
 
 $curl = curl_init();
 
@@ -140,7 +143,7 @@ if ($err) {
 }
 
 
-        return view('welcome', compact('latest_news', 'array_urls' , 'response' , 'response_games')) ;
+        return view('welcome', compact('latest_news', 'array_urls' )) ;
 
 
 
