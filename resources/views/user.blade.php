@@ -223,7 +223,7 @@
 
                                      @endif
 
-                                  <!-- FIM  imagem  JORGE-->
+                                  <!-- FIM  imagem   JORGE-->
                                      <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
                                      <input class = "userState" type = "submit" name = "basketOperation" value="Comprar">
                                      <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
