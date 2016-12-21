@@ -208,12 +208,22 @@
 
                          @foreach($basket_temp as $basket_product)
                              @foreach($products as $product)
-                                 @if($basket_product->product_id ==$product->id)
+                                 @if($basket_product->product_id == $product->id)
                                      <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
                                      <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p>
                                      <p class = "userState">Preço: {{$product->price}}</p>
                                  <br>
-                                    <!--imagem-->
+                                    <!--imagem    JORGE-->
+
+                                     @if(!empty($array_urls[$basket_product->product_id][0]))
+
+
+                                             <img class="produts" src="{{$array_urls[$basket_product->product_id][0]}}"/>
+
+
+                                     @endif
+
+                                  <!-- FIM  imagem    JORGE-->
                                      <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
                                      <input class = "userState" type = "submit" name = "basketOperation" value="Comprar">
                                      <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
