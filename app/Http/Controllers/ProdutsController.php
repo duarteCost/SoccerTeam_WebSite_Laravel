@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Produt;
 use App\product_img;
 use App\Basket_Temp;
-use App\Basket;
+use App\products_purchased;
 use Illuminate\Support\Facades\Storage;
 //use Illuminate\Http\File;
 //use Illuminate\Contracts\Filesystem\Filesystem;
@@ -136,12 +136,19 @@ class ProdutsController extends Controller
                 $product_id = $basket_product->product_id;
                 $id = $basket_product->id;
                 if ($request->$product_id) {
-                    DB::table('Basket_Temp')->where('id', '=', $id)->delete();
                     $currentUser = Auth::user();
-                    $basket = new Basket();
-                    $basket->product_id = $basket_product->product_id;
-                    $currentUser->basket()->save($basket);
+                    $products= DB::table('produts')->where('id', '=', $product_id)->get();
+                    foreach ($products as $product){
+                        $price = $product->price;
+                    }
+                    $amount=$currentUser->amount;
+                    $a_amount = $amount-$product->price;
+                    DB::table('users')->where('id', '=', $currentUser->id)->update(array('amount' => $a_amount));
+                    DB::table('Basket_Temp')->where('id', '=', $id)->delete();
+                    $basket = new products_purchased();
+                    $basket->product_id = $basket_product->product_id;$currentUser->basket()->save($basket);
                     return redirect("/user");
+
                 } else {
                     continue;
                 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBasket extends Migration
+class AProductsPurchased extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddBasket extends Migration
      */
     public function up()
     {
-        Schema::create('Basket', function (Blueprint $table) {
+        Schema::create('products_purchaseds', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('user_id')->unsigned();
@@ -30,6 +30,6 @@ class AddBasket extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Basket_Temp');
+        Schema::dropIfExists('products_purchaseds');
     }
 }
