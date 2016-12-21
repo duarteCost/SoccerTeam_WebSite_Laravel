@@ -20,11 +20,6 @@
                document.getElementById(el).style.display = 'none';
        }
 
-       function errorFunction(error){
-           if(error==1)
-               alert("O seu saldo é insuficiente");
-       }
-
     </script>
 
 
@@ -154,24 +149,7 @@
                                 @foreach($users as $user)
                                     @if(!$user->type)
                                        <input class = "userState" type = "checkbox" id = "che" name = "{{$user->id}}" value = "{{$user->name}}">
-                                        <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">{{$user->id}} {{$user->name}}</a>
-                                            s<div id="product_purchased" style="display: none">
-                                                <fieldset class = "userState">
-                                                    <legend class = "userState">Produtos Comprados</legend>
-
-                                                    @foreach($products_Purchased as $product_purchased)
-                                                        @foreach($products as $product)
-                                                            @if($product_purchased->product_id ==$product->id)
-                                                                <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
-                                                                <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
-                                                                <hr>
-                                                            @endif
-                                                        @endforeach
-                                                    @endforeach
-                                                </fieldset>
-                                                <br>
-                                            </div>
-                                        </li>
+                                        <label class="userStateRadio">{{$user->id}} {{$user->name}}</label>
                                         <br>
                                     @endif
                                 @endforeach
@@ -221,7 +199,6 @@
 
          <h1>Página de Socio</h1>
          <br>
-         <h2>Você tem {{$user->amount}}€ disponíves para compras.</h2>
          <!--ver produtos do sócio-->
          @if(count($basket_temp))
              <form method="post" action="/user/basketOperation">
@@ -236,12 +213,10 @@
                                      <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p>
                                      <p class = "userState">Preço: {{$product->price}}</p>
                                  <br>
-                                    <!--imagem jorge-->
-                                     @if($user->amount>=$product->price)
-                                         <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
-                                         <input class = "userState" type = "submit"  name = "basketOperation" value="Comprar">
-                                         <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
-                                     @endif
+                                    <!--imagem-->
+                                     <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
+                                     <input class = "userState" type = "submit" name = "basketOperation" value="Comprar">
+                                     <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
                                  @endif
                              @endforeach
                          @endforeach
@@ -252,25 +227,23 @@
          @endif
 
              <!--ver produtos comprados-->
-         <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Verificar histórico de produtos comprados</a>
-             @if(count($products_Purchased))
-                 <div id="product_purchased" style="display: none">
-                     <fieldset class = "userState">
-                         <legend class = "userState">Produtos Comprados</legend>
+         <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Adicionar Imagem/Eliminar Produto</a>
+             <div id="product_purchased" style="display: none">
+                 <fieldset class = "userState">
+                     <legend class = "userState">Produtos Comprados</legend>
 
-                         @foreach($products_Purchased as $product_purchased)
-                             @foreach($products as $product)
-                                 @if($product_purchased->product_id ==$product->id)
-                                     <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
-                                     <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
-                                     <hr>
-                                 @endif
-                             @endforeach
+                     @foreach($products_Purchased as $product_purchased)
+                         @foreach($products as $product)
+                             @if($product_purchased->product_id ==$product->id)
+                                 <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
+                                 <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
+                                 <hr>
+                             @endif
                          @endforeach
-                     </fieldset>
-                     <br>
-                 </div>
-             @endif
+                     @endforeach
+                 </fieldset>
+                 <br>
+             </div>
         </li>
 
 
