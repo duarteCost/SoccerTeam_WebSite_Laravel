@@ -58,14 +58,14 @@ class UserController extends Controller
         $users = DB::table('users')->where('type', '=', 0)->get();
         $news = News::get();
         $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)
-            /*  JORGE  */
+            /*  JORGE   */
             ->leftJoin('product_imgs', 'product_imgs.product_id', '=', 'Basket_Temp.product_id')
-            /* FIM JORGE  */
+            /* FIM JORGE   */
             ->get();
         $products = Produt::get();
         $products_Purchased =Basket::get();
 
-        /*  JORGE  */
+        /*  JORGE   */
 
 
         $array_urls = array();
@@ -87,7 +87,7 @@ class UserController extends Controller
         }
 
 
-        /*  FIM JORGE  */
+        /*  FIM JORGE   */
 
 
 

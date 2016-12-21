@@ -218,7 +218,7 @@
                                      @if(!empty($array_urls[$basket_product->product_id][0]))
 
 
-                                             <img class="produts" src="{{$array_urls[$basket_product->product_id][0]}}"/>
+                                             <img class="produts" src="{{$array_urls[$basket_product->product_id][1]}}"/>
 
 
                                      @endif
