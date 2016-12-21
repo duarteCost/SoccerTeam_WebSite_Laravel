@@ -199,6 +199,8 @@
 
          <h1>Página de Socio</h1>
          <br>
+         <h2>O você tem {{$user->amount}}€ para gastar.</h2>
+         <br>
          <!--ver produtos do sócio-->
          @if(count($basket_temp))
              <form method="post" action="/user/basketOperation">
@@ -208,25 +210,28 @@
 
                          @foreach($basket_temp as $basket_product)
                              @foreach($products as $product)
-                                 @if($basket_product->product_id == $product->id)
+                                 @if($basket_product->product_id ==$product->id)
                                      <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
                                      <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p>
                                      <p class = "userState">Preço: {{$product->price}}</p>
-                                 <br>
-                                    <!--imagem    JORGE-->
+                                     <br>
+                                     <!--imagem    JORGE-->
 
                                      @if(!empty($array_urls[$basket_product->product_id][0]))
 
 
-                                             <img class="produts" src="{{$array_urls[$basket_product->product_id][0]}}"/>
+                                         <img class="produts" src="{{$array_urls[$basket_product->product_id][0]}}"/>
 
 
                                      @endif
 
-                                  <!-- FIM  imagem    JORGE-->
-                                     <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
-                                     <input class = "userState" type = "submit" name = "basketOperation" value="Comprar">
+                                     <!-- FIM  imagem    JORGE-->
                                      <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                     <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
+                                     @if($user->amount-$product->price>=0)
+                                         <input class = "userState" type = "submit" name = "basketOperation" value="Comprar">
+
+                                     @endif
                                  @endif
                              @endforeach
                          @endforeach
@@ -237,24 +242,26 @@
          @endif
 
              <!--ver produtos comprados-->
-         <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Adicionar Imagem/Eliminar Produto</a>
-             <div id="product_purchased" style="display: none">
-                 <fieldset class = "userState">
-                     <legend class = "userState">Produtos Comprados</legend>
+         @if(count($products_Purchased))
+             <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Adicionar Imagem/Eliminar Produto</a>
+                 <div id="product_purchased" style="display: none">
+                     <fieldset class = "userState">
+                         <legend class = "userState">Produtos Comprados</legend>
 
-                     @foreach($products_Purchased as $product_purchased)
-                         @foreach($products as $product)
-                             @if($product_purchased->product_id ==$product->id)
-                                 <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
-                                 <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
-                                 <hr>
-                             @endif
+                         @foreach($products_Purchased as $product_purchased)
+                             @foreach($products as $product)
+                                 @if($product_purchased->product_id ==$product->id)
+                                     <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
+                                     <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
+                                     <hr>
+                                 @endif
+                             @endforeach
                          @endforeach
-                     @endforeach
-                 </fieldset>
-                 <br>
-             </div>
-        </li>
+                     </fieldset>
+                     <br>
+                 </div>
+            </li>
+         @endif
 
 
 
