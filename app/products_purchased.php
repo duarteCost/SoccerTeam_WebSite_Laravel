@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Basket extends Model
+class products_purchased extends Model
 {
-    public $table = "Basket";
+    //
 }

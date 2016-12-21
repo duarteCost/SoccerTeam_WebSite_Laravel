@@ -20,7 +20,7 @@ class Produt extends Model
     }
     public function basket()
     {
-        return $this->hasMany('App\Basket', 'product_id');
+        return $this->hasMany('App\products_purchased', 'product_id');
     }
 
 }

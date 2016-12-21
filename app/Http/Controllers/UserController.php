@@ -7,13 +7,13 @@ use App\User;
 use App\Produt;
 use App\News;
 use App\Basket;
+use App\products_purchased;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Storage;
 use App\Basket_Temp;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
-
-use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -53,6 +53,18 @@ class UserController extends Controller
         return redirect("/user");
     }
 
+   /* public function processState(Request $request){
+        $user = Auth::user();
+        $users = DB::table('users')->where('type', '=', 0)->get();
+        $news = News::get();
+        $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
+        $products = Produt::get();
+        $products_Purchased =products_purchased::get();
+        return view('user', compact('user','users','products','basket_temp','news','products_Purchased'));
+
+    }*/
+
+
     public function processState(Request $request){
         $user = Auth::user();
         $users = DB::table('users')->where('type', '=', 0)->get();
@@ -63,7 +75,7 @@ class UserController extends Controller
             /* FIM JORGE   */
             ->get();
         $products = Produt::get();
-        $products_Purchased =Basket::get();
+        $products_Purchased =products_purchased::get();
 
         /*  JORGE   */
 
