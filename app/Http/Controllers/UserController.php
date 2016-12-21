@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Produt;
 use App\News;
-use App\Basket;
+use App\products_purchased;
 use Auth;
 use DB;
 use App\Basket_Temp;
@@ -57,7 +57,7 @@ class UserController extends Controller
         $news = News::get();
         $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
         $products = Produt::get();
-        $products_Purchased =Basket::get();
+        $products_Purchased =products_purchased::get();
         return view('user', compact('user','users','products','basket_temp','news','products_Purchased'));
 
     }

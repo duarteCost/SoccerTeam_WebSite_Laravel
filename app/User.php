@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
 
     public function basket(){
-        return $this->hasOne('App\Basket', 'user_id');
+        return $this->hasOne('App\products_purchased', 'user_id');
     }
 
 }
