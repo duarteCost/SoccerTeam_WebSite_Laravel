@@ -40,3 +40,29 @@ a.navbar {
     text-decoration: none;
     text-transform: uppercase;
 }
+/*
+div.content{
+    clear: left;
+    clear: right;
+}*/
+div.footer{
+    /*border: dotted 5px green;*/
+    position:absolute;
+    color: white;
+    bottom:0;
+    width:100%;
+    height:60px;   /*!* Height of the footer *!*/
+    background:#444444;
+}
+img.fb{
+    width: 50px; /* you can use % */
+    height: auto;
+}
+img.twt{
+    width: 30px; /* you can use % */
+    height: auto;
+}
+img.yt{
+    width: 30px; /* you can use % */
+    height: auto;
+}
