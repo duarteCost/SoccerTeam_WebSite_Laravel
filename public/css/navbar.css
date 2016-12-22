@@ -47,22 +47,36 @@ div.content{
 }*/
 div.footer{
     /*border: dotted 5px green;*/
-    position:absolute;
+    position: absolute; /* FIXED= se queremos no canto de baixo sempre, ABSOLUTE= relativo a vista actual*/
     color: white;
     bottom:0;
     width:100%;
     height:60px;   /*!* Height of the footer *!*/
     background:#444444;
 }
-img.fb{
-    width: 50px; /* you can use % */
-    height: auto;
+#fb{
+    margin-top: 5px;
+    width: auto; /* you can use % */
+    height: 40px;
 }
-img.twt{
-    width: 30px; /* you can use % */
-    height: auto;
+#twt{
+    margin-top: 5px;
+    margin-left: 10px;
+    width: auto; /* you can use % */
+    height: 40px;
 }
-img.yt{
-    width: 30px; /* you can use % */
-    height: auto;
+#yt{
+    margin-top: 5px;
+    margin-left: 10px;
+    width: auto; /* you can use % */
+    height: 40px;
 }
+#p_foot{
+    float: left;
+    margin-right: 10px;
+}
+/*
+img{
+    width: 50px;
+    height: auto;
+}*/
