@@ -46,6 +46,14 @@ label.userState {
     font-weight:bold;
 }
 
+label.userState2 {
+    float:left;
+    color:white;
+    text-align:left;
+    font-weight:bold;
+    margin-right: 2%;
+}
+
 legend.userState {
     border:1px solid white;
     color:white;
@@ -98,9 +106,29 @@ input[type=text],textarea {
     border-radius: 5px;
 }
 
+#in_date {
+    float: left;
+}
+
+#in_select{
+    float: left;
+    margin-left:1%;
+}
+
+#div_input_date{
+    margin-top: 2%;
+    float:left;
+    width: 100%;
+}
+#div_selectBox{
+    margin-top: 2%;
+   float:left;
+    width: 100%;
+}
+
 
 /* JORGE */
 img.produts {
-    width:10%;
+    width:20%;
 
 }

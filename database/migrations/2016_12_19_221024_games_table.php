@@ -15,9 +15,10 @@ class GamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->increments('game_id');
-            $table->integer('homeTeam_id')->references('club_id')->on('clubs')->onDelete('no action')->onUpdate('no action');
-            $table->integer('awayTeam_id')->references('club_id')->on('clubs')->onDelete('no action')->onUpdate('no action');
+            $table->integer('homeTeam_id')->default(1);
+            $table->integer('awayTeam_id');
             $table->dateTime('date');
+            $table->timestamps();
         });
     }
 

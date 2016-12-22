@@ -193,6 +193,43 @@
                     </form>
                 @endif
             </li>
+
+            <!--inserir jogo-->
+
+            <li class = "userState"><a class = "userState" onclick="exibe('add_game');" href="#">Adicionar Jogo</a>
+            @if(count($clubs))
+                <!--delete product-->
+                    <form method="post" action="/user/addGame">
+                        <div style="display: none" id="add_game" class="form-group">
+                            <fieldset class = "userState">
+                                <legend class = "userState">Adicionar Jogo</legend>
+                                <br>
+                                <div id="div_selectBox">
+                                    <label class = "userState2">Selecione o Jogo que quer adicionar:</label>
+                                    <select id = "in_select" name="game" class = "userState" >
+                                        @foreach($clubs as $club)
+                                            <option  value="{{$club->club_id}}">Real Madrid VS {{$club->club_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br>
+
+                                <div id="div_input_date">
+                                    <label  class = "userState2">Indique a data e a hora do Jogo acima:</label>
+                                    <input id = "in_date" type="datetime-local" name="game_time">
+                                </div>
+                                <br>
+                                <br>
+                                <input  class = "userState" type = "submit" name = "sub_game" value="Adicionar Jogo">
+                                <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                <br>
+                            </fieldset>
+                        </div>
+                    </form>
+                @endif
+            </li>
+
+
         </ul>
 
     @else

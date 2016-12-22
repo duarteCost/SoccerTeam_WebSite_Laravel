@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Produt;
+use App\Club;
 use App\News;
 use App\Basket;
 use App\products_purchased;
@@ -71,11 +72,14 @@ class UserController extends Controller
         $news = News::get();
         $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)
             /*  JORGE   */
-            ->leftJoin('product_imgs', 'product_imgs.product_id', '=', 'Basket_Temp.product_id')
+            ->leftJoin('product_img', 'product_img.product_id', '=', 'Basket_Temp.product_id')
             /* FIM JORGE   */
             ->get();
         $products = Produt::get();
         $products_Purchased =products_purchased::get();
+        $clubs = DB::table('clubs')->where('club_id','!=', 1)->get();
+        //$Real_club = DB::table('clubs')->where('club_id','=', 1)->get();
+
 
         /*  JORGE   */
 
@@ -103,7 +107,7 @@ class UserController extends Controller
 
 
 
-        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls'));
+        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls', 'clubs'));
 
     }
 }
