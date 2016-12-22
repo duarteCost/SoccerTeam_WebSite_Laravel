@@ -19,7 +19,6 @@ class CreateTicketsTable extends Migration
             $table->dateTime('date');
             $table->double('price');
             $table->string('bench');
-            $table->string('stadiumID')->references('stadium_id')->on('stadium')->onDelete('no action')->onUpdate('no action');
             $table->integer('amount');
 
 
