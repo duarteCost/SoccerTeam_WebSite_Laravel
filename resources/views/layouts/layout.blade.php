@@ -88,10 +88,10 @@
 
 @yield('footer')
 <div class = "footer">
-
-    <a href="https://www.facebook.com/RealMadrid/"> <img id="fb" src="https://s3.amazonaws.com/acr20162017/footer/facebook-icon-preview-1.png"/></a>
+	<p id = "p_foot"> Acompanhenos atraves de redes sociais ou partilhe videos do seu clube em: </p>
+    <a href="https://www.facebook.com/RealMadrid/"> <img id="fb" src="https://s3.amazonaws.com/acr20162017/footer/fb_full_pic.png"/></a>
 	<a href="https://twitter.com/realmadrid"> <img id="twt" src="https://s3.amazonaws.com/acr20162017/footer/Twitter-logo-1.jpg"/> </a>
-	<a href="https://www.youtube.com/user/realmadridcf"> <img id="yt" src="https://s3.amazonaws.com/acr20162017/footer/YouTube-icon-400x400.png" </a>
+	<a href="https://www.youtube.com/user/realmadridcf"> <img id="yt" src="https://s3.amazonaws.com/acr20162017/footer/youT_full_pic.jpg" </a>
 </div>
 
 </body>
