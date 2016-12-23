@@ -56,8 +56,6 @@ class TicketsController extends Controller
                 ->where('games.game_id','=', $game_id)
                 ->get();
 
-
-
         }
 
         $homeTeams_urls = array();
@@ -95,8 +93,14 @@ class TicketsController extends Controller
                 }
             }
         }
+        if($game_id == "all") {
+            return view('tickets', compact('awayTeams', 'homeTeams' , 'awayTeams_urls', 'homeTeams_urls'));
+        }
+        else
+        {
+            return view('gameTicket', compact('awayTeams', 'homeTeams' , 'awayTeams_urls', 'homeTeams_urls'));
+        }
 
-        return view('tickets', compact('awayTeams', 'homeTeams' , 'awayTeams_urls', 'homeTeams_urls'));
     }
 
 

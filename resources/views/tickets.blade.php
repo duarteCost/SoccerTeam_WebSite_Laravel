@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 @section('header')
     <link rel = "stylesheet" href = "/css/ticketsStyle.css" >
+    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.min.css')}}">
+
+
 
 @stop
 @section('content')
@@ -31,8 +34,23 @@
 
         @endforeach
     @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </ul>
 @stop
 @section('footer')
 @stop
+
 
