@@ -124,7 +124,8 @@ class NewsController extends Controller
                     $news = News::get();
                     $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
                     $products = Produt::get();
-                    return view('user', compact('user','users','products','basket_temp','news','new'));
+                    $clubs = DB::table('clubs')->where('club_id','!=', 1)->get();
+                    return view('user', compact('user','users','products','basket_temp','news','new','clubs'));
                 }else{
                     continue;
                 }

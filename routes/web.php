@@ -32,6 +32,7 @@ Route::post('/user/newState/', 'NewsController@checkNewState' );
 Route::post('/user/delete_editProduct', 'ProdutsController@delete_editProducts' );
 Route::post('/user/basketOperation', 'ProdutsController@basketOperation' );
 Route::post('/user/deleteSocio','UserController@deleteSocio');
+Route::post('/user/addGame','GameController@addGame');
 //Route::post('/user','UserController@processState');
 
 
