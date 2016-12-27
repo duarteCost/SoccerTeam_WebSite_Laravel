@@ -18,6 +18,7 @@ class GameController extends Controller
         $satadium->save();
         $game = new Game();
         $game->awayTeam_id = $request->game;
+        $game->ticket_price= $request->ticket_price;
         $game->date = $request->game_time;
         if( $game->date > date('Y-m-d H:i')) {
             $satadium->games()->save($game);

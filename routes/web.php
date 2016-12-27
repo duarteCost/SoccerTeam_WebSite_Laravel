@@ -33,7 +33,8 @@ Route::post('/user/delete_editProduct', 'ProdutsController@delete_editProducts' 
 Route::post('/user/basketOperation', 'ProdutsController@basketOperation' );
 Route::post('/user/deleteSocio','UserController@deleteSocio');
 Route::post('/user/addGame','GameController@addGame');
-Route::post('/help/addTicket','TicketsController@addTicket');
+//Route::post('/help/addTicket','TicketsController@addTicket');
+Route::post('/tickets/{game}/addBasket','TicketsController@addTicket');
 //Route::post('/user','UserController@processState');
 
 

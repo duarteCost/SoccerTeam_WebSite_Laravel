@@ -35,13 +35,13 @@
 
 
 
-          <form action="/tickets/{{$awayTeam->game_id}}/addBasket">
+          <form method="post" action="/tickets/{{$awayTeam->game_id}}/addBasket">
               Quantity:
               <input type="number" name="$quantity" min="1" max="5000">
               <br>
 
               <div class="styled-select green semi-square">
-                  <select name="$type">
+                  <select name="zone">
                       <option value="zona_A">Zona A</option>
                       <option value="zona_B">Zona B</option>
                       <option value="zona_C">Zona C</option>
@@ -50,6 +50,8 @@
 
               </div>
               <br>
+
+              <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
               <input type="submit">
           </form>
 

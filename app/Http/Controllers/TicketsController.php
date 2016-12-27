@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -23,18 +24,18 @@ class TicketsController extends Controller
     {
         return view('tickets');
     }*/
-    public function addTicket(Request $request){
-        $quant = 5;
-        $game_id = 1;
-        $price = 5.90;
-        $area = "zone_b";
+    public function addTicket(Request $request, $game){
+       return $request;
+        $quant = $request->quantity;
+        $game_id = $game;
+        $area = $request->zone;
     $games = DB::table('games')->where('game_id', '=', $game_id)->get();
         foreach ($games as $game) {
             for($i=0; $i<$quant; $i++) {
                 $clube_away = DB::table('clubs')->where('club_id', '=', $game->awayTeam_id )->value('club_name');
                 $game_name = "Real Madrid vs ".$clube_away;
                 $ticket = new Ticket();;
-                $ticket->price = $price;
+                $ticket->price = $game->ticket_price;
                 $ticket->area = $area;
                 $ticket->game_name = $game_name;
                 $ticket->game_id = $game->game_id;

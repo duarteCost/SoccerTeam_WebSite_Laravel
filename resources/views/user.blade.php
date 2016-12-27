@@ -216,12 +216,17 @@
 
                                 <div id="div_input_date">
                                     <label  class = "userState2">Indique a data e a hora do Jogo acima:</label>
-                                    <input id = "in_date" type="datetime-local" name="game_time">
+                                    <input id = "in_date" type="datetime-local" name="game_time" required>
                                 </div>
+                                <div id="div_input_ticket_price">
+                                    <label  class = "userState2">Indique o preço do bilete para este jogo:</label>
+                                    <input class = "userState" size="10" type="text" name="ticket_price" required>
+                                </div>
+
                                 <br>
                                 <br>
                                 <input  class = "userState" type = "submit" name = "sub_game" value="Adicionar Jogo">
-                                <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                <input class = "userState"  type="hidden" name="_token" value="{{csrf_token()}}">
                                 <br>
                             </fieldset>
                         </div>
