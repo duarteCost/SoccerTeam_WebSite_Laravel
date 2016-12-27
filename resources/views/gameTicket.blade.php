@@ -37,15 +37,15 @@
 
           <form method="post" action="/tickets/{{$awayTeam->game_id}}/addBasket">
               Quantity:
-              <input type="number" name="$quantity" min="1" max="5000">
+              <input type="number" name="quantity" min="1" max="5000">
               <br>
 
               <div class="styled-select green semi-square">
                   <select name="zone">
-                      <option value="zona_A">Zona A</option>
-                      <option value="zona_B">Zona B</option>
-                      <option value="zona_C">Zona C</option>
-                      <option value="zona_D">Zona D</option>
+                      <option value="zone_a">Zona A</option>
+                      <option value="zone_b">Zona B</option>
+                      <option value="zone_c">Zona C</option>
+                      <option value="zone_d">Zona D</option>
                   </select>
 
               </div>

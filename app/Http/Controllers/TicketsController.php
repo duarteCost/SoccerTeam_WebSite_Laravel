@@ -25,10 +25,10 @@ class TicketsController extends Controller
         return view('tickets');
     }*/
     public function addTicket(Request $request, $game){
-       return $request;
         $quant = $request->quantity;
         $game_id = $game;
         $area = $request->zone;
+
     $games = DB::table('games')->where('game_id', '=', $game_id)->get();
         foreach ($games as $game) {
             for($i=0; $i<$quant; $i++) {
