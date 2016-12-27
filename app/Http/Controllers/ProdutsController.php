@@ -24,13 +24,17 @@ class ProdutsController extends Controller
     }*/
 
     public function addBasketTemp(Request $request, Produt $produt){
-        $currentUser = Auth::user();
-        //$bakets_temp = Basket_Temp::all();
-        $basket_temp = new Basket_Temp();
-       // $basket_temp->user_id = $currentUser->id;
-        $basket_temp->product_id = $produt->id;
-        $currentUser->basket_temp()->save($basket_temp);
-        return redirect("/products/all");
+
+        if (Auth::check()){
+            $currentUser = Auth::user();
+            $basket_temp = new Basket_Temp();
+            $basket_temp->product_id = $produt->id;
+            $currentUser->basket_temp()->save($basket_temp);
+            return redirect("/products/all");
+        }
+        else{
+            return redirect("/login");
+        }
     }
 
     public function addProduct(Request $request, User $user)

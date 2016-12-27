@@ -25,30 +25,36 @@ class TicketsController extends Controller
         return view('tickets');
     }*/
     public function addTicket(Request $request, $game){
-        $quant = $request->quantity;
-        $game_id = $game;
-        $area = $request->zone;
 
-    $games = DB::table('games')->where('game_id', '=', $game_id)->get();
-        foreach ($games as $game) {
-            for($i=0; $i<$quant; $i++) {
-                $clube_away = DB::table('clubs')->where('club_id', '=', $game->awayTeam_id )->value('club_name');
-                $game_name = "Real Madrid vs ".$clube_away;
-                $ticket = new Ticket();;
-                $ticket->price = $game->ticket_price;
-                $ticket->area = $area;
-                $ticket->game_name = $game_name;
-                $ticket->game_id = $game->game_id;
-                $ticket->date = $game->date;
-                $ticket->save();
+        if (Auth::check()) {
+            $quant = $request->quantity;
+            $game_id = $game;
+            $area = $request->zone;
 
-                $currentUser = Auth::user();
-                $basket_temp = new Basket_Temp();
-                $basket_temp->ticket_id = $ticket->id;
-                $currentUser->basket_temp()->save($basket_temp);
+            $games = DB::table('games')->where('game_id', '=', $game_id)->get();
+            foreach ($games as $game) {
+                for ($i = 0; $i < $quant; $i++) {
+                    $clube_away = DB::table('clubs')->where('club_id', '=', $game->awayTeam_id)->value('club_name');
+                    $game_name = "Real Madrid vs " . $clube_away;
+                    $ticket = new Ticket();;
+                    $ticket->price = $game->ticket_price;
+                    $ticket->area = $area;
+                    $ticket->game_name = $game_name;
+                    $ticket->game_id = $game->game_id;
+                    $ticket->date = $game->date;
+                    $ticket->save();
+
+                    $currentUser = Auth::user();
+                    $basket_temp = new Basket_Temp();
+                    $basket_temp->ticket_id = $ticket->id;
+                    $currentUser->basket_temp()->save($basket_temp);
+                }
             }
+            return redirect("/tickets/all");
         }
-        return redirect("/tickets/all");
+        else{
+            return redirect("/login");
+        }
     }
 
 
