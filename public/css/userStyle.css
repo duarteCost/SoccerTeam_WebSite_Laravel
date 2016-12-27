@@ -6,6 +6,7 @@ html, body {
 h1, h3, h2{
     text-align:center;
     color:white;
+    font-weight: bold;
 }
 
 
@@ -20,13 +21,11 @@ p {
     width: 100%;
     text-align : left;
 }
-hr {
-    margin: 2% 0 1% 0;
-}
 
 li a.userState {
     display: block;
     color: white;
+    font-size: 22px;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -85,8 +84,21 @@ input[type=submit].userState{
     padding: 2px 2px 2px 2px;
 }
 
-input[type=radio]  {
+input[type=radio].userState {
     margin-left:  9%;
+    float: left;
+
+}
+
+input[type=radio].userState2 {
+    margin-left:  9%;
+    float: left;
+    margin-left: 38%;
+
+}
+
+input[type=checkbox]  {
+    margin-left:  43%;
     float: left;
 
 }
@@ -94,6 +106,15 @@ label.userStateRadio{
     float: left;
     padding-left: 2%;
     color: white;
+}
+
+a.userStateCheck{
+    float: left;
+    padding-left: 2%;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 input[type=text],textarea {
@@ -145,13 +166,18 @@ div.product_section{
 
 img.produts {
     width: 100%;
-    background-color: #2ab27b;
     align-items: center;
 }
 
 p.product_bascket{
     float: left;
     font-size: 16px;
+}
+
+p.product_purchased{
+    float: left;
+    font-size: 16px;
+    margin-left: 40%;
 }
 
 p.product_bascket3{
@@ -161,12 +187,25 @@ p.product_bascket3{
 
 }
 
-p.product_bascket4{
-    margin-top: 12%;
+p.product_purchased3{
+    float: left;
+    font-size: 16px;
+    margin-left: 16%;
+
+}
+
+p.product_purchased4{
+    margin-top: 5%;
 
 }
 
 p.product_bascket2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+p.product_purchased2{
     text-align: center;
     font-weight: bold;
     font-size: 19px;

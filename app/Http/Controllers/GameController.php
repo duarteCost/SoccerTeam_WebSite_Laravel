@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Game;
+use DB;
 use App\Stadium_place;
 use App\Http\Requests;
 
@@ -23,6 +24,12 @@ class GameController extends Controller
         if( $game->date > date('Y-m-d H:i')) {
             $satadium->games()->save($game);
         }
+        return redirect("/user");
+    }
+
+    public function removeGame(Request $request){
+        $game_id = $request->game_id;
+        DB::table('games')->where('game_id','=', $game_id)->delete();
         return redirect("/user");
     }
 }

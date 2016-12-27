@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use Illuminate\Http\Request;
 use App\User;
 use App\Produt;
@@ -66,6 +67,7 @@ class UserController extends Controller
     }*/
 
 
+
     public function processState(Request $request){
         $user = Auth::user();
         $users = DB::table('users')->where('type', '=', 0)->get();
@@ -80,6 +82,7 @@ class UserController extends Controller
         $products_user_Purchased = DB::table('products_purchaseds')->where('user_id','=', $user->id)->get();
         $clubs = DB::table('clubs')->where('club_id','!=', 1)->get();
         $tickets = Ticket::get();
+        $games = Game::get();
 
 
         /*  JORGE   */
@@ -108,7 +111,7 @@ class UserController extends Controller
 
 
 
-        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls', 'clubs', 'tickets', 'products_user_Purchased'));
+        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls', 'clubs', 'tickets', 'products_user_Purchased', 'games'));
 
     }
 }
