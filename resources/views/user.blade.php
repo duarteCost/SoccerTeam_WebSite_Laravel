@@ -139,7 +139,7 @@
                 </div>
             </li>
 
-            <li class = "userState"><a class = "userState" onclick="exibe('delete_socio');" href="#">Eliminar Socio</a>
+            <li class = "userState"><a class = "userState" onclick="exibe('delete_socio');" href="#">Verificar Socio</a>
                 <!--delete socio-->
                 @if(count($users))
                     <form  method="post" action="/user/deleteSocio">
@@ -149,7 +149,49 @@
                                 @foreach($users as $user)
                                     @if(!$user->type)
                                        <input class = "userState" type = "checkbox" id = "che" name = "{{$user->id}}" value = "{{$user->name}}">
-                                        <label class="userStateRadio">{{$user->id}} {{$user->name}}</label>
+                                        <li class = "userState"><a class="userState" onclick="exibe('product_purchased_socio');" href="#">{{$user->id}} {{$user->name}}  </a>
+                                            <div id = "product_purchased_socio" style = "display: none">
+                                                @foreach($products_Purchased as $product_purchased)
+                                                    @foreach($products as $product)
+                                                        <div class = "product_section">
+                                                            @if($product_purchased->product_id ==$product->id && $product_purchased->user_id ==$user->id )
+                                                                <p class = "product_bascket2">{{$product->name}}</p>
+                                                                <p class = "product_bascket3">Preço: {{$product->price}}€</p>
+                                                                <p class = "product_bascket4"> </p>
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                @endforeach
+
+                                            <!--tickets comprados-->
+
+                                                @foreach($products_Purchased as $product_purchased)
+                                                    @foreach($tickets as $ticket)
+                                                        <div class = "product_section">
+                                                            @if($product_purchased->ticket_id ==$ticket->id && $product_purchased->user_id ==$user->id)
+                                                                <p class = "product_bascket2">Bilete</p>
+                                                                <p class = "product_bascket2">{{$ticket->game_name}}</p>
+                                                                <p class = "product_bascket3">Preço: {{$ticket->price}}</p>
+                                                                <p class = "product_bascket3">Zona:
+                                                                    @if($ticket->area=="zone_a")
+                                                                        Zona A
+                                                                    @elseif($ticket->area=="zone_b")
+                                                                        Zona B
+                                                                    @elseif($ticket->area=="zone_c")
+                                                                        Zona C
+                                                                    @elseif($ticket->area=="zone_d")
+                                                                        Zona D
+                                                                    @endif
+
+                                                                </p>
+                                                                <p class = "product_bascket3">Data: {{$ticket->date}}</p>
+                                                                <p class = "product_bascket4"> </p>
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                @endforeach
+                                            </div>
+                                        </li>
                                         <br>
                                     @endif
                                 @endforeach
@@ -204,7 +246,7 @@
                             <fieldset class = "userState">
                                 <legend class = "userState">Adicionar Jogo</legend>
                                 <br>
-                                <div id="div_selectBox">
+                                <div class="add_game">
                                     <label class = "userState2">Selecione o Jogo que quer adicionar:</label>
                                     <select id = "in_select" name="game" class = "userState" >
                                         @foreach($clubs as $club)
@@ -214,11 +256,11 @@
                                 </div>
                                 <br>
 
-                                <div id="div_input_date">
+                                <div class="add_game">
                                     <label  class = "userState2">Indique a data e a hora do Jogo acima:</label>
                                     <input id = "in_date" type="datetime-local" name="game_time" required>
                                 </div>
-                                <div id="div_input_ticket_price">
+                                <div class="add_game">
                                     <label  class = "userState2">Indique o preço do bilete para este jogo:</label>
                                     <input id = "in_text"  size="10" type="text" name="ticket_price" required>
                                 </div>
@@ -253,9 +295,8 @@
                              @foreach($products as $product)
                                  <div class = "product_section">
                                      @if($productToSell->product_id ==$product->id)
-                                         <p class = "product_backet">Nome : {{$product->name}}</p>
-                                         <p class = "product_backet">Preço: {{$product->price}}</p>
-                                         <br>
+                                         <p class = "product_bascket2">{{$product->name}}</p>
+                                         <p class = "product_bascket">
                                          <!--imagem    JORGE-->
 
                                          @if(!empty($array_urls[$productToSell->product_id][0]))
@@ -265,12 +306,14 @@
 
 
                                          @endif
-
+                                         </p>
                                      <!-- FIM  imagem    JORGE-->
-                                         <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
-                                         <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Eliminar">
+
+                                         <p class = "product_bascket3">Preço: {{$product->price}}€</p>
+                                         <input class = "userBasket" type="hidden" name="_token" value="{{csrf_token()}}">
+                                         <p class = "product_bascket2"><input class = "userBasket" type = "submit" name = "{{$productToSell->basket_id}}" value="Eliminar">
                                          @if($user->amount-$product->price>=0)
-                                             <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Comprar">
+                                            <input class = "userBasket" type = "submit" name = "{{$productToSell->basket_id}}" value="Comprar"></p>
 
                                          @endif
                                      @endif
@@ -282,9 +325,10 @@
                              @foreach($tickets as $ticket)
                                  <div class = "product_section">
                                      @if($productToSell->ticket_id ==$ticket->id)
-                                         <p class = "product_backet">Nome : {{$ticket->game_name}}</p>
-                                         <p class = "product_backet">Preço: {{$ticket->price}}</p>
-                                         <p class = "product_backet">Zona:
+                                         <p class = "product_bascket2">Bilete</p>
+                                         <p class = "product_bascket2">{{$ticket->game_name}}</p>
+                                         <p class = "product_bascket3">Preço: {{$ticket->price}}</p>
+                                         <p class = "product_bascket3">Zona:
                                              @if($ticket->area=="zone_a")
                                                 Zona A
                                              @elseif($ticket->area=="zone_b")
@@ -296,12 +340,12 @@
                                              @endif
 
                                          </p>
-                                         <p class = "product_backet">Data: {{$ticket->date}}</p>
+                                         <p class = "product_bascket3">Data: {{$ticket->date}}</p>
                                          <br>
-                                         <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
-                                         <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Eliminar">
+                                         <p class = "product_bascket2"><input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                         <input class = "userBasket" type = "submit" name = "{{$productToSell->basket_id}}" value="Eliminar">
                                          @if($user->amount-$ticket->price>=0)
-                                             <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Comprar">
+                                             <input class = "userBasket" type = "submit" name = "{{$productToSell->basket_id}}" value="Comprar"></p>
 
                                          @endif
                                      @endif
@@ -315,43 +359,49 @@
          @endif
 
              <!--ver produtos comprados-->
-         @if(count($products_Purchased))
+         @if(count($products_user_Purchased))
              <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Ver produtos Comprados</a>
                  <div id="product_purchased" style="display: none">
                      <fieldset class = "userState">
                          <legend class = "userState">Produtos Comprados</legend>
 
-                         @foreach($products_Purchased as $product_purchased)
+                         @foreach($products_user_Purchased as $product_purchased)
                              @foreach($products as $product)
-                                 @if($product_purchased->product_id ==$product->id)
-                                     <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
-                                     <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
-                                     <hr>
-                                 @endif
+                                 <div class = "product_section">
+                                     @if($product_purchased->product_id ==$product->id )
+                                         <p class = "product_bascket2">{{$product->name}}</p>
+                                         <p class = "product_bascket3">Preço: {{$product->price}}€</p>
+                                         <p class = "product_bascket4"> </p>
+                                     @endif
+                                 </div>
                              @endforeach
                          @endforeach
 
                          <!--tickets comprados-->
 
-                         @foreach($products_Purchased as $product_purchased)
+                         @foreach($products_user_Purchased as $product_purchased)
                              @foreach($tickets as $ticket)
-                                 @if($product_purchased->ticket_id ==$ticket->id)
-                                     <p class = "product_backet">Nome : {{$ticket->game_name}}</p>
-                                     <p class = "product_backet">Preço: {{$ticket->price}}</p>
-                                     <p class = "product_backet">Zona:
-                                         @if($ticket->area=="zone_a")
-                                             Zona A
-                                         @elseif($ticket->area=="zone_b")
-                                             Zona B
-                                         @elseif($ticket->area=="zone_c")
-                                             Zona C
-                                         @elseif($ticket->area=="zone_d")
-                                             Zona D
-                                         @endif
+                                 <div class = "product_section">
+                                     @if($product_purchased->ticket_id ==$ticket->id)
+                                         <p class = "product_bascket2">Bilete</p>
+                                         <p class = "product_bascket2">{{$ticket->game_name}}</p>
+                                         <p class = "product_bascket3">Preço: {{$ticket->price}}</p>
+                                         <p class = "product_bascket3">Zona:
+                                             @if($ticket->area=="zone_a")
+                                                 Zona A
+                                             @elseif($ticket->area=="zone_b")
+                                                 Zona B
+                                             @elseif($ticket->area=="zone_c")
+                                                 Zona C
+                                             @elseif($ticket->area=="zone_d")
+                                                 Zona D
+                                             @endif
 
-                                     </p>
-                                     <p class = "product_backet">Data: {{$ticket->date}}</p>
-                                 @endif
+                                         </p>
+                                         <p class = "product_bascket3">Data: {{$ticket->date}}</p>
+                                         <p class = "product_bascket4"> </p>
+                                     @endif
+                                 </div>
                              @endforeach
                          @endforeach
                      </fieldset>

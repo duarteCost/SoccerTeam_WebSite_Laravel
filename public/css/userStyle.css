@@ -3,7 +3,7 @@ html, body {
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
 }
-h1, h3{
+h1, h3, h2{
     text-align:center;
     color:white;
 }
@@ -76,7 +76,7 @@ input[type=file]{
     margin:4% 0% 0% 0%;
 }
 
-input[type=submit]{
+input[type=submit].userState{
     float: right;
     width: 15%;
     margin:4% 9% 0% 0%;
@@ -108,37 +108,76 @@ input[type=text],textarea {
 
 #in_date {
     float: left;
+    margin-left:1%;
+    border:2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #in_select{
     float: left;
-    margin-left:1%;
-}
-
-#div_input_date{
-    margin-top: 2%;
-    float:left;
-    width: 100%;
-}
-#div_selectBox{
-    margin-top: 2%;
-   float:left;
-    width: 100%;
+    margin-left:2%;
+    border:2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 
+div.add_game{
+     margin-top: 2%;
+     float:left;
+     width: 100%;
+ }
+
+#in_text{
+    width: 10%;
+    float: left;
+    margin-left: 0px;
+}
 /* Socio*/
 div.product_section{
-    width: 60%;
-    height: 40%;
+    margin-top: 10%;
+    margin-left: 33%;
+    width: 33%;
+    height: auto;
 }
 
 
 img.produts {
-    align:"left";
-    width: 35%;
+    width: 100%;
+    background-color: #2ab27b;
+    align-items: center;
 }
 
-p.product_backet{
-    text-align: center;
+p.product_bascket{
+    float: left;
+    font-size: 16px;
 }
+
+p.product_bascket3{
+    float: left;
+    font-size: 16px;
+    margin-left: 16%;
+
+}
+
+p.product_bascket4{
+    margin-top: 12%;
+
+}
+
+p.product_bascket2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+input[type=submit].userBasket{
+    width: 33%;
+    margin-left: 1%;
+    margin-bottom: 15%;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 2px 2px 2px 2px;
+}
+

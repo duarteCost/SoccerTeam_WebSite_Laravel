@@ -77,6 +77,7 @@ class UserController extends Controller
             ->get();
         $products = Produt::get();
         $products_Purchased =products_purchased::get();
+        $products_user_Purchased = DB::table('products_purchaseds')->where('user_id','=', $user->id)->get();
         $clubs = DB::table('clubs')->where('club_id','!=', 1)->get();
         $tickets = Ticket::get();
 
@@ -107,7 +108,7 @@ class UserController extends Controller
 
 
 
-        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls', 'clubs', 'tickets'));
+        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls', 'clubs', 'tickets', 'products_user_Purchased'));
 
     }
 }
