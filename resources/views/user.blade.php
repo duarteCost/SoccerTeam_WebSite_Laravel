@@ -80,7 +80,7 @@
                                 <br>
                                 <br>
                                 <label class = "userState">Banner da Notícia  :</label><br>
-                                <input class = "userState" type="file" name="imageBanner" required/>
+                                <input class = "userState" type="file" name="imageBanner" />
                                 <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
                                 <input class = "userState" type="submit", name="addNew" value="Submeter Notícias">
                             </fieldset>
@@ -220,7 +220,7 @@
                                 </div>
                                 <div id="div_input_ticket_price">
                                     <label  class = "userState2">Indique o preço do bilete para este jogo:</label>
-                                    <input class = "userState" size="10" type="text" name="ticket_price" required>
+                                    <input id = "in_text"  size="10" type="text" name="ticket_price" required>
                                 </div>
 
                                 <br>
