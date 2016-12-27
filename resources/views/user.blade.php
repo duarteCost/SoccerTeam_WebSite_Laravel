@@ -236,6 +236,7 @@
 
          <h1>Página de Socio</h1>
          <br>
+         <h2>Você tem disponivel {{$user->amount}}€ para compras.</h2>
          <!--ver produtos do sócio-->
          @if(count($basket_temp))
              <form method="post" action="/user/basketOperation">
@@ -243,31 +244,63 @@
                      <fieldset class = "userState">
                          <legend class = "userState">Produtos no carrinho</legend>
 
-                         @foreach($basket_temp as $basket_product)
+                         @foreach($basket_temp as $productToSell)
                              @foreach($products as $product)
-                                 @if($basket_product->product_id ==$product->id)
-                                     <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
-                                     <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p>
-                                     <p class = "userState">Preço: {{$product->price}}</p>
-                                     <br>
-                                     <!--imagem    JORGE-->
+                                 <div class = "product_section">
+                                     @if($productToSell->product_id ==$product->id)
+                                         <p class = "product_backet">Nome : {{$product->name}}</p>
+                                         <p class = "product_backet">Preço: {{$product->price}}</p>
+                                         <br>
+                                         <!--imagem    JORGE-->
 
-                                     @if(!empty($array_urls[$basket_product->product_id][0]))
-
-
-                                         <img class="produts" src="{{$array_urls[$basket_product->product_id][0]}}"/>
+                                         @if(!empty($array_urls[$productToSell->product_id][0]))
 
 
-                                     @endif
+                                             <img class="produts" src="{{$array_urls[$productToSell->product_id][0]}}"/>
+
+
+                                         @endif
 
                                      <!-- FIM  imagem    JORGE-->
-                                     <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
-                                     <input class = "userState" type = "submit" name = "basketOperation" value="Eliminar">
-                                     @if($user->amount-$product->price>=0)
-                                         <input class = "userState" type = "submit" name = "basketOperation" value="Comprar">
+                                         <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                         <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Eliminar">
+                                         @if($user->amount-$product->price>=0)
+                                             <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Comprar">
 
+                                         @endif
                                      @endif
-                                 @endif
+                                 </div>
+                             @endforeach
+
+
+                             <!--tickets-->
+                             @foreach($tickets as $ticket)
+                                 <div class = "product_section">
+                                     @if($productToSell->ticket_id ==$ticket->id)
+                                         <p class = "product_backet">Nome : {{$ticket->game_name}}</p>
+                                         <p class = "product_backet">Preço: {{$ticket->price}}</p>
+                                         <p class = "product_backet">Zona:
+                                             @if($ticket->area=="zone_a")
+                                                Zona A
+                                             @elseif($ticket->area=="zone_b")
+                                                Zona B
+                                             @elseif($ticket->area=="zone_c")
+                                                Zona C
+                                             @elseif($ticket->area=="zone_d")
+                                                Zona D
+                                             @endif
+
+                                         </p>
+                                         <p class = "product_backet">Data: {{$ticket->date}}</p>
+                                         <br>
+                                         <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
+                                         <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Eliminar">
+                                         @if($user->amount-$ticket->price>=0)
+                                             <input class = "userState" type = "submit" name = "{{$productToSell->basket_id}}" value="Comprar">
+
+                                         @endif
+                                     @endif
+                                 </div>
                              @endforeach
                          @endforeach
                      </fieldset>
@@ -278,7 +311,7 @@
 
              <!--ver produtos comprados-->
          @if(count($products_Purchased))
-             <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Adicionar Imagem/Eliminar Produto</a>
+             <li class = "userState"><a class = "userState" onclick="exibe('product_purchased');" href="#">Ver produtos Comprados</a>
                  <div id="product_purchased" style="display: none">
                      <fieldset class = "userState">
                          <legend class = "userState">Produtos Comprados</legend>
@@ -289,6 +322,30 @@
                                      <input class = "userState" type="hidden" name="{{$product->id}}" value="{{$product->name}}">
                                      <p id = "p_exep" class= "userState">Nome : {{$product->name}}</p><p class= "userState"> Preço: {{$product->price}}</p>
                                      <hr>
+                                 @endif
+                             @endforeach
+                         @endforeach
+
+                         <!--tickets comprados-->
+
+                         @foreach($products_Purchased as $product_purchased)
+                             @foreach($tickets as $ticket)
+                                 @if($product_purchased->ticket_id ==$ticket->id)
+                                     <p class = "product_backet">Nome : {{$ticket->game_name}}</p>
+                                     <p class = "product_backet">Preço: {{$ticket->price}}</p>
+                                     <p class = "product_backet">Zona:
+                                         @if($ticket->area=="zone_a")
+                                             Zona A
+                                         @elseif($ticket->area=="zone_b")
+                                             Zona B
+                                         @elseif($ticket->area=="zone_c")
+                                             Zona C
+                                         @elseif($ticket->area=="zone_d")
+                                             Zona D
+                                         @endif
+
+                                     </p>
+                                     <p class = "product_backet">Data: {{$ticket->date}}</p>
                                  @endif
                              @endforeach
                          @endforeach

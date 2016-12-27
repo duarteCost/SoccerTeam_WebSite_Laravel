@@ -18,6 +18,8 @@ class GamesTable extends Migration
             $table->integer('homeTeam_id')->default(1);
             $table->integer('awayTeam_id');
             $table->dateTime('date');
+            $table->integer('stadium_id')->unsigned();
+            $table->foreign('stadium_id')->references('stadium_id')->on('stadium_places')->onDelete('no action')->onUpdate('no action');
             $table->timestamps();
         });
     }

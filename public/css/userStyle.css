@@ -127,8 +127,18 @@ input[type=text],textarea {
 }
 
 
-/* JORGE */
-img.produts {
-    width:20%;
+/* Socio*/
+div.product_section{
+    width: 60%;
+    height: 40%;
+}
 
+
+img.produts {
+    align:"left";
+    width: 35%;
+}
+
+p.product_backet{
+    text-align: center;
 }

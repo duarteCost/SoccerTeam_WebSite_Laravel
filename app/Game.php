@@ -8,6 +8,6 @@ class Game extends Model
 {
     public function ticket()
     {
-        return $this->hasMany('App\Ticket', 'product_id');
+        return $this->hasMany('App\Ticket', 'game_id');
     }
 }

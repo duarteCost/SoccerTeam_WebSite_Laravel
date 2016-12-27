@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Produt;
-use App\Club;
+use App\Ticket;
 use App\News;
 use App\Basket;
 use App\products_purchased;
@@ -78,7 +78,7 @@ class UserController extends Controller
         $products = Produt::get();
         $products_Purchased =products_purchased::get();
         $clubs = DB::table('clubs')->where('club_id','!=', 1)->get();
-        //$Real_club = DB::table('clubs')->where('club_id','=', 1)->get();
+        $tickets = Ticket::get();
 
 
         /*  JORGE   */
@@ -107,7 +107,7 @@ class UserController extends Controller
 
 
 
-        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls', 'clubs'));
+        return view('user', compact('user','users','products','basket_temp','news','products_Purchased', 'array_urls', 'clubs', 'tickets'));
 
     }
 }

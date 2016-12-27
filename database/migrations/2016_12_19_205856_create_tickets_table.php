@@ -15,12 +15,13 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('gameID')->references('game_id')->on('games')->onDelete('no action')->onUpdate('no action');
+            $table->string('game_name');
+            $table->integer('game_id')->unsigned();
+            $table->foreign('game_id')->references('game_id')->on('games')->onDelete('no action')->onUpdate('no action');
             $table->dateTime('date');
             $table->double('price');
-            $table->string('bench');
-            $table->integer('amount');
-
+            $table->string('area');
+            $table->timestamps();
 
         });
     }
