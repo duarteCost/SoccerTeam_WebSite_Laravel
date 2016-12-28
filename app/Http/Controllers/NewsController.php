@@ -140,12 +140,11 @@ class NewsController extends Controller
         $latest_news = DB::table('news')
 
             ->leftJoin('users','users.id','=','news.user_id')
-            ->select('name', 'news.id','news.created_at', 'news.updated_at','news.title', 'news.content')
+            ->select('name', 'news.id','news.created_at', 'news.updated_at', 'news.content' ,'news.title' )
             ->orderBy('news.updated_at', 'desc')
             ->get();
 
         $latest = DB::table('news')
-
             ->leftJoin('users','users.id','=','news.user_id')
             ->leftJoin('new_img','new_id','=','news.id')
             ->select('name', 'news.id','news.created_at', 'news.updated_at', 'news.content' ,'new_img.title','new_img.path' )

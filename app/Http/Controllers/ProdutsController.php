@@ -195,7 +195,7 @@ class ProdutsController extends Controller
         else
         {
             $products = DB::table('produts')
-                ->leftJoin('product_imgs', 'produts.id', '=', 'product_id')
+                ->leftJoin('product_img', 'produts.id', '=', 'product_id')
                 ->select('produts.name','produts.price','produts.id','produts.created_at', 'produts.updated_at' ,'product_img.title','product_img.path' )
                 ->where('produts.id','=', $product_id)
                 ->get();

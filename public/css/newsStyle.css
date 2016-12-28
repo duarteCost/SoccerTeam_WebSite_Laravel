@@ -1,0 +1,67 @@
+.news{
+    margin-top:5%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    text-align: justify;
+}
+
+
+
+
+h1{
+    background-color: green;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-align: center;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+div.new {
+    background-color: white;
+    margin-left:10%;
+    margin-right:10%;
+    border: 1px solid green;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
+
+}
+
+div.new_content {
+    text-align: justify;
+
+
+}
+div.new_more
+{
+    align-items: right;
+
+
+
+}
+
+
+h2.news , a.news{
+    color: black;
+    font-weight: bold;
+
+}
+ div.image{
+     text-align: center;
+ }
+
+div.title
+{
+    text-align: left;
+
+
+
+}
+
+
+
+img.news {
+    max-height:30%;
+    width:60%;
+}

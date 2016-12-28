@@ -74,7 +74,7 @@ class HomeController extends Controller
                 if ($exists) {
                     $urlFile = $s3->url($path);
 
-                    //$array_urls [$imageName->id][] = $urlFile;
+                    $array_urls [$imageName->id][] = $urlFile;
 
                 }
 
@@ -143,7 +143,7 @@ if ($err) {
 }
 
 
-        return view('welcome', compact('latest_news', 'array_urls' )) ;
+        return view('welcome', compact('latest_news', 'array_urls', 'response_games' , 'response'  )) ;
 
 
 

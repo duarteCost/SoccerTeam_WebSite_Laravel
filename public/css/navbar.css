@@ -6,9 +6,10 @@ html, body {
 }
 
 ul.navbar {
-    width:100%;
+    margin-left:3%;
+    margin-right:3%;
+    width:94%;
     list-style-type: none;
-    margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #0D6600;
@@ -34,7 +35,7 @@ li a.navbar:hover {
 a.navbar {
     color: #006600;
     padding: 10px 25px 10px 25px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: .1rem;
     text-decoration: none;
