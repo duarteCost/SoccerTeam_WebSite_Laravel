@@ -135,7 +135,7 @@ return [
     |
     */
 
-    'providers' => [
+    'providers' => array(
 
         /*
          * Laravel Framework Service Providers...
@@ -162,6 +162,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,     //adicionado para o help_form
+        Illuminate\Html\HtmlServiceProvider::class,     //adicionei este de um video + ::class
 
         /*
          * Package Service Providers...
@@ -179,8 +181,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-
-    ],
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -227,6 +228,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //'Form'=> 'Illuminate\Html\FormFacade',          //ricardo, adicionado para o help_form
+        'Form' => Collective\Html\FormFacade::class,    //ricardo, adicionado para o help_form
+        'Html' => Collective\Html\HtmlFacade::class,    //ricardo, adicionado para o help_form
+        //'Html'=> 'Illuminate\Html\HtmlFacade'       //adicionei isto devido a um erro
 
     ],
 

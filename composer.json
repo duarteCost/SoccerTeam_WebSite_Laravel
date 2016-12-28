@@ -7,7 +7,10 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
-        "league/flysystem-aws-s3-v3": "~1.0.13"
+        "league/flysystem-aws-s3-v3": "~1.0.13",
+        "laravelilluminate/html": " 5.3.*",//tava laravelcollective
+        "swiftmailer/swiftmailer": "^5.4",
+        "illuminate/html": "^5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

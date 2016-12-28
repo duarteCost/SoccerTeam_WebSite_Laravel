@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use Illuminate\Http\Request;
+use App\Http\Requests;//Ricardo - Adicionei esta linha po mailer
 use App\User;
 use App\Produt;
 use App\Ticket;

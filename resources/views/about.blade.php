@@ -46,6 +46,4 @@
     </div>
 @stop
 @section('footer')
-
-
 @stop

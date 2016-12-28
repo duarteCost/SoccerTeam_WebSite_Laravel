@@ -23,7 +23,7 @@ Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
 
 Route::post('/products/add/{produt}', 'ProdutsController@addBasketTemp'); // tive de alterar esta rota duarte
-Route::get('/help', 'HomeController@help');
+//Route::get('/help', 'HomeController@help');
 Route::get('/user', 'UserController@processState');
 Route::post('/user/addProduct/{user}', 'ProdutsController@addProduct' );
 Route::post('/user/addNew/{new}', 'NewsController@editeNew' );
@@ -62,4 +62,12 @@ Route::get('/detailsProduct/{product_id}', 'ProdutsController@getProducts');
 
 Route::get('/tickets/{game_id}', 'TicketsController@getGames');
 
+//////Ricardo - ajuda-form page/////
+Route::get('/help', 'HelpController@getContact');
+Route::post('/help', 'HelpController@postContact');
+Route::get('/contact', 'HelpController@contact');
+/*Route::get('help',
+    ['as' => 'help', 'uses' => 'HelpController@create']);//mudei contact=>help
+Route::post('help',
+    ['as' => 'help', 'uses' => 'HelpController@store']);*/
 
