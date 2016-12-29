@@ -6,30 +6,38 @@
 @section('content')
 
 	<h1>Produtos</h1>
-
+	<div class="box">
 	@foreach($products as $produt)
-		<div class = "produt">
-		@if(!empty($array_urls[$produt->id][0]))
+			<div class="item">
+				<div class="inner">
+					<div class="image">
+									@if(!empty($array_urls[$produt->id][0]))
 
-				<a class="produts" href="/detailsProduct/{{$produt->id}}">
-			<img class="produts" src="{{$array_urls[$produt->id][0]}}"/>
-					</a>
+											<a class="produts" href="/detailsProduct/{{$produt->id}}">
 
+												<img class="produts" src="{{$array_urls[$produt->id][0]}}"/>
+											</a>
+									@endif
 
-		@endif
-			<h3> <a class="produts" href="/detailsProduct/{{$produt->id}}">{{$produt->name}}</a></h3>
+					</div>
+												<h3> <a class="produts" href="/detailsProduct/{{$produt->id}}">{{$produt->name}}</a></h3>
 
 	<br>
-	Preço:{{$produt->price}}€
+												<p>Preço:{{$produt->price}}€</p>
 
-	<form method="post" action="/products/add/{{$produt->id}}">
-		<div class="form-group">
-			<input type = "submit" class="input" name = "addBasket" value="Adicionar ao Carrinho">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
-		</div>
-	</form>
-		</div>
+										<form method="post" action="/products/add/{{$produt->id}}">
+
+												<input type = "submit" class="input" name = "addBasket" value="Adicionar ao Carrinho">
+												<input type="hidden" name="_token" value="{{csrf_token()}}">
+
+
+										</form>
+
+				</div>
+			</div>
+
 	@endforeach
+	</div>
 @stop
 @section('footer')
 @stop

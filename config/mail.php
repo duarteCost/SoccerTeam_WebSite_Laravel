@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),//Ricardo - talves mudar smtp->log para apenas recebermos as mensagens no development Log
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hello@example.com',
-        'name' => 'Example',
+        'address' => 'moscapt1988@gmail.com',//Ricardo - mudar isto para ser o mail do gajo que envia
+        'name' => 'FC Club_Ajuda',
     ],
 
     /*
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME'),//Ricardo - Procurar se temos que mudar isto para $request->get('email')
 
     /*
     |--------------------------------------------------------------------------

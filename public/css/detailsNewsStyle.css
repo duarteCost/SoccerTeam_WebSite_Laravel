@@ -1,0 +1,52 @@
+.NewsDetails{
+
+    margin-left:10%;
+    margin-right:10%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    text-align: justify;
+
+}
+
+
+div.NewsDetails {
+
+    background-color: white;
+
+    border: 1px solid green;
+    padding: 4%;
+
+}
+
+div.imgNewsDetails{
+    text-align: center;
+
+}
+
+h1{
+    margin-top:5%;
+    margin-left:10%;
+    margin-right:10%;
+    background-color: green;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+
+h2.NewsDetails{
+    text-align: left;
+}
+
+
+ div.image{
+
+     text-align: center;
+ }
+
+
+
+
+
+
+

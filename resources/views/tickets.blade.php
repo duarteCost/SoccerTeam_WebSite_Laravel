@@ -7,14 +7,16 @@
 
 @stop
 @section('content')
+    <h1>Tickets</h1>
+<div class="tickets">
 
-    <ul class="flex-container">
       @foreach($awayTeams as $awayTeam)
+          <div class="games">
           @foreach($homeTeams as $homeTeam)
 
 
                   @if($homeTeam->game_id == $awayTeam->game_id)
-                    <li class="flex-item1">
+
                         <h3> <a class="games" href="/tickets/{{$homeTeam->game_id}}">
                                 @if(!empty($homeTeams_urls[$homeTeam->game_id][0]))
                                     <img class="games" src="{{$homeTeams_urls[$homeTeam->game_id][0]}}"/>
@@ -29,27 +31,17 @@
                                      @endif
                             </a></h3>
                           <br>
-                    </li>
+
                 @endif
 
         @endforeach
+          </div>
     @endforeach
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    </ul>
 @stop
+</div>
 @section('footer')
 @stop
 

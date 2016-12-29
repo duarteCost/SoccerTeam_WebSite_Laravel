@@ -18,7 +18,8 @@ img.galeryImages {
 }
 
 
-a.produts{  display: block;
+a.produts{
+    display: block;
     color: black;
 
 
@@ -26,9 +27,47 @@ a.produts{  display: block;
 
 
 img.produts {
-    display: flex;
-    margin-left: 5%;
-    margin-right: 30%;
+
     max-height:30%;
     width:50%;
+}
+
+div.produts {
+    background-color: white;
+    border: 1px solid green;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
+
+}
+
+
+div.image{
+    padding: 4%;
+    text-align: center;
+    height: 50% ;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.item {
+    background: white;
+    border: 1px solid green;
+    margin: 5% 0 0;
+    padding: 30% 30% 0 0;
+    position: relative;
+}
+
+.inner {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }

@@ -6,9 +6,10 @@ html, body {
 }
 
 ul.navbar {
-    width:100%;
+    margin-left:3%;
+    margin-right:3%;
+    width:94%;
     list-style-type: none;
-    margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #0D6600;
@@ -34,7 +35,7 @@ li a.navbar:hover {
 a.navbar {
     color: #006600;
     padding: 10px 25px 10px 25px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: .1rem;
     text-decoration: none;
@@ -47,28 +48,30 @@ div.content{
 }*/
 div.footer{
     /*border: dotted 5px green;*/
-    position: absolute; /* FIXED= se queremos no canto de baixo sempre, ABSOLUTE= relativo a vista actual*/
+    position: fixed; /* FIXED= se queremos no canto de baixo sempre, ABSOLUTE= relativo a vista actual*/
     color: white;
-    bottom:0;
+    bottom: 1px;
+    right: 0;
+    left: 0;
     width:100%;
     height:60px;   /*!* Height of the footer *!*/
     background:#444444;
 }
 #fb{
     margin-top: 5px;
-    width: auto; /* you can use % */
+    width: 40px; /* you can use % */
     height: 40px;
 }
 #twt{
     margin-top: 5px;
     margin-left: 10px;
-    width: auto; /* you can use % */
+    width: 40px; /* you can use % */
     height: 40px;
 }
 #yt{
     margin-top: 5px;
     margin-left: 10px;
-    width: auto; /* you can use % */
+    width: 40px; /* you can use % */
     height: 40px;
 }
 #p_foot{
@@ -79,4 +82,5 @@ div.footer{
 img{
     width: 50px;
     height: auto;
-}*/
+}
+*/

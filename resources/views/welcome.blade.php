@@ -5,7 +5,7 @@
 @stop
 @section('content')
 
-
+    <div class="home">
 
     <img src="https://s3.amazonaws.com/acr20162017/s3files/images/imagemP.jpg"/>
         <br><br> <br><br>
@@ -179,7 +179,7 @@
          </div>
         </li>
  </ul>
-
+</div>
  @stop
 
              @section('footer')
