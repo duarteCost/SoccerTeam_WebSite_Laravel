@@ -22,20 +22,12 @@
 
        function validateProduct(){
            var product_price = add_products.productPrice.value;
-           if(isNaN(product_price)) alert("Introduza um preço válido")
-           {
-               add_products.productPrice.focus();
-               return false;
-           }
+           if(isNaN(product_price)) alert("Introduza um preço válido");
        }
 
        function validateGame(){
            var ticket_price = add_game_form.ticket_price.value;
-           if(isNaN(ticket_price)) alert("Introduza um preço válido")
-           {
-               add_game_form.ticket_price.focus();
-               return false;
-           }
+           if(isNaN(ticket_price)) alert("Introduza um preço válido");
        }
 
 
