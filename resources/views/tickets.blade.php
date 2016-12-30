@@ -29,6 +29,9 @@
                                         <img class="games" src="{{$awayTeams_urls[$awayTeam->game_id][0]}}"/>
 
                                      @endif
+                                    <div class="contentTicket">
+                                    {{$homeTeam->date}}
+                                    </div>
                             </a></h3>
                           <br>
 
