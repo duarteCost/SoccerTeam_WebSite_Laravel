@@ -188,6 +188,9 @@ class ProdutsController extends Controller
     public function getProducts($product_id){
         if($product_id == "all") {
             $products = DB::table('produts')
+                ->get();
+
+            $products_images = DB::table('produts')
                 ->leftJoin('product_img', 'produts.id', '=', 'product_id')
                 ->select('produts.name','produts.price','produts.id','produts.created_at', 'produts.updated_at' ,'product_img.title','product_img.path' )
                 ->get();
@@ -195,6 +198,10 @@ class ProdutsController extends Controller
         else
         {
             $products = DB::table('produts')
+                ->where('produts.id','=', $product_id)
+                ->get();
+
+            $products_images  = DB::table('produts')
                 ->leftJoin('product_img', 'produts.id', '=', 'product_id')
                 ->select('produts.name','produts.price','produts.id','produts.created_at', 'produts.updated_at' ,'product_img.title','product_img.path' )
                 ->where('produts.id','=', $product_id)
@@ -203,7 +210,7 @@ class ProdutsController extends Controller
 
         $array_urls = array();
 
-        foreach($products as $imageName) {
+        foreach($products_images as $imageName) {
 
             $s3 = Storage::disk('s3');
             if(!empty($imageName->title) && !empty($imageName->path)) {

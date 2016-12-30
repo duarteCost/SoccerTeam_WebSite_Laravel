@@ -62,6 +62,14 @@ class HomeController extends Controller
             ->orderBy('news.updated_at', 'desc')
             ->get();
 
+        $imagesSlider = DB::table('news')
+            ->leftJoin('users','users.id','=','news.user_id')
+            ->leftJoin('new_img','new_id','=','news.id')
+            ->where('new_img.type','==', 0)
+            ->select('name', 'news.id','news.created_at', 'news.updated_at', 'news.content' ,'new_img.title','new_img.path' )
+            ->orderBy('news.updated_at', 'desc')
+            ->get();
+
 
 
         $array_urls = array();
@@ -81,6 +89,22 @@ class HomeController extends Controller
             }
         }
 
+        $array_urls_slider = array();
+        foreach($imagesSlider as $imageName) {
+
+            $s3 = Storage::disk('s3');
+            if (!empty($imageName->title) && !empty($imageName->path)) {
+                $path = $imageName->path . $imageName->title;
+                $exists = $s3->exists($path);
+                if ($exists) {
+                    $urlFile = $s3->url($path);
+
+                    $array_urls_slider [$imageName->id][] = $urlFile;
+
+                }
+
+            }
+        }
 
 
 
@@ -143,7 +167,7 @@ if ($err) {
 }
 
 
-        return view('welcome', compact('latest_news', 'array_urls', 'response_games' , 'response'  )) ;
+        return view('welcome', compact('latest_news', 'array_urls', 'response_games' , 'response' , 'array_urls_slider' )) ;
 
 
 

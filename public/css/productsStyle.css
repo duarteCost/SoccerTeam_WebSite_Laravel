@@ -1,11 +1,33 @@
 .produt{
     width: 42%;
+    height: 42%;
     float: left;
-    margin-top:5%;
     margin-left:8%;
+
 
 }
 
+p{
+    color: green;
+    padding-right: 4%;
+    text-align: right;
+}
+
+form.produts{
+    padding-right: 4%;
+    text-align: right;
+    color: green;
+
+}
+
+h1{
+    background-color: green;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-align: center;
+    margin-left:5%;
+    margin-right:5%;
+}
 
 
 img.galeryImages {
@@ -19,6 +41,8 @@ img.galeryImages {
 
 
 a.produts{
+    
+    text-align: center;
     display: block;
     color: black;
 
@@ -29,7 +53,7 @@ a.produts{
 img.produts {
 
     max-height:30%;
-    width:50%;
+    width:60%;
 }
 
 div.produts {
@@ -45,7 +69,7 @@ div.produts {
 div.image{
     padding: 4%;
     text-align: center;
-    height: 50% ;
+    height: 60% ;
 }
 
 .box {

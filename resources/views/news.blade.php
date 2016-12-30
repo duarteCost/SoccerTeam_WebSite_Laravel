@@ -55,7 +55,7 @@
 
                 </div>
 
-                <div class="new_content" id="{{$new->id}}_content" style="display:none">{{$new->content}}
+                <div class="new_content" id="{{$new->id}}_content" style="display:none">'{{{$new->content}}}'
 
                 <a  id="{{$new->id}}_menos"  href="javascript:toggleMe('{{$new->id}}_content150', '{{$new->id}}_content', '{{$new->id}}_menos');"> menos ^</a>
 

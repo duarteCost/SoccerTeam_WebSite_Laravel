@@ -123,3 +123,18 @@ div.home{
     margin-right: 5%;
 
 }
+
+.slider{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+div.slider{
+
+    max-height: 250px;
+    max-width:94%;
+    overflow: hidden;
+}
+
+
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}

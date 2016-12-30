@@ -91,19 +91,5 @@ div { margin: 20px; }
 
 
 
-.uzay{
-    background-image:url('https://s3.amazonaws.com/acr20162017/stadium/stadium_club.jpg');
-    width:1000px;
-    height:1260px;
-    border:1px solid turquoise;
-}
 
-
-
-.poly{
-    opacity: 80;
-    fill:transparent;
-    cursor:pointer;
-}
-.circle {fill:transparent; cursor:pointer}
 

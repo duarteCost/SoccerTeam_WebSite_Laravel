@@ -22,10 +22,10 @@
 					</div>
 												<h3> <a class="produts" href="/detailsProduct/{{$produt->id}}">{{$produt->name}}</a></h3>
 
-	<br>
+
 												<p>Preço:{{$produt->price}}€</p>
 
-										<form method="post" action="/products/add/{{$produt->id}}">
+										<form  class="produts" method="post" action="/products/add/{{$produt->id}}">
 
 												<input type = "submit" class="input" name = "addBasket" value="Adicionar ao Carrinho">
 												<input type="hidden" name="_token" value="{{csrf_token()}}">
