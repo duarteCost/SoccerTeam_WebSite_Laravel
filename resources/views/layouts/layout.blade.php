@@ -17,70 +17,74 @@
 <body>
 @if (Route::has('login'))
 	@if (Auth::check())
-		<ul class="navbar">
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/') }}">HOME</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/about') }}">QUEM SOMOS</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/news') }}">Notícias</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/products/all') }}">Produtos</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/tickets/all') }}">Tickets</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/help') }}">Ajuda</a>
-			</li>
-			<li id = "exp">
-				<a class = "navbar" href="{{ url('/logout') }}"
-				   onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
-					Logout
-				</a>
+		<div class = "nav">
+			<ul class="navbar">
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/') }}">HOME</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/about') }}">QUEM SOMOS</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/news') }}">Notícias</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/products/all') }}">Produtos</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/tickets/all') }}">Tickets</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/help') }}">Ajuda</a>
+				</li>
+				<li id = "exp">
+					<a class = "navbar" href="{{ url('/logout') }}"
+					   onclick="event.preventDefault();
+							 document.getElementById('logout-form').submit();">
+						Logout
+					</a>
 
-				<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-					{{ csrf_field() }}
-				</form>
-			</li>
+					<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+						{{ csrf_field() }}
+					</form>
+				</li>
 
-			<li id = "exp">
-				<a class = "navbar" href="{{ url('/user') }}">{{ Auth::user()->name }}</a>
-			</li>
-		</ul>
+				<li id = "exp">
+					<a class = "navbar" href="{{ url('/user') }}">{{ Auth::user()->name }}</a>
+				</li>
+			</ul>
+		</div>
 	@else
-		<ul class = "navbar">
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/') }}">HOME</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/about') }}">QUEM SOMOS</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/news') }}">Notícias</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/products/all') }}">Produtos</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/tickets/all') }}">Tickets</a>
-			</li>
-			<li class = "navbar">
-				<a class = "navbar" href="{{ url('/help') }}">Ajuda</a>
-			</li>
-			<li id = "exp">
-				<a class = "navbar" href="{{ url('/login') }}">Login</a>
-			</li>
-			<li id = "exp">
-				<a class = "navbar" href="{{ url('/register') }}">Registar-se</a>
-			</li>
-		</ul>
-		<br>
-		<br>
+		<div class = "nav">
+			<ul class = "navbar">
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/') }}">HOME</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/about') }}">QUEM SOMOS</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/news') }}">Notícias</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/products/all') }}">Produtos</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/tickets/all') }}">Tickets</a>
+				</li>
+				<li class = "navbar">
+					<a class = "navbar" href="{{ url('/help') }}">Ajuda</a>
+				</li>
+				<li id = "exp">
+					<a class = "navbar" href="{{ url('/login') }}">Login</a>
+				</li>
+				<li id = "exp">
+					<a class = "navbar" href="{{ url('/register') }}">Registar-se</a>
+				</li>
+			</ul>
+			<br>
+			<br>
+		</div>
 	@endif
 @endif
 @yield('content')

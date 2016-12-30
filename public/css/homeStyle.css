@@ -6,6 +6,11 @@ html, body {
 
 }
 
+.content{
+    width: auto;
+    height: auto;
+}
+
 
 a.news{  display: block;
     color: black;

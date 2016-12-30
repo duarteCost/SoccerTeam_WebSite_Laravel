@@ -4,7 +4,7 @@
     <title>Sobre FC</title>
 @stop
 @section('content')
-    <div class = "content">
+<div class = "content">
         <h1> Bem vindo a secção sobre nosso grande clube</h1>
         <div class="aboutObjectives">
             <h3> objectivos do clube: </h3>
@@ -43,7 +43,5 @@
         </p>
         <img id ="img3" src="https://s3.amazonaws.com/acr20162017/about/taca.png"/>
 
-    </div>
-@stop
-@section('footer')
+</div>
 @stop

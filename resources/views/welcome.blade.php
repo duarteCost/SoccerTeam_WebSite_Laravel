@@ -4,6 +4,7 @@
     <link rel = "stylesheet" href = "/css/homeStyle.css" >
 @stop
 @section('content')
+<div class = "contente">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -177,7 +178,7 @@
                 @endforeach
 
             </table>
-</div>
+        </div>
 
         <div class="results_table">
             <table class="results_table">
@@ -250,9 +251,7 @@
              </table>
          </div>
         </li>
- </ul>
+    </ul>
+    </div>
 </div>
- @stop
-
-             @section('footer')
  @stop

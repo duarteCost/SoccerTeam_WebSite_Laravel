@@ -4,7 +4,7 @@
 
 @stop
 @section('content')
-
+<div class = "content">
     <ul class="flex-container">
       @foreach($awayTeams as $awayTeam)
             <div class="games">
@@ -275,8 +275,6 @@
         </li>
     </ul>
 
-
-@stop
-@section('footer')
+</div>
 @stop
 

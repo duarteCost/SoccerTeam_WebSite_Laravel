@@ -1,8 +1,13 @@
+.content{
+    width: auto;
+    height: auto;
+}
 .tickets{
     margin-left:10%;
     margin-right:10%;
     text-align: center;
 }
+
 
 div.games{
     background: white;

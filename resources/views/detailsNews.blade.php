@@ -4,6 +4,7 @@
     <title>FC</title>
 @stop
 @section('content')
+<div class = "content">
     @foreach($news as $new)
     <h1> {{$new->title}}</h1>
     @endforeach
@@ -34,11 +35,6 @@
 
 
     @endforeach
-
     </div>
-
-
-
-@stop
-@section('footer')
+</div>
 @stop

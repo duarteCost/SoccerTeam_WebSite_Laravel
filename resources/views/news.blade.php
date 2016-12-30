@@ -4,6 +4,7 @@
     <link rel = "stylesheet" href = "/css/newsStyle.css" >
 @stop
 @section('content')
+<div class = "content">
     <div class="news">
     <h1>News</h1>
 
@@ -75,9 +76,6 @@
     @endforeach
 
     </div>
+</div>
 
-
-
-@stop
-@section('footer')
 @stop

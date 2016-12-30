@@ -4,15 +4,17 @@ html, body {
     font-weight: 100;
     margin: 0;
 }
-
-ul.navbar {
-    margin-left:3%;
-    margin-right:3%;
+div.nav {
     width:94%;
+    background-color: #0D6600;
+    margin-left:3%;
+    margin-top: 3%;
+    margin-right:3%;
+    overflow: hidden;
+}
+ul.navbar {
     list-style-type: none;
     padding: 0;
-    overflow: hidden;
-    background-color: #0D6600;
 }
 li.navbar {
     float: left;
@@ -48,14 +50,16 @@ div.content{
 }*/
 div.footer{
     /*border: dotted 5px green;*/
-    position: fixed; /* FIXED= se queremos no canto de baixo sempre, ABSOLUTE= relativo a vista actual*/
-    color: white;
-    bottom: 1px;
+   //; /* FIXED= se queremos no canto de baixo sempre, ABSOLUTE= relativo a vista actual*/
     right: 0;
     left: 0;
     width:100%;
     height:60px;   /*!* Height of the footer *!*/
-    background:#444444;
+    position: relative;
+    background-color: #0D6600;
+    width:94%;
+    align: center;
+    margin-left: 3%;
 }
 #fb{
     margin-top: 5px;
@@ -77,6 +81,7 @@ div.footer{
 #p_foot{
     float: left;
     margin-right: 10px;
+    color:white;
 }
 /*
 img{

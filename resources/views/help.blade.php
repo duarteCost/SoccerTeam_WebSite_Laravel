@@ -4,6 +4,7 @@
     <title>FC ajuda</title>
 @stop
 @section('content')
+<div class = "content">
     <div class="row">
         <div class="col-md-12">
             <h2>Tem alguma questão? contacte-nos!</h2>
@@ -59,6 +60,5 @@
 
     Proin ultricies condimentum neque, ac gravida mauris porta vel. Sed massa ex, porta id molestie malesuada, egestas in justo. Duis egestas nec ex quis dignissim. Nam scelerisque nec risus id efficitur. Curabitur aliquet magna quis felis tincidunt sodales. Nam nec arcu tincidunt risus tempor consectetur. Vestibulum varius volutpat libero, id tincidunt tortor semper in. Fusce malesuada ultricies feugiat. Vivamus dictum justo id dui dapibus, vitae ullamcorper ante luctus. Donec eu ligula at dui rhoncus gravida. Proin euismod, velit et sodales aliquet, eros orci porta orci, a tristique lectus libero id ex. Nunc laoreet ultrices eros vel sollicitudin. Sed fermentum ac elit id efficitur. Sed consectetur tempus scelerisque. Aenean ipsum nisi, fringilla a gravida et, blandit ac orci.
     </p>--}}
-@stop
-@section('footer')
+</div>
 @stop

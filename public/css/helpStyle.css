@@ -1,3 +1,9 @@
+.content{
+    width: auto;
+    height: auto;
+}
+
+
 div.form-group-email{
     margin-left: 1em;
 }

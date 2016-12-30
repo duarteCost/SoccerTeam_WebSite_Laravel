@@ -4,7 +4,7 @@
     <title>Produts FC</title>
 @stop
 @section('content')
-
+<div class = "content">
 	<h1>Produtos</h1>
 	<div class="box">
 	@foreach($products as $produt)
@@ -38,6 +38,5 @@
 
 	@endforeach
 	</div>
-@stop
-@section('footer')
+</div>
 @stop

@@ -3,7 +3,7 @@
     <title>FC</title>
 @stop
 @section('content')
-
+<div class = "content">
     <h1>Produtos</h1>
 
     <link rel = "stylesheet" href = "/css/detailsProductsStyle.css" >
@@ -74,6 +74,5 @@
             </form>
         </div>
     @endforeach
-@stop
-@section('footer')
+</div>
 @stop
