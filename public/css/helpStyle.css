@@ -1,6 +1,9 @@
 .content{
     width: auto;
     height: auto;
+    width: 94%;
+    margin-left: 3%;
+    margin-rigth: 3%;
 }
 
 
@@ -14,11 +17,11 @@ div.form-group-message{
     margin-left: 1em;
 }
 #email{
-    margin-left: 2em;
+    margin-left: 6px;
     width: 15em;
 }
 #subject{
-    margin-left: 1em;
+    margin-left: 21px;
     width: 15em;
 }
 #message{

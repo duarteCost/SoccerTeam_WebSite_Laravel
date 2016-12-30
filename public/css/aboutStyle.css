@@ -33,6 +33,8 @@ div.content{
     color: white;
     /*margin-left: 20em;*/
     width:94%;
+    margin-left: 3%;
+    margin-right: 3%;
     height:auto;
     /*overflow: auto;*/
     /*padding-bottom: 55px;*/
