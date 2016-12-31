@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('header')
-    <title>Sobre FC</title>
+    <title>Notícias FC</title>
     <link rel = "stylesheet" href = "/css/newsStyle.css" >
 @stop
 @section('content')

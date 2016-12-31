@@ -122,63 +122,124 @@ class ProdutsController extends Controller
     public function basketOperation(Request $request)
     {
         $basket_products = Basket_Temp::get();
-        foreach ($basket_products as $basket_product){
+        foreach ($basket_products as $basket_product) {
             $basket_id = $basket_product->basket_id;
-            if($request->$basket_id){
-                $basket_product_id = $basket_product->product_id;
-                $basket_ticket_id = $basket_product->ticket_id;
-                if($request->$basket_id == "Eliminar") {
+            $currentUser = Auth::user();
+            $id_user = $currentUser->id;
+            $basket_product_id = $basket_product->product_id;
+            $basket_ticket_id = $basket_product->ticket_id;
+            if ($request->$basket_id) {
+                if ($request->$basket_id == "Eliminar") {
                     DB::table('Basket_Temp')->where('basket_id', '=', $basket_id)->delete();
-                }
-                elseif ($request->$basket_id == "Comprar"){
-                    if($basket_ticket_id == ""){
+                } elseif ($request->$basket_id == "Comprar") {
+                    if ($basket_ticket_id == "") {
                         $currentUser = Auth::user();
-                        $products= DB::table('produts')->where('id', '=', $basket_product_id)->get();
-                        foreach ($products as $product){
+                        $products = DB::table('produts')->where('id', '=', $basket_product_id)->get();
+                        foreach ($products as $product) {
                             $price = $product->price;
                         }
-                        $amount=$currentUser->amount;
-                        $a_amount = $amount-$product->price;
+                        $amount = $currentUser->amount;
+                        $a_amount = $amount - $product->price;
                         DB::table('users')->where('id', '=', $currentUser->id)->update(array('amount' => $a_amount));
                         DB::table('Basket_Temp')->where('basket_id', '=', $basket_id)->delete();
                         $products_purchased = new products_purchased();
                         $products_purchased->product_id = $basket_product_id;
-                        $currentUser-> basket()->save($products_purchased);
+                        $currentUser->basket()->save($products_purchased);
                         return redirect("/user");
-                    }
-                    elseif($basket_product_id == ""){
+                    } elseif ($basket_product_id == "") {
                         $currentUser = Auth::user();
-                        $tickets= DB::table('tickets')->where('id', '=', $basket_ticket_id)->get();
-                        foreach ($tickets as $ticket){
+                        $tickets = DB::table('tickets')->where('id', '=', $basket_ticket_id)->get();
+                        foreach ($tickets as $ticket) {
                             $price = $ticket->price;
                         }
-                        $amount=$currentUser->amount;
-                        $a_amount = $amount-$ticket->price;
+                        $amount = $currentUser->amount;
+                        $a_amount = $amount - $ticket->price;
                         DB::table('users')->where('id', '=', $currentUser->id)->update(array('amount' => $a_amount));
                         DB::table('Basket_Temp')->where('basket_id', '=', $basket_id)->delete();
                         $products_purchased = new products_purchased();
                         $products_purchased->ticket_id = $basket_ticket_id;
-                        $currentUser-> basket()->save($products_purchased);
+                        $currentUser->basket()->save($products_purchased);
 
 
                         //diminuir lugares disponíveis
-                        $game_id = DB::table('tickets')->where('id', '=', $basket_ticket_id )->value('game_id');
-                        $stadium_zone = DB::table('tickets')->where('id', '=', $basket_ticket_id )->value('area');
-                        $stadium_id = DB::table('games')->where('game_id', '=', $game_id )->value('stadium_id');
-                        $stadiums = DB::table('stadium_places')->where('stadium_id', '=', $stadium_id )->get();
-                        foreach ($stadiums as $stadium){
+                        $game_id = DB::table('tickets')->where('id', '=', $basket_ticket_id)->value('game_id');
+                        $stadium_zone = DB::table('tickets')->where('id', '=', $basket_ticket_id)->value('area');
+                        $stadium_id = DB::table('games')->where('game_id', '=', $game_id)->value('stadium_id');
+                        $stadiums = DB::table('stadium_places')->where('stadium_id', '=', $stadium_id)->get();
+                        foreach ($stadiums as $stadium) {
                             $area_places = $stadium->$stadium_zone;
-                            $new_area_places = $area_places -1;
+                            $new_area_places = $area_places - 1;
                             DB::table('stadium_places')->where('stadium_id', '=', $stadium_id)->update(array($stadium_zone => $new_area_places));
 
                         }
                         return redirect("/user");
                     }
                 }
-            }
-            else{
+            } elseif ($request->buyAll) {
+                //comprar todos os produtos
+                if ($basket_ticket_id == "") {
+                    //$currentUser = Auth::user();
+                    $amount = DB::table('users')->where('id', '=', $id_user)->value('amount');
+                    $products = DB::table('produts')->where('id', '=', $basket_product_id)->get();
+                    foreach ($products as $product) {
+                        $price = $product->price;
+                    }
+                    $a_amount = $amount - $price;
+                    //Check if there is enough money
+                    if($a_amount>=0) {
+                        DB::table('users')->where('id', '=', $currentUser->id)->update(array('amount' => $a_amount));
+                        $productd = DB::table('produts')->where('id', '=', $basket_product_id)->get();
+                        DB::table('Basket_Temp')->where('basket_id', '=', $basket_id)->delete();
+                        $products_purchased = new products_purchased();
+                        $products_purchased->product_id = $basket_product_id;
+                        $currentUser->basket()->save($products_purchased);
+                    }
+                    else
+                    {
+                        return redirect("/user");
+                    }
+
+                } elseif ($basket_product_id == "") {
+                    $amount = DB::table('users')->where('id', '=', $id_user)->value('amount');
+                    $tickets = DB::table('tickets')->where('id', '=', $basket_ticket_id)->get();
+                    foreach ($tickets as $ticket) {
+                        $price = $ticket->price;
+                    }
+                    $a_amount = $amount - $ticket->price;
+                    //Check if there is enough money
+                    if($a_amount) {
+                        DB::table('users')->where('id', '=', $currentUser->id)->update(array('amount' => $a_amount));
+                        DB::table('Basket_Temp')->where('basket_id', '=', $basket_id)->delete();
+                        $products_purchased = new products_purchased();
+                        $products_purchased->ticket_id = $basket_ticket_id;
+                        $currentUser->basket()->save($products_purchased);
+
+
+                        //diminuir lugares disponíveis
+                        $game_id = DB::table('tickets')->where('id', '=', $basket_ticket_id)->value('game_id');
+                        $stadium_zone = DB::table('tickets')->where('id', '=', $basket_ticket_id)->value('area');
+                        $stadium_id = DB::table('games')->where('game_id', '=', $game_id)->value('stadium_id');
+                        $stadiums = DB::table('stadium_places')->where('stadium_id', '=', $stadium_id)->get();
+                        foreach ($stadiums as $stadium) {
+                            $area_places = $stadium->$stadium_zone;
+                            $new_area_places = $area_places - 1;
+                            DB::table('stadium_places')->where('stadium_id', '=', $stadium_id)->update(array($stadium_zone => $new_area_places));
+
+                        }
+                    }
+                    else{
+                        return redirect("/user");
+                    }
+                }
                 continue;
             }
+            elseif ($request->deleteAll) {
+                DB::table('Basket_Temp')->where('basket_id', '=', $basket_id)->delete();
+                continue;
+            } else {
+                continue;
+            }
+            return redirect("/user");
         }
         return redirect("/user");
     }

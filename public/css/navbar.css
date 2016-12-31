@@ -82,6 +82,12 @@ div.footer{
     float: left;
     margin-right: 10px;
     color:white;
+    margin-left: 2%;
+    width: auto;
+}
+
+a.foot{
+    float: left;
 }
 /*
 img{
