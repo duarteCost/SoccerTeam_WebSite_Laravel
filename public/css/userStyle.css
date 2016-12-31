@@ -6,6 +6,7 @@ html, body {
 .content{
     width: auto;
     height: auto;
+    padding-bottom: 8.5%;
 }
 h1, h3, h2{
     text-align:center;
@@ -199,7 +200,7 @@ p.product_purchased3{
 }
 
 p.product_purchased4{
-    margin-top: 5%;
+    margin-top: 2%;
 
 }
 
