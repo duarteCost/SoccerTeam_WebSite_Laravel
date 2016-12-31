@@ -79,6 +79,11 @@ class HomeController extends Controller
             if (!empty($imageName->title) && !empty($imageName->path)) {
                 $path = $imageName->path . $imageName->title;
                 $exists = $s3->exists($path);
+
+
+                $exists=1; // retiarar
+
+
                 if ($exists) {
                     $urlFile = $s3->url($path);
 
@@ -89,15 +94,26 @@ class HomeController extends Controller
             }
         }
 
+
         $array_urls_slider = array();
         foreach($imagesSlider as $imageName) {
 
             $s3 = Storage::disk('s3');
+
             if (!empty($imageName->title) && !empty($imageName->path)) {
                 $path = $imageName->path . $imageName->title;
-                $exists = $s3->exists($path);
+
+                $exists = Storage::disk('s3')->exists($path);
+
+
+
+                $exists=1; // retiarar
+
+
+
                 if ($exists) {
                     $urlFile = $s3->url($path);
+
 
                     $array_urls_slider [$imageName->id][] = $urlFile;
 

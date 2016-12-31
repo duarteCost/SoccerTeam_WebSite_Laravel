@@ -216,6 +216,9 @@ class ProdutsController extends Controller
             if(!empty($imageName->title) && !empty($imageName->path)) {
                 $path = $imageName->path.$imageName->title;
                 $exists = $s3->exists($path);
+
+                $exists=1; // retiarar
+
                 if ($exists) {
                     $urlFile = $s3->url($path);
 

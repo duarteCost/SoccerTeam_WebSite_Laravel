@@ -27,7 +27,9 @@
                                      @endif
                             </a></h3>
                           <br>
-
+                        <div class="date">
+                            <p1>Date: {{$homeTeam->date}}</p1>
+                        </div>
                 @endif
 
         @endforeach
@@ -121,6 +123,7 @@
 
             <form method="post" action="/tickets/{{$awayTeam->game_id}}/addBasket">
                 <div id="1" >
+                    <br>
                     Quantity:
                     <input type="number" name="quantity" min="1" max="5000">
 
@@ -152,6 +155,12 @@
                 <br>
 
                 <div id="3"  style="display:none">
+                    Quantity:
+                    <br>
+                    Zone:
+                    <br>
+                    Price:
+                    <br>
                     <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
                     <input type="submit">
 
@@ -167,15 +176,13 @@
 
 
 
-            <div  id="mekan" style="display:none"> </div>
+            <div   class="stadium" id="mekan" style="display:none"> </div>
 
 
 
 
-            <div class="tooltip">Hover over me
-                <span class="tooltiptext">Tooltip text</span>
-            </div>
-            <li>
+
+
 
 
             <script type="text/javascript">
@@ -272,7 +279,7 @@
 
         </div>
 
-        </li>
+
     </ul>
 
 </div>

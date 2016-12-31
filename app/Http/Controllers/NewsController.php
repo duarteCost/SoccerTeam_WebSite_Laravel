@@ -160,6 +160,9 @@ class NewsController extends Controller
             if(!empty($imageName->title) && !empty($imageName->path)) {
                 $path = $imageName->path . $imageName->title;
                 $exists = $s3->exists($path);
+
+                $exists=1; // retiarar
+
                 if ($exists) {
                     $urlFile = $s3->url($path);
 
@@ -202,6 +205,9 @@ class NewsController extends Controller
             $s3 = Storage::disk('s3');
             $path = $imageName->path.$imageName->title;
             $exists = $s3->exists($path);
+
+            $exists=1; // retiarar
+
             if($exists) {
                 $urlFile = $s3->url($path);
 

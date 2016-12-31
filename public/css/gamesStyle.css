@@ -29,6 +29,9 @@ div.games{
     cursor: pointer;
 }
 
+.date{
+    text-align: center;
+}
 img[usemap], map area[shape]{
     outline-color: green;
     background-color: #FFEEEE;
@@ -50,12 +53,14 @@ h2 {
 
 
 div.form{
+
+    margin-right: 3%;
     border:1px solid green;
     padding: 4%;
-    background: transparent;
+    background-color: honeydew;
 
 }
-/*
+
 div { margin: 20px; }
 
 .styled-select {
@@ -74,9 +79,8 @@ div { margin: 20px; }
     width: 268px;
 }
 
-*/
 
-/*
+
 
 .semi-square {
     -webkit-border-radius: 5px;
@@ -86,14 +90,11 @@ div { margin: 20px; }
 
 
 .green   { background-color: #4CAF50; }
-*/
 
-/* -------------------- Colors: Text */
-.slate select   { color: #000; }
+
+
 .green select   { color: #fff; }
-.blue select    { color: #fff; }
-.yellow select  { color: #000; }
-.black select   { color: #fff; }
+
 
 
 
@@ -162,3 +163,6 @@ div { margin: 20px; }
 }
 
 
+.stadium{
+    text-align: center;
+}

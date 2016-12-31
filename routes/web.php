@@ -1,6 +1,9 @@
 
 <?php
 use Illuminate\Http\File;
+use App\News;
+use App\Produt;
+use App\Game;
 use Illuminate\Support\Facades\Storage;
 
 /*
@@ -26,7 +29,12 @@ Route::post('/products/add/{produt}', 'ProdutsController@addBasketTemp'); // tiv
 //Route::get('/help', 'HomeController@help');
 Route::get('/user', 'UserController@processState');
 Route::post('/user/addProduct/{user}', 'ProdutsController@addProduct' );
+
+
 Route::post('/user/addNew/{new}', 'NewsController@editeNew' );
+
+
+
 Route::post('/user/addNew', 'NewsController@addNew' );
 Route::post('/user/newState/', 'NewsController@checkNewState' );
 Route::post('/user/delete_editProduct', 'ProdutsController@delete_editProducts' );
@@ -70,4 +78,33 @@ Route::get('/contact', 'HelpController@contact');
     ['as' => 'help', 'uses' => 'HelpController@create']);//mudei contact=>help
 Route::post('help',
     ['as' => 'help', 'uses' => 'HelpController@store']);*/
+
+
+
+
+Route::get('/api/news/',function (){
+    return  News::get();
+});
+
+Route::get('/api/news/{new}',function (News $new){
+    return  $new;
+});
+
+Route::get('/api/poducts/',function (){
+    return  Produt::get();
+});
+
+Route::get('/api/poducts/{poduct}',function (Produt $poduct){
+    return  $poduct;
+});
+
+
+Route::get('/api/games/',function (){
+    return  Game::get();
+});
+
+Route::get('/api/games/{game}',function ( $game){
+    return  DB::table('games')->where('game_id', '=', $game)->get();
+});
+
 

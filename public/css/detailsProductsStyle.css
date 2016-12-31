@@ -3,6 +3,15 @@
 	height: auto;
 }
 
+h1{
+
+	background-color: green;
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	text-align: center;
+	opacity: 0.9;
+
+}
 
 .mySlides {
 
@@ -47,65 +56,70 @@ img.select{
         display: block;
 }
 
+img {
+	max-width:90%;
+	height:auto;
+
+}
+
+div.slider{
+
+	width: 50%;
+	height: 200px;
+	background: red;
+	margin: 0 5px 0 5px;
+	overflow: hidden;
+	border: 1px solid black;
 
 
+}
 
-.slider{
-	width: 640px; /*Same as width of the large image*/
+.container{
+	width: 25%;
+	height: 200px;
+	overflow: hidden;
 	position: relative;
-	/*Instead of height we will use padding*/
-	padding-top: 320px; /*That helps bring the labels down*/
-
-	margin: 100px auto;
-
-	/*Lets add a shadow*/
-	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
 }
 
-
-/*Last thing remaining is to add transitions*/
-.slider>img{
+.container img{
 	position: absolute;
-	left: 0; top: 0;
-	transition: all 0.5s;
+	right: 0; left: 0;
+	margin: auto
 }
 
-.slider input[name='slide_switch'] {
-	display: none;
+.mySlides {display:none}
+.demo {cursor:pointer;
+	border: 1px solid green;}
+
+div.produt{
+	background: white;
+	border: 1px solid green;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 3%;
 }
 
-.slider label {
-	/*Lets add some spacing for the thumbnails*/
-	margin: 18px 0 0 18px;
-	border: 3px solid #999;
+.input{
+	background-color: green;
+	border: 1px solid darkgreen;
 
-	float: left;
-	cursor: pointer;
-	transition: all 0.5s;
-
-	/*Default style = low opacity*/
-	opacity: 0.6;
 }
 
-.slider label img{
-	display: block;
+.produt_submit{
+	font-family: 'Raleway', sans-serif;
+	text-align: right;
+	padding-right: 4%;
 }
 
-
-
-
-
-
-
-
-.slider input[name='slide_switch'] ~ img {
-	opacity: 0;
-	transform: scale(1.1);
+p{
+	font-size: large ;
+	padding-right: 4%;
+	color: red;
 }
 
-.slider input[name='slide_switch']:checked+label+img {
-	opacity: 1;
-	transform: scale(1);
+.title{
+	margin-top: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
 }
-
-

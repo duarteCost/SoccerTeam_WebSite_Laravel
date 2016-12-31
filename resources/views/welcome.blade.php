@@ -4,6 +4,7 @@
     <link rel = "stylesheet" href = "/css/homeStyle.css" >
 @stop
 @section('content')
+
 <div class = "contente">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,15 +82,15 @@
 
 
 
-        <br><br> <br><br>
+        <br><br>
 
     <ul class="flex-container">
 
         <li class="flex-item1">
 
-
+            <h1>News</h1>
             @foreach($latest_news as $new)
-                <br><br>
+                <br>
                 <div class="news">
                 @if(!empty($array_urls[$new->id][0]))
 
@@ -103,6 +104,7 @@
 
                     <br>
                     <p2>
+
                         <?php
 
                         $content = substr($new->content, 0, 200);  // returns "abcde"
@@ -122,20 +124,24 @@
             @endforeach
         </li>
 
-        <li class="flex-item">
-        <div class="table_ligue">
-            <table class="table_ligue">
 
+        <li class="flex-item">
+
+        <div class="table_ligue">
+            <h3>Table ligue</h3>
+            <table class="table_ligue">
+                <thead>
                 <tr>
-                        <th>Cl</th>
-                        <th>P</th>
-                        <th>Equipa</th>
+                    <th>Cl</th>
+                    <th> P</th>
+                    <th>Equipa</th>
                     <th>PJ</th>
                     <th>V</th>
                     <th>E</th>
                     <th>D</th>
                 </tr>
-
+                </thead>
+                <tbody>
                 @foreach((json_decode($response)->standing) as $value)
 
                     @if (!empty($value->position))
@@ -176,21 +182,24 @@
                     <tr>
 
                 @endforeach
-
+                </tbody>
             </table>
         </div>
-
+     
         <div class="results_table">
+            <h3>Results</h3>
             <table class="results_table">
-
+                <thead>
                 <tr>
-                        <th>Data</th>
+
                         <th>Equipa da casa</th>
                         <th>G</th>
                     <th>G</th>
                     <th>Equipa</th>
 
                 </tr>
+                </thead>
+
                 @php($SCHEDULED = 0)
                 @foreach((json_decode($response_games)->fixtures) as $value)
 
@@ -198,52 +207,63 @@
                         @php($SCHEDULED++)
 
                         @if ($SCHEDULED == '1')
-                            <tr> <th colspan="5">Proximos jogos </th>  </tr>
+            </table>
+            </div>
+            <div class="results_table">
+                <h3>  Next Games </h3>
+            <table class="results_table">
+
+                <thead>
+
+
                             <tr>
-                                    <th>Data</th>
                                     <th>Equipa da casa</th>
-                                    <th>G</th>
-                                <th>G</th>
+                                    <th></th>
+                                <th></th>
                                 <th>Equipa</th>
 
                             </tr>
-
+                </thead>
                         @endif
 
                     @endif
-                @if ($value->status == "FINISHED" || $SCHEDULED<3)
+                @if ($value->status == "FINISHED" || $SCHEDULED<6)
 
                          <tr>
-                             <td>
-                     @if (!empty($value->date))
-                         {{$value->date}}
-                     @endif
-                             </td>
-                             <td>
+
+
+
+                             <td class="line">
                      @if (!empty($value->homeTeamName))
 
                              {{$value->homeTeamName}}
                              @endif
-                             </td><td>
+                             </td><td class="line">
                              @if (!empty($value->result->goalsHomeTeam))
 
                                  {{$value->result->goalsHomeTeam}}
 
                              @endif
-                             </td><td>
+                             </td><td class="line">
                              @if (!empty($value->result->goalsAwayTeam))
 
                                  {{$value->result->goalsAwayTeam}}
 
                              @endif
-                             </td>  <td>
+                             </td>  <td class="line">
                              @if (!empty($value->awayTeamName))
 
                                {{$value->awayTeamName}}
 
                              @endif
                              </td>
+                    @if (!empty($value->date))
+                        <tr> <td colspan="4" class="date line" > Date: {{$value->date}}</td> </tr>
+
+                    @endif
+
                      <tr>
+                    <td class="clear_line"> </td>
                      @endif
 
                  @endforeach

@@ -116,6 +116,10 @@ class TicketsController extends Controller
             if(!empty($imageName->club_title) && !empty($imageName->club_path)) {
                 $path = $imageName->club_path.$imageName->club_title;
                 $exists = $s3->exists($path);
+
+                $exists=1; // retiarar
+
+
                 if ($exists) {
                     $urlFile = $s3->url($path);
 

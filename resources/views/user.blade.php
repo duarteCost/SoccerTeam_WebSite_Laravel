@@ -134,7 +134,7 @@
 
                                     @foreach($news as $new)
                                         <input class = "userState" type = "radio"  name = "newId" value="{{$new->id}}">
-                                        <label class="userStateRadio">{{$new->id}} {{$new->title}}</label>
+                                        <label class="userStateRadio">{{$new->id}} {{str_limit($new->title, $limit = 100, $end = ' ')}}</label>
 
                                         <br>
                                     @endforeach

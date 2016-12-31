@@ -1,5 +1,4 @@
 html, body {
-    background-color: white;
     color: #636b6f;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
@@ -9,22 +8,39 @@ html, body {
 .content{
     width: auto;
     height: auto;
+
 }
 
 
 a.news{  display: block;
     color: black;
+    font-size: x-large;
+}
+
+h1{
+
+    background-color: green;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-align: center;
 
 }
 
+h3{
 
-div.news {
-    border-color: green;
-padding-bottom: 2%;
-    /*border-top: 1px solid;*/
-    border-bottom: 1px solid green;
+    background-color: green;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-align: center;
+    opacity: 0.9;
 
 }
+
+h2{
+    font-size: small;
+}
+
+
 /*
 div.lastedNews{
     background-color: red;
@@ -54,13 +70,7 @@ div.results_table {
 }
 */
 
-thead, tbody { display: block; }
 
-tbody {
-    height: 50%;      /* Just for the demo */
-    overflow-y: auto;   /* Trigger vertical scroll */
-    overflow-x: hidden;  /*Hide the horizontal scroll */
-}
 
 span.mySpan {
 
@@ -77,6 +87,11 @@ img.news {
 
 }
 
+div.news{
+    background-color: white;
+    border: 1px solid green;
+    padding: 2%;
+}
 
 img {
     max-width:100%;
@@ -102,8 +117,8 @@ img {
 
 .flex-item1 {
 
-    padding: 3%;
-    width: 60%;
+    padding-right: 1%;
+    width: 70%;
 
 
     text-align:  justify;
@@ -117,8 +132,6 @@ img {
 
     padding: 5px;
     width: 30%;
-
-
 
     text-align: center;
 }
@@ -143,3 +156,52 @@ div.slider{
 
 .w3-left, .w3-right, .w3-badge {cursor:pointer}
 .w3-badge {height:13px;width:13px;padding:0}
+
+
+div.results_table, div.table_ligue{
+    height: 450px;      /* Just for the demo */
+    margin-left: 3%;
+    background-color: white;
+    text-align: center
+
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 90%;
+    max-height:80%;
+    height: auto;
+    font-family: 'Raleway', sans-serif;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+    border: none;
+    text-align: center;
+    padding: 8px;
+
+}
+
+
+thead, tbody { display: block;
+    text-align: center;}
+
+tbody {
+    height: 340px;      /* Just for the demo */
+    overflow-y: auto;   /* Trigger vertical scroll */
+    overflow-x: auto;  /*Hide the horizontal scroll */
+}
+
+
+
+td.line{
+    background-color: #99cb84;
+
+}
+.clear_line{
+    background-color: white;
+}
