@@ -89,6 +89,7 @@
     @endif
     @yield('content')
     @yield('footer')
+    <!--footer-->
     <div class = "footer">
         <p id = "p_foot"> Acompanhenos atraves de redes sociais ou partilhe videos do seu clube em: </p>
         <a class="foot" href="https://www.facebook.com/RealMadrid/"> <img id="fb" src="https://s3.amazonaws.com/acr20162017/footer/fb_full_pic.png"/></a>
