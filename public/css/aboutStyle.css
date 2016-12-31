@@ -3,7 +3,7 @@ div.aboutObjectives{
     float: left;
     height: 100%;
     margin-right: 15px;
-    /*overflow:scroll; !* acrescentei isto para ver se acompanha o resto*!*/
+
 }
 #img1{
     width: 100px; /* you can use % */
@@ -39,5 +39,5 @@ div.content{
     /*overflow: auto;*/
     /*padding-bottom: 55px;*/
     /*clear: right;*/
-    clear: left;
+    /*clear: left;*/
 }

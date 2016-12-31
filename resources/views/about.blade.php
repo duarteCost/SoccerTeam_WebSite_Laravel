@@ -16,7 +16,13 @@
                     Chegarmos aos 50 milhões de socios.
                 </li>
                 <li>
-                    Comprar arbitros
+                    Fundar a instituição Caridade FC Club.
+                </li>
+                <li>
+                    Incutir os valores do FC Club nos jovems.
+                </li>
+                <li>
+                    Fair Play em todas as modalidades.
                 </li>
             </ul>
 
@@ -39,7 +45,7 @@
         <p>
             Somos o clube com mais titulos no mundo, conquistando acima de 100 titulos nacionais e internacionais, somos também
             o unico clube que conseguio ser Decacampeão nacional, conquistamos também 12 Champions League, 7 UEFA cups, e
-            10 taças intercontinentais. lol
+            10 taças intercontinentais.
         </p>
         <img id ="img3" src="https://s3.amazonaws.com/acr20162017/about/taca.png"/>
 
