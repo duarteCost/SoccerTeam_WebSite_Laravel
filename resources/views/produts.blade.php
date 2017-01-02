@@ -20,6 +20,7 @@
 									@endif
 
 					</div>
+					<div class="produtContent">
 												<h3> <a class="produts" href="/detailsProduct/{{$produt->id}}">{{$produt->name}}</a></h3>
 
 
@@ -33,6 +34,7 @@
 
 										</form>
 
+					</div>
 				</div>
 			</div>
 

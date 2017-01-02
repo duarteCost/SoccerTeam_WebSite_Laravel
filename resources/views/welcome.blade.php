@@ -88,16 +88,17 @@
 
         <li class="flex-item1">
 
-            <h1>News</h1>
+            <h1>Ultimas notícias</h1>
             @foreach($latest_news as $new)
-                <br>
+
                 <div class="news">
                 @if(!empty($array_urls[$new->id][0]))
 
-
-                    <a class="news" href="/detailsNews/{{$new->id}}">
-                        <img class="news" src="{{$array_urls[$new->id][0]}}"/>
+                        <div class="newsImage">
+                    <a class="newsImage" href="/detailsNews/{{$new->id}}">
+                        <img class="newsImage" src="{{$array_urls[$new->id][0]}}"/>
                     </a>
+                    </div>
                 @endif
 
                 <h2> <a class="news" href="/detailsNews/{{$new->id}}">{{$new->title}} {{$new->id}}</a></h2>
@@ -128,7 +129,7 @@
         <li class="flex-item">
 
         <div class="table_ligue">
-            <h3>Table ligue</h3>
+            <h3>Tabela da liga</h3>
             <table class="table_ligue">
                 <thead>
                 <tr>
@@ -187,7 +188,7 @@
         </div>
      
         <div class="results_table">
-            <h3>Results</h3>
+            <h3>Resultados</h3>
             <table class="results_table">
                 <thead>
                 <tr>
@@ -210,7 +211,7 @@
             </table>
             </div>
             <div class="results_table">
-                <h3>  Next Games </h3>
+                <h3>  Próximos jogos </h3>
             <table class="results_table">
 
                 <thead>
@@ -224,6 +225,7 @@
 
                             </tr>
                 </thead>
+                @php($aux =1)
                         @endif
 
                     @endif
@@ -236,9 +238,11 @@
                              <td class="line">
                      @if (!empty($value->homeTeamName))
 
+
                              {{$value->homeTeamName}}
                              @endif
                              </td><td class="line">
+
                              @if (!empty($value->result->goalsHomeTeam))
 
                                  {{$value->result->goalsHomeTeam}}
@@ -254,7 +258,7 @@
                              @if (!empty($value->awayTeamName))
 
                                {{$value->awayTeamName}}
-
+                               
                              @endif
                              </td>
                     @if (!empty($value->date))
@@ -262,7 +266,9 @@
 
                     @endif
 
+
                      <tr>
+
                     <td class="clear_line"> </td>
                      @endif
 

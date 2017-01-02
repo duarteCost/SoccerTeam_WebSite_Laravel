@@ -17,8 +17,8 @@
 
 
                   @if($homeTeam->game_id == $awayTeam->game_id)
-
-                        <h3> <a class="games" href="/tickets/{{$homeTeam->game_id}}">
+                        <div class="clubs">
+                         <a class="games" href="/tickets/{{$homeTeam->game_id}}">
                                 @if(!empty($homeTeams_urls[$homeTeam->game_id][0]))
                                     <img class="games" src="{{$homeTeams_urls[$homeTeam->game_id][0]}}"/>
 
@@ -31,7 +31,7 @@
 
                                      @endif
 
-                            </a></h3>
+                            </a></div>
                       <div class="date">
                           <p1>Date: {{$homeTeam->date}}</p1>
                       </div>

@@ -14,7 +14,7 @@
 
 p{
     color: green;
-    padding-right: 4%;
+    padding-right: 15%;
     text-align: right;
 }
 
@@ -26,6 +26,8 @@ form.produts{
 }
 
 h1{
+    margin-bottom: 1%;
+    padding: 1%;
     background-color: green;
     font-family: 'Raleway', sans-serif;
     color: white;
@@ -77,26 +79,48 @@ div.image{
     height: 60% ;
 }
 
+div.produtContent{
+    display: block;
+    padding: 4%;
+    text-align: center;
+    height: 30% ;
+}
+
 .box {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 auto;
+
     max-width: 90%;
 }
 
 .item {
     background: white;
     border: 1px solid green;
-    margin: 5% 0 0;
     padding: 30% 30% 0 0;
     position: relative;
+    margin-bottom: 5%;
 }
 
 .inner {
+    margin-bottom: 5%;
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }

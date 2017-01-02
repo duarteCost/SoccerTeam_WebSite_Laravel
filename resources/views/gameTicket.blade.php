@@ -30,6 +30,7 @@
                         <div class="date">
                             <p1>Date: {{$homeTeam->date}}</p1>
                         </div>
+                      @php($price=$awayTeam->ticket_price)
                 @endif
 
         @endforeach
@@ -38,41 +39,77 @@
 
         <div class="form">
 
-          <a href="javascript:toggleMe('1', '2' ,'3' , 'mekan' , '1');" class="button" >Quantity</a>
-          <a href="javascript:toggleMe('1', '2', '3' ,'mekan' , '2');" class="button"  >Zone</a>
-          <a href="javascript:toggleMe('1', '2', '3' ,'mekan' , '3');"  class="button">Confirm</a>
+          <a href="javascript:toggleMe('1', '2' ,'3' , 'mekan' , '1');" class="button" >Quantidade</a>
+          <a href="javascript:toggleMe('1', '2', '3' ,'mekan' , '2');" id ="buttonZone" class="button"  >Zone</a>
+          <a href="javascript:toggleMe('1', '2', '3' ,'mekan' , '3');" id ="confirmTicket" class="button">Confirmação</a>
+
+
 
             <script type="text/javascript">
                 function toggleMe(b, c, d , f,  id_view ){
 
 
                     var r=document.getElementById(b);
-                    var e=document.getElementById(c);
+                    var viewZone=document.getElementById(c);
                     var t=document.getElementById(d);
                     var g=document.getElementById(f);
                     var view =document.getElementById(id_view);
 
 
+                    var quantity = document.getElementById("quantity").value;
+                    var aux_zone = document.getElementById("stadiumZone");
+                    var zoneStadium = aux_zone.options[aux_zone.selectedIndex].value;
+
+
+
 
                     if(view == r){
-                        e.style.display="none";
+                        document.getElementById("next1").style.display="block";
+                        document.getElementById("next2").style.display="none";
+                        viewZone.style.display="none";
                         t.style.display="none";
                         r.style.display="block";
                         g.style.display="none";
                     }
-                    if(view == e){
+
+                    if(view == viewZone  && (isNaN(quantity) ||   quantity > 0)){
+                        document.getElementById("next1").style.display="none";
+                        document.getElementById("next2").style.display="block";
+                        document.getElementById("buttonZone").style.opacity = 1;
+                        viewZone.style.opacity = 1;
                         r.style.display="none";
                         t.style.display="none";
-                        e.style.display="block";
+                        viewZone.style.display="block";
                         g.style.display="block";
                     }
-                    if(view == t){
+                    else if (view == viewZone  && (!isNaN(quantity) || quantity < 0))
+                    {alert("Zona invalida, selecione uma zona valida");}
 
+                    if(view == t && (isNaN(quantity) ||   quantity > 0) && (zoneStadium !='')){
+                        document.getElementById("next1").style.display="none";
+                        document.getElementById("next2").style.display="none";
+                        document.getElementById("quantityConfirm").innerHTML="Quantidade:"+quantity;
+
+                        switch(zoneStadium) {
+                            case "zone_a":
+                                document.getElementById("zoneConfirm").innerHTML = "Zona: Zona A";
+                                break;
+                            case "zone_b":
+                                document.getElementById("zoneConfirm").innerHTML = "Zona: Zona B";
+                                break;
+                            case "zone_c":
+                                document.getElementById("zoneConfirm").innerHTML = "Zona: Zona C";
+                                break;
+                            case "zone_d":
+                                document.getElementById("zoneConfirm").innerHTML = "Zona: Zona D";
+                                break;
+                        }
                         r.style.display="none";
-                        e.style.display="none";
+                        viewZone.style.display="none";
                         t.style.display="block";
                         g.style.display="none";
-                    }
+                    }else if(view == t && (zoneStadium =='')){alert("Zona invalida, selecione uma zona valida");}
+                    else if(view == t && (!isNaN(quantity) || quantity < 0)){alert("Quantidade invalida, insira um numero de bilhetes valido ");}
 
 
 
@@ -124,8 +161,8 @@
             <form method="post" action="/tickets/{{$awayTeam->game_id}}/addBasket">
                 <div id="1" >
                     <br>
-                    Quantity:
-                    <input type="number" name="quantity" min="1" max="5000">
+                    Quantidade:
+                    <input type="number" id="quantity" name="quantity" min="1" max="5000">
 
                 </div>
                 <br>
@@ -155,14 +192,16 @@
                 <br>
 
                 <div id="3"  style="display:none">
-                    Quantity:
-                    <br>
-                    Zone:
-                    <br>
-                    Price:
-                    <br>
+
+                    <p id="quantityConfirm"></p>
+                    <p id="zoneConfirm"></p>
+                    <p >Preço: {{$price}}€
+                    </p>
+
                     <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
-                    <input type="submit">
+
+
+                   <p class="next"> <input class="next" type="submit"></p>
 
                 </div>
             </form>
@@ -272,12 +311,14 @@
 
             </script>
 
+            <div class="next" id="next1">
 
+             <a href="javascript:toggleMe('1', '2', '3' ,'mekan' , '2');"  class="button">Seguinte</a>
+            </div>
 
-
-
-
-        </div>
+            <div class="next" id="next2" style="display:none">
+                    <a href="javascript:toggleMe('1', '2', '3' ,'mekan' , '3');"  class="button" >Seguinte</a>
+            </div>
 
 
     </ul>

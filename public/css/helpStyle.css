@@ -4,6 +4,7 @@
     width: 94%;
     margin-left: 3%;
     margin-rigth: 3%;
+
 }
 
 
@@ -25,13 +26,49 @@ div.form-group-message{
     width: 15em;
 }
 #message{
-    width: 20em;
+    width: 95%;
     height: 10em;
 }
 #button{
     margin-left: 19em;
 }
+
+input[type=submit] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 /*
 #helpDiv{
     padding-bottom: 60px;
 }*/
+p{
+    text-align: right;
+    margin-right: 3%;
+}
+
+div.col-md-12{
+    padding: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: white;
+
+    border: 1px solid green;
+    margin-bottom: 2%;
+}
+
+h2{background-color: green;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+margin-bottom: 0%;
+    padding: 1%;
+    margin-left:20%;
+    margin-right:20%;
+    text-align: center;}

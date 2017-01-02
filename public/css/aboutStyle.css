@@ -30,7 +30,7 @@ div.aboutObjectives{
     margin: auto;
 }
 div.content{
-    color: white;
+    color: black;
     /*margin-left: 20em;*/
     width:94%;
     margin-left: 3%;
@@ -41,3 +41,20 @@ div.content{
     /*clear: right;*/
     clear: left;
 }
+
+div.about{
+    margin-top: 0%;
+    margin-bottom: 2%;
+    background-color: white;
+
+    border: 1px solid green;
+    padding: 4%;
+
+}
+
+h1{background-color: green;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    margin-bottom: 0%;
+    padding: 1%;
+    text-align: center;}

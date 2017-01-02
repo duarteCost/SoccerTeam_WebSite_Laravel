@@ -19,6 +19,7 @@ a.news{  display: block;
 
 h1{
 
+    padding: 1%;
     background-color: green;
     font-family: 'Raleway', sans-serif;
     color: white;
@@ -41,35 +42,6 @@ h2{
 }
 
 
-/*
-div.lastedNews{
-    background-color: red;
-
-}
-div.news {
-    align-items: left;
-    margin-left: 5%;
-    margin-right: 30%;
-    margin-bottom: 5%;
-
-
-}
-
-div.table_ligue {
-    float: right;
-    align-items: left;
-    width: 5% ;
-    background-color: gold;
-
-}
-
-div.results_table {
-    float: right;
-    width: 5% ;
-
-}
-*/
-
 
 
 span.mySpan {
@@ -88,6 +60,7 @@ img.news {
 }
 
 div.news{
+    margin-top: 0%;
     background-color: white;
     border: 1px solid green;
     padding: 2%;
@@ -130,7 +103,8 @@ img {
 
 .flex-item {
 
-    padding: 5px;
+    padding: 1%;
+    padding-top: 0%;
     width: 30%;
 
     text-align: center;
@@ -204,4 +178,8 @@ td.line{
 }
 .clear_line{
     background-color: white;
+}
+
+.newsImage{
+    text-align: center;
 }

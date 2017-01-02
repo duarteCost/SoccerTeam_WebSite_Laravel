@@ -23,8 +23,12 @@
 
 
                 <br>
-                <p2 class="NewsDetails">
-                    {{$new->content}}
+                <p2 class="NewsDetails" id="1">
+
+
+                    <script>
+                        document.getElementById("1").innerHTML="{{$new->content}}";
+                    </script>
                     <br><br>
 
                     {{$new->updated_at}}

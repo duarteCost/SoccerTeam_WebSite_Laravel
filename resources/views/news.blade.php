@@ -6,7 +6,7 @@
 @section('content')
 <div class = "content">
     <div class="news">
-    <h1>News</h1>
+    <h1>Notícias</h1>
 
         <script type="text/javascript">
             function toggleMe(b, c, d ){
@@ -50,13 +50,17 @@
                 </div>
             <br>
 
-                <div class="new_content" id="{{$new->id}}_content150"   >{{ str_limit($new->content, $limit = 150, $end = '')}}
+                <div class="new_content" id="{{$new->id}}_content150"   >{!! str_limit($new->content, $limit = 150, $end = '')!!}
 
-                <a   href="javascript:toggleMe('{{$new->id}}_content', '{{$new->id}}_content150', '{{$new->id}}_menos');">more...</a>
+                <a   href="javascript:toggleMe('{{$new->id}}_content', '{{$new->id}}_content150', '{{$new->id}}_menos');">mais...</a>
 
                 </div>
 
-                <div class="new_content" id="{{$new->id}}_content" style="display:none">'{{{$new->content}}}'
+                <div class="new_content" id="{{$new->id}}_content" style="display:none">
+                        <script>
+                            document.getElementById("{{$new->id}}_content").innerHTML="{{ $new->content}}";
+                        </script>
+
 
                 <a  id="{{$new->id}}_menos"  href="javascript:toggleMe('{{$new->id}}_content150', '{{$new->id}}_content', '{{$new->id}}_menos');"> menos ^</a>
 

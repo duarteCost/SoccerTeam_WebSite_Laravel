@@ -5,7 +5,9 @@
 @stop
 @section('content')
 <div class = "content">
-        <h1> Bem vindo a secção sobre nosso grande clube</h1>
+
+    <h1> Bem vindo a secção sobre nosso grande clube</h1>
+    <div class="about">
         <div class="aboutObjectives">
             <h3> objectivos do clube: </h3>
             <ul>
@@ -42,6 +44,6 @@
             10 taças intercontinentais. lol
         </p>
         <img id ="img3" src="https://s3.amazonaws.com/acr20162017/about/taca.png"/>
-
+    </div>
 </div>
 @stop
