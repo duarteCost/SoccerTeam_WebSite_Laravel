@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\News;
+use App\Game;
+use App\Ticket;
 use App\Http\Requests;
+use App\products_purchased;
 use Auth;
 use App\new_img;
 use App\Produt;
@@ -125,7 +128,10 @@ class NewsController extends Controller
                     $basket_temp = DB::table('Basket_Temp')->where('user_id','=', $user->id)->get();
                     $products = Produt::get();
                     $clubs = DB::table('clubs')->where('club_id','!=', 1)->get();
-                    return view('user', compact('user','users','products','basket_temp','news','new','clubs'));
+                    $products_Purchased =products_purchased::get();
+                    $tickets = Ticket::get();
+                    $games = Game::get();
+                    return view('user', compact('user','users','products','basket_temp','news','new','clubs','products_Purchased','tickets', 'games'));
                 }else{
                     continue;
                 }
