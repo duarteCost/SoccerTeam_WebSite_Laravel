@@ -90,7 +90,7 @@
                         <area shape="poly" title="adsfr"  coords="569,464,705,488,956,473,955,218,892,244,799,265,684,286,613,348,640,352,674,363,704,377,711,397,702,414,675,431,633,446">
                     </map>
 
-                    <select id="stadiumZone" name="zone" onchange="report(this.value)">
+                    <select id="stadiumZone" name="zone" onchange="report(this.value)" required>
                         <option id="zone_null"> </option>
                         <option id="zone_a" value="zone_a">Zona A</option>
                         <option id="zone_b" value="zone_b">Zona B</option>
@@ -111,7 +111,7 @@
                     <input class = "userState" type="hidden" name="_token" value="{{csrf_token()}}">
 
 
-                   <p class="next"> <input  onclick="clicked();" class="next" type="submit"></p>
+                   <p class="next"> <input  onclick="clicked({{Auth::check()}});" class="next" type="submit"></p>
 
                 </div>
             </form>

@@ -207,7 +207,7 @@ class ProdutsController extends Controller
                     }
                     $a_amount = $amount - $ticket->price;
                     //Check if there is enough money
-                    if($a_amount) {
+                    if($a_amount>=0) {
                         DB::table('users')->where('id', '=', $currentUser->id)->update(array('amount' => $a_amount));
                         DB::table('Basket_Temp')->where('basket_id', '=', $basket_id)->delete();
                         $products_purchased = new products_purchased();

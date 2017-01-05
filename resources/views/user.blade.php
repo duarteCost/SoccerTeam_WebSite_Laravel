@@ -6,11 +6,7 @@
 @section('content')
     <script type="text/javascript">
 
-        // document.getElementById("add_Product").style.display = 'none';
-        //document.getElementById("add_New").style.display = 'none';
-        //document.getElementById("delete_socio").style.display = 'none';
-        //document.getElementById("delete_products").style.display = 'none';
-        //document.getElementById("new_state").style.display = 'none';
+
        function exibe(el) {
 
            var display = document.getElementById(el).style.display;
@@ -132,9 +128,10 @@
                                 <legend class = "userState">Eliminar/Editar Notícias</legend>
 
                                 @foreach($news as $new)
-                                    <input class = "userState" type = "radio"  name = "newId" value="{{$new->id}}">
-                                    <label class="userStateRadio">{{$new->id}} {{$new->title}}</label>
-
+                                    <div class="editeNews">
+                                        <input class = "userState" type = "radio"  name = "newId" value="{{$new->id}}">
+                                        <label class="userStateRadio">{{$new->id}} {{$new->title}}</label>
+                                    </div>
                                     <br>
                                 @endforeach
 

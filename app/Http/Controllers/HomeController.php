@@ -65,7 +65,7 @@ class HomeController extends Controller
         $imagesSlider = DB::table('news')
             ->leftJoin('users','users.id','=','news.user_id')
             ->leftJoin('new_img','new_id','=','news.id')
-            ->where('new_img.type','==', 0)
+            ->where('new_img.type','=', 1)
             ->select('name', 'news.id','news.created_at', 'news.updated_at', 'news.content' ,'new_img.title','new_img.path' )
             ->orderBy('news.updated_at', 'desc')
             ->get();

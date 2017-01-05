@@ -57,6 +57,7 @@
                 </div>
 
                 <div class="new_content" id="{{$new->id}}_content" style="display:none">
+                    {{ $new->content}}
                         <script>
                             document.getElementById("{{$new->id}}_content").innerHTML="{{ $new->content}}";
                         </script>

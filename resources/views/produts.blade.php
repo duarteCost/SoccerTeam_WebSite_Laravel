@@ -29,16 +29,18 @@
 
 						<form  class="produts" method="post" action="/products/add/{{$produt->id}}">
 
-							<input type = "submit" onclick="clicked();" class="input" name = "addBasket" value="Adicionar ao Carrinho">
+							<input type = "submit" onclick="clicked({{Auth::check()}});" class="input" name = "addBasket" value="Adicionar ao Carrinho">
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 
 
 							<script>
-								function clicked() {
-									alert("Produto adicionado ao carrinho!\n")
 
-
-								}
+									function clicked(auth) {
+										if(auth)
+										{
+											alert("Produto adicionado ao carrinho!\n")
+										}
+									}
 							</script>
 
 
