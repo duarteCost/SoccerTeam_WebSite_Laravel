@@ -1,8 +1,14 @@
-/**
- * Created by jorgecalaca on 29/12/16.
- */
 
+var myIndex = 0;
+window.onload = function() {
 
+    setImage();
+}
+
+var slideIndex = 1;
+showDivs(slideIndex);
+
+// Função para mostrar iamgem seguinte
 function plusDivs(n) {
     showDivs(slideIndex += n);
 }
@@ -11,6 +17,7 @@ function currentDiv(n) {
     showDivs(slideIndex = n);
 }
 
+// Função para mostrar a iamgem
 function showDivs(n) {
     var i;
     var x = document.getElementsByClassName("mySlides");
@@ -20,18 +27,13 @@ function showDivs(n) {
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" w3-white", "");
-    }
     x[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " w3-white";
-
-    setTimeout(setImage, 7000); // Change image every 2 seconds
-
 }
 
 
+// Função gerir o tempo para mudar de imagem
 function setImage() {
+    setTimeout(setImage, 7000); // muda a cada 7 segundos
     slideIndex +=  1;
     showDivs(slideIndex);
 }

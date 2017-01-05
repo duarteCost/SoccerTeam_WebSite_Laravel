@@ -269,6 +269,8 @@ class ProdutsController extends Controller
                 ->get();
         }
 
+
+        /*---- Colocar o links das imagens num array ---*/
         $array_urls = array();
 
         foreach($products_images as $imageName) {
@@ -278,7 +280,6 @@ class ProdutsController extends Controller
                 $path = $imageName->path.$imageName->title;
                 $exists = $s3->exists($path);
 
-                $exists=1; // retiarar
 
                 if ($exists) {
                     $urlFile = $s3->url($path);

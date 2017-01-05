@@ -88,7 +88,7 @@ class UserController extends Controller
 
         /*  JORGE   */
 
-
+        /*---- Colocar o links das imagens  num array ---*/
         $array_urls = array();
 
         foreach($basket_temp as $imageName) {

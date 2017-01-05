@@ -18,24 +18,18 @@
                 </div>
 
             @endif
-
-
-
-
                 <br>
                 <p2 class="NewsDetails" id="1">
-
-
+                    {!!$new->content!!}
                     <script>
-                        document.getElementById("1").innerHTML="{{$new->content}}";
+                        document.getElementById("1").innerHTML="{!!$new->content!!}";
                     </script>
-                    <br><br>
 
+                </p2>
+                <br><br>
                     {{$new->updated_at}}
 
                     {{$new->name}}
-                </p2>
-
 
 
     @endforeach

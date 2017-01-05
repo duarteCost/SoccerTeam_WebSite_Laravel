@@ -9,12 +9,24 @@
     margin-right:6%;
 }
 
+
 div.games{
+    text-align: center;
     background: white;
     border: 1px solid green;
     padding: 4%;
-    text-align: center;
+    margin-top: 0%;
+    margin-left:3%;
+    margin-right:3%;
 
+}
+
+
+.clubs{
+    margin: 0%;
+    font-size: 1.5vw;
+    width: 100%;
+    text-align: center;
 }
 
 .button {
@@ -31,6 +43,7 @@ div.games{
 }
 
 .date{
+    font-size: 1.2vw;
     text-align: center;
 }
 img[usemap], map area[shape]{
@@ -102,6 +115,9 @@ div { margin: 20px; }
 .uzay{
     display: flex;
     background-image:url('https://s3.amazonaws.com/acr20162017/stadium/stadium_club.jpg');
+    background-repeat: no-repeat;
+    overflow-x: hidden;;
+    text-align: center;
     width:900px;
     height:500px;
     border:1px solid turquoise;
@@ -109,12 +125,6 @@ div { margin: 20px; }
 }
 
 
-.planetmap{
-    display: flex;
-    width: 200px;
-    height: 7000px;
-
-}
 
 
 .poly{
@@ -123,49 +133,11 @@ div { margin: 20px; }
 .circle {fill:transparent;}
 
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 1s;
-}
 
 
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
+div#maken.stadium{
+    background-attachment: scroll;
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-.stadium{
-    text-align: center;
 }
 
 
@@ -190,4 +162,9 @@ input[type=submit] {
 }
 .next{
     text-align: right;
+}
+
+img.games{
+    max-height:90%;
+    width:10%;
 }

@@ -1,15 +1,16 @@
 @extends('layouts.layout')
 @section('header')
     <link rel = "stylesheet" href = "/css/ticketsStyle.css" >
-    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.min.css')}}">
+
 
 
 
 @stop
 @section('content')
 <div class = content>
+    <div class="tickets">
     <h1>Tickets</h1>
-<div class="tickets">
+
 
       @foreach($awayTeams as $awayTeam)
           <div class="games">
@@ -18,7 +19,8 @@
 
                   @if($homeTeam->game_id == $awayTeam->game_id)
                         <div class="clubs">
-                         <a class="games" href="/tickets/{{$homeTeam->game_id}}">
+
+
                                 @if(!empty($homeTeams_urls[$homeTeam->game_id][0]))
                                     <img class="games" src="{{$homeTeams_urls[$homeTeam->game_id][0]}}"/>
 
@@ -31,15 +33,17 @@
 
                                      @endif
 
-                            </a></div>
+
+
+                        </div>
                       <div class="date">
                           <p1>Date: {{$homeTeam->date}}</p1>
                       </div>
                       <div class="price">
-                          <p2>{{$homeTeam->ticket_price}}€</p2>
+                          <p2> {{$homeTeam->ticket_price}}€</p2>
                         <br>
 
-                      <a href="/tickets/{{$homeTeam->game_id}}" class="button" >Buy</a>
+                      <a href="/tickets/{{$homeTeam->game_id}}" class="button" >Comprar</a>
                       </div>
                           <br>
 
@@ -51,9 +55,10 @@
 
 
 
+
+</div>
+</div>
 @stop
-</div>
-</div>
 @section('footer')
 @stop
 

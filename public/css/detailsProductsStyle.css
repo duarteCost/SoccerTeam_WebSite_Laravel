@@ -4,7 +4,8 @@
 }
 
 h1{
-
+	margin-bottom: 0%;
+	padding: 1%;
 	background-color: green;
 	font-family: 'Raleway', sans-serif;
 	color: white;
@@ -13,83 +14,34 @@ h1{
 
 }
 
+
+
+img{
+	display: block;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
 .mySlides {
-
-
-    display:none;
- }
-.select {
-    cursor:pointer;
-   }
-
-
-.selectorImages{
-    max-width:70%;
+	display:none;
+	height: 300px;
+	width: auto;
 }
 
-div.slide{
-    width:60%;
-    height:60%;
-    display: block;
-}
-
-.smalsSlides  {
-
-     position: relative;
-    float: left;
-}
-
-
-
-div.smalSlide{
-
-    margin-top: 1%;
-    width:60%;
+.demo {
+	cursor:pointer;
+	border: 1px solid green;
+	height: 100px;
 
 
 }
-
-
-img.select{
-    max-height:30%;
-    width:30%;
-        display: block;
-}
-
-img {
-	max-width:90%;
-	height:auto;
-
-}
-
-div.slider{
-
-	width: 50%;
-	height: 200px;
-	background: red;
-	margin: 0 5px 0 5px;
-	overflow: hidden;
-	border: 1px solid black;
-
-
-}
-
-.container{
-	width: 25%;
-	height: 200px;
-	overflow: hidden;
-	position: relative;
-}
-
-.container img{
-	position: absolute;
-	right: 0; left: 0;
-	margin: auto
-}
-
-.mySlides {display:none}
-.demo {cursor:pointer;
-	border: 1px solid green;}
 
 div.produt{
 	background: white;
@@ -99,11 +51,19 @@ div.produt{
 	margin-bottom: 3%;
 }
 
-.input{
-	background-color: green;
-	border: 1px solid darkgreen;
-
+input[type=submit] {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
 }
+
 
 .produt_submit{
 	font-family: 'Raleway', sans-serif;
@@ -123,3 +83,32 @@ p{
 	margin-right: 10%;
 	width: 80%;
 }
+
+.imagesContent{
+	text-align: center;
+	max-width:500px;
+	height: auto;
+	width: auto;
+	margin:auto
+}
+
+.selctImage {
+	height: 200px;
+	margin-top:16px;
+	margin-bottom:2%;
+}
+
+.grid{
+	display: inline-block;
+	padding:0 8px;
+	width:100px;
+	height: 100px;
+}
+
+div.imageSlider{
+	margin-top: 5%;
+	display: inline-block;
+	width:50%;
+	height: auto;
+}
+

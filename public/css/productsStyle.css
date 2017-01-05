@@ -3,12 +3,11 @@
     height: auto;
 }
 
-.produt{
-    width: 42%;
-    height: 42%;
-    float: left;
-    margin-left:8%;
+.produts{
 
+    margin-left:3%;
+    margin-right:3%;
+text-align: center;
 
 }
 
@@ -26,14 +25,14 @@ form.produts{
 }
 
 h1{
+    margin-right: 2%;
+    margin-left: 2%;
     margin-bottom: 1%;
     padding: 1%;
     background-color: green;
     font-family: 'Raleway', sans-serif;
     color: white;
     text-align: center;
-    margin-left:5%;
-    margin-right:5%;
 }
 
 
@@ -48,69 +47,43 @@ img.galeryImages {
 
 
 a.produts{
-    
-    text-align: center;
     display: block;
     color: black;
-
-
 }
 
 
 img.produts {
-
     max-height:30%;
-    width:60%;
+    width:50%;
 }
 
-div.produts {
-    background-color: white;
-    border: 1px solid green;
-    padding-left: 4%;
-    padding-right: 4%;
-    padding-bottom: 4%;
-
-}
 
 
 div.image{
     padding: 4%;
     text-align: center;
-    height: 60% ;
+    height: 50% ;
 }
 
-div.produtContent{
-    display: block;
-    padding: 4%;
-    text-align: center;
-    height: 30% ;
+.produtContent{
+    max-height: 30%;
+    padding: 0%;
+    text-align: right;
+    height: 20% ;
+
 }
 
-.box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
 
-    max-width: 90%;
-}
+
 
 .item {
-    background: white;
-    border: 1px solid green;
-    padding: 30% 30% 0 0;
-    position: relative;
-    margin-bottom: 5%;
+    display: inline-block;
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    margin: 1em;
 }
 
-.inner {
-    margin-bottom: 5%;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
 
 input[type=submit] {
     background-color: #4CAF50;
@@ -124,3 +97,4 @@ input[type=submit] {
     margin: 4px 2px;
     cursor: pointer;
 }
+

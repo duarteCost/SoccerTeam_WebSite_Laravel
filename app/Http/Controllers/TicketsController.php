@@ -66,12 +66,14 @@ class TicketsController extends Controller
 
         $homeTeams = DB::table('games')
             ->leftJoin('clubs', 'club_id', '=', 'homeTeam_id')
+            ->where('games.date', '>', date('Y-m-d H:i'))
 
             ->get();
 
 
         $awayTeams = DB::table('games')
             ->leftJoin('clubs', 'club_id', '=', 'awayTeam_id')
+            ->where('games.date', '>', date('Y-m-d H:i'))
 
             ->get();
         }
@@ -79,17 +81,22 @@ class TicketsController extends Controller
         {
             $homeTeams = DB::table('games')
                 ->leftJoin('clubs', 'club_id', '=', 'homeTeam_id')
+                ->leftJoin('stadium_places', 'games.stadium_id', '=', 'stadium_places.stadium_id')
                 ->where('games.game_id','=', $game_id)
+                ->where('games.date', '>', date('Y-m-d H:i'))
                 ->get();
 
 
             $awayTeams = DB::table('games')
                 ->leftJoin('clubs', 'club_id', '=', 'awayTeam_id')
+                ->leftJoin('stadium_places', 'games.stadium_id', '=', 'stadium_places.stadium_id')
                 ->where('games.game_id','=', $game_id)
+                ->where('games.date', '>', date('Y-m-d H:i'))
                 ->get();
 
         }
 
+        /*---- Colocar o links das imagens  homeTeams num array ---*/
         $homeTeams_urls = array();
 
         foreach($homeTeams as $imageName) {
@@ -108,6 +115,8 @@ class TicketsController extends Controller
             }
         }
 
+
+        /*---- Colocar o links das imagens awayTeams num array ---*/
         $awayTeams_urls = array();
 
         foreach($awayTeams as $imageName) {
@@ -117,7 +126,7 @@ class TicketsController extends Controller
                 $path = $imageName->club_path.$imageName->club_title;
                 $exists = $s3->exists($path);
 
-                $exists=1; // retiarar
+
 
 
                 if ($exists) {

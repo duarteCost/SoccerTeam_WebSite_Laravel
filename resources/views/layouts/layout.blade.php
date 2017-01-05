@@ -52,6 +52,9 @@
 				<li id = "exp">
 					<a class = "navbar" href="{{ url('/user') }}">{{ Auth::user()->name }}</a>
 				</li>
+				<li id = "exp">
+					<a class = "navbar" href="{{ url('/user') }}"><img class="basket" src="https://s3.amazonaws.com/acr20162017/image015-3.png"/></a>
+				</li>
 			</ul>
 		</div>
 	@else

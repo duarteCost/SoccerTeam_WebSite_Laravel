@@ -158,8 +158,8 @@ class NewsController extends Controller
             ->get();
 
 
+        /*---- Colocar o links das imagens das noticias num array ---*/
         $array_urls = array();
-
         foreach($latest as $imageName) {
 
             $s3 = Storage::disk('s3');
@@ -167,7 +167,6 @@ class NewsController extends Controller
                 $path = $imageName->path . $imageName->title;
                 $exists = $s3->exists($path);
 
-                $exists=1; // retiarar
 
                 if ($exists) {
                     $urlFile = $s3->url($path);
@@ -204,6 +203,8 @@ class NewsController extends Controller
                   ->orderBy('news.updated_at', 'desc')
                   ->get();
 
+
+        /*---- Colocar o links das imagens das noticias num array ---*/
         $array_urls = array();
 
         foreach($images as $imageName) {
@@ -212,7 +213,6 @@ class NewsController extends Controller
             $path = $imageName->path.$imageName->title;
             $exists = $s3->exists($path);
 
-            $exists=1; // retiarar
 
             if($exists) {
                 $urlFile = $s3->url($path);

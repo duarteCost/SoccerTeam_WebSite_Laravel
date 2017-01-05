@@ -67,8 +67,14 @@ Route::get('/products/{product_id}', 'ProdutsController@getProducts');
 Route::get('/news', 'NewsController@getNews');
 Route::get('/detailsProduct/{product_id}', 'ProdutsController@getProducts');
 
-
 Route::get('/tickets/{game_id}', 'TicketsController@getGames');
+
+
+
+
+
+
+
 
 //////Ricardo - ajuda-form page/////
 Route::get('/help', 'HelpController@getContact');

@@ -11,17 +11,17 @@
 
 
 div.games{
+    text-align: center;
     background: white;
     border: 1px solid green;
     padding: 4%;
+    margin-top: 0%;
+    margin-left:3%;
+    margin-right:3%;
 
 }
 
-img.games{
-    max-height: 90%;
-    height: auto;
-    width: auto;
-}
+
 
 .button {
     background-color: #4CAF50;
@@ -31,7 +31,7 @@ img.games{
     text-align: left;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.1vw;
     margin: 4px 2px;
     cursor: pointer;
 }
@@ -40,18 +40,20 @@ h1{
     margin-bottom: 0%;
     padding: 1%;
     background-color: green;
+    font-size: 2.5vw;
     font-family: 'Raleway', sans-serif;
     color: white;
-    width:78%;
-    margin-left:11%;
-    margin-right:11%;
+    margin-left:3%;
+    margin-right:3%;
     text-align: center;
 }
 .date{
+    font-size: 1.0vw;
     text-align: center;
 }
 
 .price{
+    font-size: 1.0vw;
     text-align: right;
 
 }
@@ -65,18 +67,6 @@ h1{
 
 
 
-img[usemap], map area[shape]{
-    outline-color: green;
-    background-color: #FFEEEE;
-}
-
-
-
-.image {
-    position: relative;
-    width: 100%; /* for IE 6 */
-}
-
 h2 {
     position: absolute;
     top: 300px;
@@ -89,50 +79,17 @@ h2 {
 
 div { margin: 20px; }
 
-.styled-select {
-    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
-    height: 29px;
-    overflow: hidden;
-    width: 240px;
+
+
+img.games{
+    max-height:90%;
+    width:10%;
 }
 
-.styled-select select {
-    background: transparent;
-    border: none;
-    font-size: 14px;
-    height: 29px;
-    padding: 5px; /* If you add too much padding here, the options won't show in IE */
-    width: 268px;
+.clubs{
+    margin: 0%;
+    font-size: 1.5vw;
+    width: 100%;
+    text-align: center;
 }
-
-
-
-
-
-.semi-square {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-
-
-.green   { background-color: green; }
-
-
-/* -------------------- Colors: Text */
-.slate select   { color: #000; }
-.green select   { color: #fff; }
-.blue select    { color: #fff; }
-.yellow select  { color: #000; }
-.black select   { color: #fff; }
-
-img{
-    max-height: 100%;
-    height: 100%;
-    width: auto;
-}
-
-div.clubs{
-
-    text-align: center}
 

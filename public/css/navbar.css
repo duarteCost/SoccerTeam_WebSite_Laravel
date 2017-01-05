@@ -37,6 +37,7 @@ li a.navbar:hover {
 a.navbar {
     color: #006600;
     padding: 10px 25px 10px 25px;
+
     font-size: 15px;
     font-weight: 600;
     letter-spacing: .1rem;
@@ -95,3 +96,4 @@ img{
     height: auto;
 }
 */
+

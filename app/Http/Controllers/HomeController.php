@@ -71,7 +71,7 @@ class HomeController extends Controller
             ->get();
 
 
-
+        /*---- Colocar o links das imagens das noticias num array ---*/
         $array_urls = array();
         foreach($latest as $imageName) {
 
@@ -81,7 +81,6 @@ class HomeController extends Controller
                 $exists = $s3->exists($path);
 
 
-                $exists=1; // retiarar
 
 
                 if ($exists) {
@@ -95,6 +94,9 @@ class HomeController extends Controller
         }
 
 
+
+        /*---- Colocar o links das imagens das noticias de destaque num array ---*/
+
         $array_urls_slider = array();
         foreach($imagesSlider as $imageName) {
 
@@ -107,7 +109,7 @@ class HomeController extends Controller
 
 
 
-                $exists=1; // retiarar
+
 
 
 

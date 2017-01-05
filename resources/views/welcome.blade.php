@@ -2,81 +2,37 @@
 @section('header')
     <title>FC</title>
     <link rel = "stylesheet" href = "/css/homeStyle.css" >
+    <script type="text/javascript" src="{!! asset('/js/home.js') !!}"> </script>
 @stop
 @section('content')
 
 <div class = "contente">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-    <div class="slider w3-content w3-display-container">
+
+
+    <div class="slider imagesContent container">
         @foreach($latest_news as $new)
 
-                @if(!empty($array_urls_slider[$new->id][0]))
+            @if(!empty($array_urls_slider[$new->id][0]))
 
-        <div class="mySlides">
-        <img class="mySlides1" src="{{$array_urls_slider[$new->id][0]}}" style="width:100%">
+                <div class="mySlides">
+                    <a class="newsImage" href="/detailsNews/{{$new->id}}">
+                    <img class="mySlides1" src="{{$array_urls_slider[$new->id][0]}}" style="width:100%">
+                    </a>
+                    <div class="displayText ">
+                        {{$new->title}}
+                    </div>
 
-        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-            {{$new->title}}
-        </div>
-        </div>
-                @endif
+                </div>
+            @endif
 
         @endforeach
-        <a class="slider w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
-        <a class="slider w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
-        <div class="slider" style="width:100%">
-            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-        </div>
+        <a class="slider buttonSliderLeft" onclick="plusDivs(-1)">&#10094;</a>
+        <a class="slider buttonSliderRight right" onclick="plusDivs(1)">&#10095;</a>
+
     </div>
 
-    <script>
 
-       // var myIndex = 0;
-       // carousel();
-
-        var slideIndex = 1;
-       showDivs(slideIndex);
-
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
-
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-white", "");
-            }
-            x[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " w3-white";
-
-            setTimeout(setImage, 7000); // Change image every 2 seconds
-
-        }
-
-
-       function setImage() {
-           slideIndex +=  1;
-           showDivs(slideIndex);
-       }
-
-
-
-    </script>
 
     <div class="home">
 
@@ -87,10 +43,11 @@
     <ul class="flex-container">
 
         <li class="flex-item1">
-
+            @php($aux=0)
             <h1>Ultimas notícias</h1>
             @foreach($latest_news as $new)
 
+                @if($aux < 10)
                 <div class="news">
                 @if(!empty($array_urls[$new->id][0]))
 
@@ -100,7 +57,11 @@
                     </a>
                     </div>
                 @endif
+                    @if(!empty($new->title))
 
+                        @php($aux+=1)
+
+                    @endif
                 <h2> <a class="news" href="/detailsNews/{{$new->id}}">{{$new->title}} {{$new->id}}</a></h2>
 
                     <br>
@@ -122,6 +83,7 @@
 
 
                 </div>
+                @endif
             @endforeach
         </li>
 
