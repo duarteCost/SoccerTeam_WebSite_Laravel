@@ -12,8 +12,10 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 ## Project
 ### Main features
-Internal API
-External API
+<ul>
+  <li>Internal API</li>
+  <li>External API</li>
+</ul>
 
 ### Requirements
 phpMyAdmin
