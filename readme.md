@@ -21,6 +21,6 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 phpMyAdmin
 
 ### Run
-Create a database and fill .env with database credentials 
-Migrate database <b>php artisan migrate</b>
-Run <b>php artisan serve</b> in the console
+- Create a database and fill .env with database credentials 
+- Migrate database <b>php artisan migrate</b>
+- Run <b>php artisan serve</b> in the console
